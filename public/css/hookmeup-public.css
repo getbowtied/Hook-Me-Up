@@ -1,0 +1,13 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.hook {
+    background: #FFFDE7;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    border: 2px dashed;
+    border-color: #F8E71C;
+}
