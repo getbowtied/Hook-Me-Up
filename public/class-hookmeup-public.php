@@ -98,6 +98,9 @@ class Hookmeup_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-public.js', array( 'jquery' ), $this->version, false );
 	}
 
+	/**
+	 * Generate hook divs in every page
+	 */
 	public function generate_hooks() {
 
 		$hooks = new Hookmeup_Hooks();

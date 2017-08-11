@@ -400,26 +400,50 @@ class Hookmeup_Hooks {
 		];
 	}
 
+	/**
+	 * Retrieve array of archive hooks
+	 * @access   public
+	 */
 	public function get_archive_hooks() {
 		return $this->archive_hooks;
 	}
 
+	/**
+	 * Retrieve array of cart hooks
+	 * @access   public
+	 */
 	public function get_cart_hooks() {
 		return $this->cart_hooks;
 	}
 
+	/**
+	 * Retrieve array of checkout hooks
+	 * @access   public
+	 */
 	public function get_checkout_hooks() {
 		return $this->checkout_hooks;
 	}
 
+	/**
+	 * Retrieve array of account hooks
+	 * @access   public
+	 */
 	public function get_account_hooks() {
 		return $this->account_hooks;
 	}
 
+	/**
+	 * Retrieve array of single product hooks
+	 * @access   public
+	 */
 	public function get_product_hooks() {
 		return $this->product_hooks;
 	}
 
+	/**
+	 * Retrieve array of all registered hooks
+	 * @access   public
+	 */
 	public function get_all_hooks() {
 
 		$all_hooks = array_merge($this->product_hooks, $this->archive_hooks, $this->cart_hooks, $this->checkout_hooks, $this->account_hooks);
