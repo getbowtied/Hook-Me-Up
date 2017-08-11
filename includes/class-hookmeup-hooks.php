@@ -426,4 +426,41 @@ class Hookmeup_Hooks {
 
 		return $all_hooks;
 	}
+
+	// public function generate_all_hooks( ) {
+	// 	$this->generate_hooks( $this->archive_hooks );
+	// 	$this->generate_hooks( $this->cart_hooks );
+	// 	$this->generate_hooks( $this->checkout_hooks );
+	// 	$this->generate_hooks( $this->account_hooks );
+	// 	$this->generate_hooks( $this->product_hooks );
+	// }
+
+	// public function generate_hooks( $hooks ) {
+
+	// 	foreach( $hooks as $hook ) {
+
+	// 	    $hook_name = $hook['hook'];
+
+	// 	    add_action( $hook_name, function() use ($hook_name) {
+
+	// 	        $option_toggle  = get_theme_mod($hook_name);
+	// 	        $option_content = get_theme_mod($hook_name . '_editor');
+
+	// 	        echo '<div id="' . $hook_name . '">'; 
+
+	// 	        if( $option_toggle == true ) {
+	// 	            if( $option_content ) { 
+	// 	                echo $option_content;
+	// 	            } else {
+	// 	                echo '<p class="hook">' . $hook_name . '</p>';
+	// 	            }
+	// 	        } else {
+	// 	            echo '<p class="hook">' . $hook_name . '</p>';
+	// 	        }
+
+	// 	        echo '</div>';
+
+	// 	    }, 20 );
+	// 	}
+	// }
 }

@@ -164,7 +164,9 @@ final class HookMeUp {
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'classes/class-hookmeup-dependencies.php';
 
-		require plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
+
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-hooks.php';
 
 		$this->loader = new Hookmeup_Loader();
 		$this->frontend_includes();

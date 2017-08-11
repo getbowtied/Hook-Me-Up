@@ -1,7 +1,6 @@
 <?php
 
 include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );
-include_once( dirname(__FILE__) . '/class-hookmeup-hooks.php' );
 
 add_action('customize_register', 'hookmeup_includes');
 function hookmeup_includes() {
