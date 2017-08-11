@@ -37,7 +37,7 @@ function hookmeup_kirki_sections( $wp_customize ) {
  	) );
 
      // Single Product
-     $wp_customize->add_section( 'hookmeup_single_product_section', array(
+     $wp_customize->add_section( 'hookmeup_product_section', array(
  		'title'       => esc_attr__('Single Product', 'hookmeup'),
  		'priority'    => 10,
  		'capability'  => 'edit_theme_options',
@@ -89,7 +89,7 @@ function hookmeup_kirki_fields( $wp_customize, $hooks ) {
 			'settings'    => $hook['hook'],
 			'label'       => esc_attr__( $hook['label'], 'hookmeup' ),
 			'section'     => $hook['section'],
-			'default'     => true,
+			'default'     => false,
 			'priority'    => 10,
 		);
 

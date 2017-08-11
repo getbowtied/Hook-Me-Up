@@ -169,19 +169,7 @@ final class HookMeUp {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-hooks.php';
 
 		$this->loader = new Hookmeup_Loader();
-		$this->frontend_includes();
-	}
-
-	/**
-	 * Include required frontend files.
-	 */
-	public function frontend_includes() {
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/archive-product.php';
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/cart.php';
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/checkout.php';
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/empty-cart.php';
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/my-account.php';
-		require plugin_dir_path( __FILE__ ) . 'includes/hooks/single-product.php';
+		// $this->frontend_includes();
 	}
 
 	/**
@@ -238,6 +226,9 @@ final class HookMeUp {
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
+
+		// generate all of the registered hooks
+		$plugin_public->generate_hooks();
 	}
 
 	/**

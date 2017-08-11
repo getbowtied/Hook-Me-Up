@@ -98,4 +98,36 @@ class Hookmeup_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-public.js', array( 'jquery' ), $this->version, false );
 	}
 
+	public function generate_hooks() {
+
+		$hooks = new Hookmeup_Hooks();
+		$hooks_list = $hooks->get_all_hooks();
+
+		foreach( $hooks_list as $hook) {
+
+		    $hook_name = $hook['hook'];
+
+		    add_action( $hook_name, function() use ($hook_name) {
+
+		        $option_toggle  = get_theme_mod($hook_name, false);
+		        $option_content = get_theme_mod($hook_name . '_editor', '');
+
+		        echo '<div id="' . $hook_name . '">'; 
+
+		        if( $option_toggle == true ) {
+		            if( $option_content ) { 
+		                echo $option_content;
+		            } else {
+		                echo '<p class="hook">' . $hook_name . '</p>';
+		            }
+		        } else {
+		            echo '<p class="hook">' . $hook_name . '</p>';
+		        }
+
+		        echo '</div>';
+
+		    }, 20 );
+		}
+	}
+
 }
