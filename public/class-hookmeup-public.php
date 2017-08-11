@@ -96,9 +96,6 @@ class Hookmeup_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-public.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-customizer-text-editor.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-customizer-toggle.js', array( 'jquery' ), $this->version, false );
-
 	}
 
 }

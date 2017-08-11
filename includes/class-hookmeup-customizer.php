@@ -6,7 +6,6 @@ include_once( dirname(__FILE__) . '/class-hookmeup-hooks.php' );
 add_action('customize_register', 'hookmeup_includes');
 function hookmeup_includes() {
     require_once dirname(__FILE__) . '/controls/class-customizer-text-editor-control.php';
-    require_once dirname(__FILE__) . '/controls/class-customizer-toggle-control.php';
 }
 
 add_filter( 'kirki/config', 'hookmeup_kirki_configuration' );
