@@ -51,7 +51,6 @@ class Hookmeup_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -74,7 +73,7 @@ class Hookmeup_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/hookmeup-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( 'customize-styles', plugin_dir_url( __FILE__ ) . 'css/customizer.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -97,7 +96,7 @@ class Hookmeup_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hookmeup-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( 'customize-scripts', plugin_dir_url( __FILE__ ) . 'js/hookmeup-customizer-shop-archive.js', array( 'jquery' ), $this->version, false );
 	}
 
 }
