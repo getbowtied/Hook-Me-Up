@@ -35,7 +35,7 @@ class Text_Editor_Custom_Control extends WP_Customize_Control {
               'teeny' => true,
               'quicktags' => true,
               'textarea_rows' => 5,
-              // MAKE SURE TINYMCE CHANGES ARE LINKED TO CUSTOMIZER
+              // tinymce changes are linked to customizer
               'tinymce' => [
                 'setup' => "function (editor) {
                   var cb = function () {
@@ -48,9 +48,10 @@ class Text_Editor_Custom_Control extends WP_Customize_Control {
                   editor.on('Redo', cb) }"
                 ]
               );
-          wp_editor($this->value(), $this->id, $settings );    
+
+          wp_editor( $this->value(), $this->id, $settings );    
           do_action('admin_footer');
-        do_action('admin_print_footer_scripts');     
+          do_action('admin_print_footer_scripts');     
         ?>
       </label>
     <?php
