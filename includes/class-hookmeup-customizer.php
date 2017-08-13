@@ -38,7 +38,7 @@ function hookmeup_kirki_sections( $wp_customize ) {
 
      // Single Product
      $wp_customize->add_section( 'hookmeup_product_section', array(
- 		'title'       => esc_attr__('Single Product', 'hookmeup'),
+ 		'title'       => esc_attr__('Product Page', 'hookmeup'),
  		'priority'    => 10,
  		'capability'  => 'edit_theme_options',
  		'panel'       => 'hookmeup_section',
@@ -62,7 +62,7 @@ function hookmeup_kirki_sections( $wp_customize ) {
 
      // My Account / Login
      $wp_customize->add_section( 'hookmeup_account_section', array(
- 		'title'       => esc_attr__('My Account / Login', 'hookmeup'),
+ 		'title'       => esc_attr__('My Account', 'hookmeup'),
  		'priority'    => 10,
  		'capability'  => 'edit_theme_options',
  		'panel'       => 'hookmeup_section',
@@ -75,12 +75,27 @@ function hookmeup_fields( $wp_customize ) {
 
 	$hooks  = new Hookmeup_Hooks();
 
-	return hookmeup_kirki_fields( $wp_customize, $hooks->get_all_hooks() );
+	$hook_sections = $hooks->get_hook_sections();
+	$hooks 		   = $hooks->get_all_hooks();
+
+	return hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections );
 }
 
-function hookmeup_kirki_fields( $wp_customize, $hooks ) {
+function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
 
 	$fields = [];
+
+	foreach( $hook_sections as $section ) {
+
+		$fields[] = array(
+			'type'        => 'toggle',
+			'settings'    => $section. '_preview',
+			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
+			'section'     => $section,
+			'default'     => true,
+			'priority'    => 10,
+		);
+	}
 
 	foreach( $hooks as $hook ) {
 
@@ -90,7 +105,7 @@ function hookmeup_kirki_fields( $wp_customize, $hooks ) {
 			'label'       => esc_attr__( $hook['label'], 'hookmeup' ),
 			'section'     => $hook['section'],
 			'default'     => false,
-			'priority'    => 10,
+			'priority'    => 10
 		);
 
 		$fields[] = array(

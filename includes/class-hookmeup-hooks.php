@@ -37,7 +37,16 @@ class Hookmeup_Hooks {
 	 */
 	protected $product_hooks;
 
+	/**
+	 * Hook sections list
+	 * @access   protected
+	 * @var      array
+	 */
+	protected $hook_sections;
+
 	public function __construct() {
+
+		$this->hook_sections = [ 'hookmeup_shop_section', 'hookmeup_product_section', 'hookmeup_cart_section', 'hookmeup_checkout_section', 'hookmeup_account_section' ];
 
 		$this->archive_hooks = [
 			[
@@ -449,5 +458,13 @@ class Hookmeup_Hooks {
 		$all_hooks = array_merge($this->product_hooks, $this->archive_hooks, $this->cart_hooks, $this->checkout_hooks, $this->account_hooks);
 
 		return $all_hooks;
+	}
+
+	/**
+	 * Retrieve array of hook sections
+	 * @access   public
+	 */
+	public function get_hook_sections() {
+		return $this->hook_sections;
 	}
 }
