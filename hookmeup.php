@@ -162,7 +162,7 @@ final class HookMeUp {
 		/**
 		 * The class responsible for checking if WooCommerce plugin is installed and activated
 		 */
-		require_once plugin_dir_path( __FILE__ ) . 'classes/class-hookmeup-dependencies.php';
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-dependencies.php';
 
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
 
@@ -176,7 +176,7 @@ final class HookMeUp {
 	 * Verifies if WooCommerce plugin is installed and activated
 	 * 
 	 */
-	public function verify_woocommerce() {
+	public static function verify_woocommerce() {
 	    $verifier = new Hookmeup_Verify_Dependencies();
 	    $verifier->verify_woocommerce();
 	}
