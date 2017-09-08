@@ -28,27 +28,33 @@ class Text_Editor_Custom_Control extends WP_Customize_Control {
         <input id="<?php echo $this->id ?>-link" class="wp-editor-area" type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea($value); ?>">
         <?php
 
-        wp_enqueue_script( 'tiny_mce' );
+          $settings = array(
+            'textarea_name' => $this->id,
+            'media_buttons' => true,
+            'drag_drop_upload' => true,
+            'teeny' => true,
+            'quicktags' => true,
+            'textarea_rows' => 5,
+            // tinymce changes are linked to customizer
+            'tinymce' => [
+              'setup' => "function (editor) {
+                var cb = function () {
+                  var linkInput = document.getElementById('$this->id-link')
+                  linkInput.value = editor.getContent()
+                  linkInput.dispatchEvent(new Event('change'))
+                }
+                editor.on('Change', cb)
+                editor.on('Undo', cb)
+                editor.on('Redo', cb) }"
+              ]
+            );
 
-        wp_editor( $this->value(), $this->id, array(
-          'textarea_name' => $this->id,
-          '_content_editor_dfw' => false,
-          'drag_drop_upload'    => true,
-          'tabfocus_elements'   => 'content-html,save-post',
-          'textarea_rows'       => 8,
-          'default_editor'      => 'tinymce',
-          'teeny'               => true,
-          'tinymce'             => array(
-            'resize'             => true,
-            'wp_autoresize_on'   => true,
-            'add_unload_trigger' => false,
-          ),
-        ) );
+          wp_editor( $this->value(), $this->id, $settings );    
 
-        if( $textareas_initiated == $textareas_rendered ) {
-          do_action( 'admin_footer' );
-          do_action( 'admin_print_footer_scripts' );
-        }
+          if( $textareas_initiated == $textareas_rendered ) {
+            do_action( 'admin_footer' );
+            do_action( 'admin_print_footer_scripts' );
+          }
           
         ?>
       </label>
