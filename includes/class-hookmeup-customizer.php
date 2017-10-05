@@ -2,20 +2,9 @@
 
 include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );
 
-add_action('customize_register', 'hookmeup_includes');
-function hookmeup_includes() {
-    require_once dirname(__FILE__) . '/controls/class-customizer-text-editor-control.php';
-}
-
 add_filter( 'kirki/config', 'hookmeup_kirki_configuration' );
 function hookmeup_kirki_configuration() {
     return array( 'url_path' => get_site_url() . '/wp-content/plugins/hookmeup/includes/kirki/' );
-}
-
-add_action( 'kirki/control_types', 'hookmeup_custom_controls' );
-function hookmeup_custom_controls( $controls ) {
-    $controls['text-editor'] = 'Text_Editor_Custom_Control';
-    return $controls;
 }
 
 add_action( 'customize_register', 'hookmeup_kirki_sections' );
