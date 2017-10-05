@@ -109,7 +109,7 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
 		);
 
 		$fields[] = array(
-			'type'        => 'text-editor',
+			'type'        => 'editor',
 			'settings'    => $hook['hook'] . '_editor',
 			'label'       => esc_attr__( 'Editor Control', 'hookmeup' ),
 			'section'     => $hook['section'],

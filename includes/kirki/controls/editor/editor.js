@@ -57,12 +57,22 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 					ed.save();
 					content = editor.getContent();
+					
 					clearTimeout( setChange );
 					setChange = setTimeout( function() {
 						element.val( content ).trigger( 'change' );
 						wp.customize.instance( control.getEditorWrapperSetting() ).set( content );
 					}, 500 );
+
+					setInterval(function(){
+						if( jQuery('#customize-preview').children('iframe').length > 1 ) {
+							jQuery( '.customize-control-kirki-editor .toggle-editor' ).addClass('btn-disabled');
+						} else {
+						    jQuery( '.customize-control-kirki-editor .toggle-editor' ).removeClass('btn-disabled');
+						}
+					}, 1000);
 				});
+				
 			}
 
 			// Handle text mode.

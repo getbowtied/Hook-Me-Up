@@ -66,4 +66,8 @@ div.mce-inline-toolbar-grp {
 #customize-preview.is-kirki-editor-open {
   height: calc(100% - 301px); }
 
+.btn-disabled {
+    pointer-events: none !important;
+}
+
 /*# sourceMappingURL=editor.css.map */
