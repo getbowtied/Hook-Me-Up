@@ -113,7 +113,7 @@ final class HookMeUp {
 	 * The code that runs during plugin activation.
 	 * This action is documented in includes/class-hookmeup-activator.php
 	 */
-	public function activate_hookmeup() {
+	public static function activate_hookmeup() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-activator.php';
 		Hookmeup_Activator::activate();
 	}
@@ -122,7 +122,7 @@ final class HookMeUp {
 	 * The code that runs during plugin deactivation.
 	 * This action is documented in includes/class-hookmeup-deactivator.php
 	 */
-	public function deactivate_hookmeup() {
+	public static function deactivate_hookmeup() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-deactivator.php';
 		Hookmeup_Deactivator::deactivate();
 	}

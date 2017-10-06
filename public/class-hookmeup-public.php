@@ -103,8 +103,6 @@ class Hookmeup_Public {
 	 */
 	public function generate_hooks() {
 
-		//var_dump(get_theme_mods());
-
 		$hooks = new Hookmeup_Hooks();
 		$hooks_list = $hooks->get_all_hooks();
 
@@ -113,11 +111,10 @@ class Hookmeup_Public {
 		    add_action( $hook['hook'], function() use ($hook) {
  
 		    	$hook_name = $hook['hook'];
-		    	$hook_section = $hook['section'];
 
-		    	$option_section = get_theme_mod($hook_section . '_preview', true);
-		        $option_toggle  = get_theme_mod($hook_name, false);
-		        $option_content = get_theme_mod($hook_name . '_editor', '');
+		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
+		        $option_toggle  = get_theme_mod( $hook_name, false );
+		        $option_content = get_theme_mod( $hook_name . '_editor', '' );
 
 		        if( $option_section ) {
 

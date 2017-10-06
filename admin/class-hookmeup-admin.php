@@ -73,7 +73,6 @@ class Hookmeup_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/hookmeup-admin.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'customize-styles', plugin_dir_url( __FILE__ ) . 'css/customizer.css', array(), $this->version, 'all' );
 	}
 
 	/**
