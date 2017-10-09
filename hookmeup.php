@@ -78,6 +78,9 @@ final class HookMeUp {
 	public function __construct() {
 
 		$this->includes();
+
+		$this->loader = new Hookmeup_Loader();
+		
 		$this->init_hooks();
 
 		$this->set_locale();
@@ -164,12 +167,15 @@ final class HookMeUp {
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-dependencies.php';
 
+		/**
+		 * Defines the customizer options 
+		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
 
+		/**
+		 * The class responsible for defining and retrieving all the hooks that can be modified
+		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-hooks.php';
-
-		$this->loader = new Hookmeup_Loader();
-		// $this->frontend_includes();
 	}
 
 	/**
