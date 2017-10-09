@@ -31,8 +31,7 @@ class Kirki_Sanitize_Values {
 	 * @return mixed The $arguments provided.
 	 */
 	public static function __callStatic( $name, $arguments ) {
-		/* translators: %s represents the method that was called and does not exist. */
-		_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki_Sanitize_Values::%s does not exist', 'kirki' ), esc_attr( $name ) ), '3.0.10' );
+		error_log( "Kirki_Sanitize_Values::$name does not exist" );
 		return $arguments;
 	}
 

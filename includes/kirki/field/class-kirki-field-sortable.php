@@ -41,7 +41,7 @@ class Kirki_Field_Sortable extends Kirki_Field {
 	 *
 	 * @access public
 	 * @param array $value The checkbox value.
-	 * @return array
+	 * @return bool
 	 */
 	public function sanitize( $value = array() ) {
 

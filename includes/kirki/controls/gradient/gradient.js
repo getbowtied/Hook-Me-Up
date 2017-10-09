@@ -1,6 +1,23 @@
-wp.customize.controlConstructor['kirki-gradient'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend({
+
+	// When we're finished loading continue processing
+	ready: function() {
+
+		'use strict';
+
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
 
 	initKirkiControl: function() {
+
+		'use strict';
 
 		var control      = this,
 		    value        = control.getValue(),
@@ -18,6 +35,8 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.kirkiDynamicCon
 			pickerStart.wpColorPicker( control.params.choices.iris );
 			pickerEnd.wpColorPicker( control.params.choices.iris );
 		}
+
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		control.updatePreview( value );
 
@@ -107,7 +126,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.kirkiDynamicCon
 	getValue: function() {
 
 		var control = this,
-		    value   = {};
+			value   = {};
 
 		// Make sure everything we're going to need exists.
 		_.each( control.params['default'], function( defaultParamValue, param ) {

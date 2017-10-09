@@ -1,10 +1,28 @@
-wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend({
+/*jshint -W065 */
+wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.extend({
+
+	// When we're finished loading continue processing
+	ready: function() {
+
+		'use strict';
+
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
 
 	initKirkiControl: function() {
 
+		'use strict';
+
 		var control  = this,
 		    element  = this.container.find( 'select' ),
-		    icons    = jQuery.parseJSON( fontAwesomeJSON ),
+			icons    = jQuery.parseJSON( fontAwesomeJSON ),
 		    selectValue,
 		    select2Options = {
 				data: [],
@@ -19,6 +37,8 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 				}
 		    },
 		    select;
+
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		_.each( icons.icons, function( icon ) {
 			select2Options.data.push({

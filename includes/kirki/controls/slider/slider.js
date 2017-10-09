@@ -1,11 +1,31 @@
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
+
+	// When we're finished loading continue processing
+	ready: function() {
+
+		'use strict';
+
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
 
 	initKirkiControl: function() {
+
+		'use strict';
+
 		var control = this,
 		    value,
 		    thisInput,
 		    inputDefault,
 		    changeAction;
+
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// Update the text value
 		jQuery( 'input[type=range]' ).on( 'mousedown', function() {
@@ -28,7 +48,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change';
 
 		// Save changes.
-		control.container.on( changeAction, 'input', function() {
+		this.container.on( changeAction, 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}

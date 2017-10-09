@@ -28,6 +28,8 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    irisInput,
 		    irisPicker;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
 
@@ -46,7 +48,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
 						}, 100 );
 					}
-			    };
+				};
 
 			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
@@ -70,6 +72,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			jQuery( irisPicker[0] ).detach().appendTo( target[0] );
 
 			i++;
+
 		}
 	},
 

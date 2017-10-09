@@ -84,6 +84,7 @@ final class Kirki_Config {
 	 * Use the get_instance() static method to get the instance you need.
 	 *
 	 * @access private
+	 *
 	 * @param string $config_id @see Kirki_Config::get_instance().
 	 * @param array  $args      @see Kirki_Config::get_instance().
 	 */
@@ -107,12 +108,9 @@ final class Kirki_Config {
 			}
 		}
 
-		$this->config_final = wp_parse_args(
-			array(
-				'id' => $config_id,
-			),
-			$args
-		);
+		$this->config_final       = $args;
+		$this->config_final['id'] = $config_id;
+
 	}
 
 	/**
@@ -154,10 +152,12 @@ final class Kirki_Config {
 	 * Returns the $config_final property
 	 *
 	 * @access public
+	 *
 	 * @return array
 	 */
 	public function get_config() {
 
 		return $this->config_final;
+
 	}
 }

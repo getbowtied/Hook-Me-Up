@@ -23,28 +23,18 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 	 */
 	protected function process_output( $output, $value ) {
 
-		$output = wp_parse_args( $output, array(
-			'element'     => '',
-			'property'    => '',
-			'media_query' => 'global',
-			'prefix'      => '',
-			'suffix'      => '',
-		) );
-
 		foreach ( $value as $key => $sub_value ) {
 
-			$property = ( empty( $output['property'] ) ) ? $key : $output['property'] . '-' . $key;
-			if ( isset( $output['choice'] ) && $output['property'] ) {
-				if ( $key === $output['choice'] ) {
-					$property = $output['property'];
-				} else {
-					continue;
-				}
-			}
-			if ( false !== strpos( $output['property'], '%%' ) ) {
+			if ( ! isset( $output['property'] ) || empty( $output['property'] ) ) {
+				$property = $key;
+			} elseif ( false !== strpos( $output['property'], '%%' ) ) {
 				$property = str_replace( '%%', $key, $output['property'] );
+			} else {
+				$property = $output['property'] . '-' . $key;
 			}
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $key ] ) . $output['suffix'];
+			$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $sub_value;
+
 		}
 	}
 }

@@ -53,8 +53,7 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-multicheck', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
+		wp_enqueue_script( 'kirki-multicheck', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_style( 'kirki-multicheck-css', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.css', null );
 	}
 
@@ -95,6 +94,7 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
+		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( ! data.choices ) { return; } #>
 
 		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>

@@ -93,21 +93,10 @@ class Kirki_Modules_PostMessage {
 	protected function script( $args ) {
 
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
-
-		$add_css = false;
-		foreach ( $args['js_vars'] as $js_var ) {
-			if ( ! isset( $js_var['function'] ) || 'html' !== $js_var['function'] ) {
-				$add_css = true;
-			}
-		}
-
-		if ( $add_css ) {
-
-			// append unique style tag if not exist
-			// The style ID.
-			$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
-			$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
-		}
+		// append unique style tag if not exist
+		// The style ID.
+		$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
+		$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
 
 		// Add anything we need before the main script.
 		$script .= $this->before_script( $args );
@@ -123,7 +112,7 @@ class Kirki_Modules_PostMessage {
 				$js_var['exclude'] = (array) $js_var['exclude'];
 				$script .= 'exclude=false;';
 				foreach ( $js_var['exclude'] as $exclussion ) {
-					$script .= "if(newval=='{$exclussion}'||(''==='{$exclussion}'&&_.isObject(newval)&&_.isEmpty(newval))){exclude=true;}";
+					$script .= "if(newval=={$exclussion}){exclude=true;}";
 				}
 			}
 			if ( isset( $js_var['element'] ) ) {
@@ -160,10 +149,8 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $js_var['exclude'] ) ) {
 			$script .= 'if(true===exclude){cssContent="";}';
 		}
-		if ( $add_css ) {
-			$script .= "jQuery('#{$style_id}').text(cssContent);";
-			$script .= "jQuery('#{$style_id}').appendTo('head');";
-		}
+		$script .= "jQuery('#{$style_id}').text(cssContent);";
+		$script .= "jQuery('#{$style_id}').appendTo('head');";
 		$script .= '});});';
 		return $script;
 	}
@@ -178,17 +165,10 @@ class Kirki_Modules_PostMessage {
 	protected function script_html_var( $args ) {
 
 		$script  = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
-
-		// Apply the value_pattern.
-		if ( isset( $args['value_pattern'] ) && '' !== $args['value_pattern'] ) {
-			$script .= $this->value_pattern_replacements( 'newval', $args );
-		}
-
-		if ( isset( $args['attr'] ) ) {
-			$script .= "jQuery('{$args['element']}').attr('{$args['attr']}',newval);";
-			return $script;
-		}
 		$script .= "jQuery('{$args['element']}').html(newval);";
+		if ( isset( $args['attr'] ) ) {
+			$script = "jQuery('{$args['element']}').attr('{$args['attr']}',newval);";
+		}
 		return $script;
 	}
 
@@ -226,7 +206,7 @@ class Kirki_Modules_PostMessage {
 		// Apply prefix.
 		$value = $value_key;
 		if ( '' !== $args['prefix'] ) {
-			$value = "'" . $args['prefix'] . "'+" . $value_key;
+			$value = $args['prefix'] . '+' . $value_key;
 		}
 		$css = $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}';
 		if ( isset( $args['media_query'] ) ) {
@@ -322,8 +302,6 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_var_typography( $args, $field ) {
 
-		$args = $this->get_args( $args );
-
 		$script = '';
 		$css    = '';
 
@@ -371,7 +349,6 @@ class Kirki_Modules_PostMessage {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var = 'fontFamilyCSS';
 			}
-			$var = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 
@@ -406,7 +383,7 @@ class Kirki_Modules_PostMessage {
 	 * @access private
 	 * @since 3.0.0
 	 * @param array $args The field args.
-	 * @return string
+	 * @return string;
 	 */
 	private function before_script( $args ) {
 
