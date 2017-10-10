@@ -25,6 +25,8 @@
  * Domain Path:       /languages
  */
 
+require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -77,15 +79,16 @@ final class HookMeUp {
 	 */
 	public function __construct() {
 
-		$this->includes();
-
-		$this->loader = new Hookmeup_Loader();
-		
-		$this->init_hooks();
-
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+			$this->includes();
+			$this->loader = new Hookmeup_Loader();
+			$this->init_hooks();
+			$this->set_locale();
+			$this->define_admin_hooks();
+			$this->define_public_hooks();  
+	    } else {
+	    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
+	    }
 	}
 
 	/**
@@ -109,7 +112,6 @@ final class HookMeUp {
 	private function init_hooks() {
 		register_activation_hook( __FILE__, array( 'HookMeUp', 'activate_hookmeup' ) );
 		register_deactivation_hook( __FILE__, array( 'HookMeUp', 'deactivate_hookmeup' ) );
-		add_action( 'admin_init', array( 'HookMeUp', 'verify_woocommerce' ) );
 	}
 
 	/**
@@ -163,11 +165,6 @@ final class HookMeUp {
 		require_once plugin_dir_path( __FILE__ ) . 'public/class-hookmeup-public.php';
 
 		/**
-		 * The class responsible for checking if WooCommerce plugin is installed and activated
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-dependencies.php';
-
-		/**
 		 * Defines the customizer options 
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
@@ -176,15 +173,6 @@ final class HookMeUp {
 		 * The class responsible for defining and retrieving all the hooks that can be modified
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-hooks.php';
-	}
-
-	/**
-	 * Verifies if WooCommerce plugin is installed and activated
-	 * 
-	 */
-	public static function verify_woocommerce() {
-	    $verifier = new Hookmeup_Verify_Dependencies();
-	    $verifier->verify_woocommerce();
 	}
 
 	/**
@@ -235,6 +223,13 @@ final class HookMeUp {
 
 		// generate all of the registered hooks
 		$plugin_public->generate_hooks();
+	}
+
+	public function woocommerce_not_installed_warning() {
+
+		echo '<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured"><p>';
+		echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' );
+		echo '</p></div>';
 	}
 
 	/**
