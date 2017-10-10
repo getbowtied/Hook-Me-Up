@@ -1,4 +1,13 @@
 <?php
+/**
+ * Define the customizer options
+ *
+ * @link       getbowtied.com
+ * @since      1.0.0
+ * @package    HMU
+ * @subpackage HMU/includes
+ * @author     GetBowtied <adi@getbowtied.com>
+ */
 
 include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );
 
@@ -62,7 +71,7 @@ function hookmeup_kirki_sections( $wp_customize ) {
 add_filter( 'kirki/fields', 'hookmeup_fields' );
 function hookmeup_fields( $wp_customize ) {
 
-	$hooks  = new Hookmeup_Hooks();
+	$hooks  = new HMU_Hooks();
 
 	$hook_sections = $hooks->get_hook_sections();
 	$hooks 		   = $hooks->get_all_hooks();

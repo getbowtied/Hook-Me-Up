@@ -1,6 +1,16 @@
 <?php
 
-class Hookmeup_Hooks {
+/**
+ * Define the WooCommerce hooks
+ *
+ * @link       getbowtied.com
+ * @since      1.0.0
+ * @package    HMU
+ * @subpackage HMU/includes
+ * @author     GetBowtied <adi@getbowtied.com>
+ */
+
+class HMU_Hooks {
 
 	/**
 	 * Archive hooks list

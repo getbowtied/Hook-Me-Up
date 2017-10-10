@@ -1,18 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              getbowtied.com
- * @since             1.0.0
- * @package           Hookmeup
- *
- * @wordpress-plugin
  * Plugin Name:       Hook Me Up – Easy Hooks for WooCommerce
  * Plugin URI:        hookmeup.wp-theme.design
  * Description:       Helps you customize WooCommerce templates without altering the code.
@@ -23,31 +11,34 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       hookmeup
  * Domain Path:       /languages
+ *
+ * @link              getbowtied.com
+ * @since             1.0.0
+ * @package           HMU
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+} // Exit if accessed directly
+
+if ( ! defined( 'HMU_DIR' ) ) {
+    define( 'HMU_DIR', plugin_dir_path( __FILE__ ) );
+}
 
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-if ( ! class_exists( 'HookMeUp' ) ) :
+if ( ! class_exists( 'HMU' ) ) :
 
 /**
- * Main HookMeUp Class.
- *
- * @class HookMeUp
+ * HMU
  * @version	1.0
  */
-final class HookMeUp {
+final class HMU {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * Maintaining and registering all hooks that power the plugin.
 	 *
-	 * @access   protected
-	 * @var      Hookmeup_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @access protected
 	 */
 	protected $loader;
 
@@ -70,19 +61,15 @@ final class HookMeUp {
 	/**
 	 * The single instance of the class.
 	 *
-	 * @var HookMeUp
+	 * @var HMU
 	 */
 	protected static $_instance = null;
 
-	/**
-	 * HookMeUp Constructor.
-	 */
 	public function __construct() {
 
 		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 			$this->includes();
-			$this->loader = new Hookmeup_Loader();
-			$this->init_hooks();
+			$this->loader = new HMU_Loader();
 			$this->set_locale();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();  
@@ -92,12 +79,12 @@ final class HookMeUp {
 	}
 
 	/**
-	 * Main HookMeUp Instance.
+	 * Main HMU Instance.
 	 *
-	 * Ensures only one instance of HookMeUp is loaded or can be loaded.
+	 * Ensures only one instance of HMU is loaded or can be loaded.
 	 *
 	 * @static
-	 * @return HookMeUp - Main instance.
+	 * @return HMU - Main instance.
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -107,89 +94,30 @@ final class HookMeUp {
 	}
 
 	/**
-	 * Hook into actions and filters.
-	 */
-	private function init_hooks() {
-		register_activation_hook( __FILE__, array( 'HookMeUp', 'activate_hookmeup' ) );
-		register_deactivation_hook( __FILE__, array( 'HookMeUp', 'deactivate_hookmeup' ) );
-	}
-
-	/**
-	 * The code that runs during plugin activation.
-	 * This action is documented in includes/class-hookmeup-activator.php
-	 */
-	public static function activate_hookmeup() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-activator.php';
-		Hookmeup_Activator::activate();
-	}
-
-	/**
-	 * The code that runs during plugin deactivation.
-	 * This action is documented in includes/class-hookmeup-deactivator.php
-	 */
-	public static function deactivate_hookmeup() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-deactivator.php';
-		Hookmeup_Deactivator::deactivate();
-	}
-
-	/**
 	 * Include required core files used in admin and on the frontend.
-	 * Load the required dependencies for this plugin.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
 	 */
 	public function includes() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'admin/class-hookmeup-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'public/class-hookmeup-public.php';
-
-		/**
-		 * Defines the customizer options 
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-customizer.php';
-
-		/**
-		 * The class responsible for defining and retrieving all the hooks that can be modified
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-hookmeup-hooks.php';
+		require_once( HMU_DIR . 'includes/class-hmu-loader.php' );
+		require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
+		require_once( HMU_DIR . 'admin/class-hmu-admin.php' );
+		require_once( HMU_DIR . 'public/class-hmu-public.php' );
+		require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
+		require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Hookmeup_i18n class in order to set the domain and to register the hook
+	 * Uses the HMU_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
-
-		$plugin_i18n = new Hookmeup_i18n();
-
+		$plugin_i18n = new HMU_i18n();
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
 	}
 
 	/**
@@ -201,7 +129,7 @@ final class HookMeUp {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Hookmeup_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new HMU_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
@@ -216,7 +144,7 @@ final class HookMeUp {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Hookmeup_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new HMU_Public( $this->get_plugin_name(), $this->get_version() );
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
@@ -242,6 +170,16 @@ final class HookMeUp {
 	}
 
 	/**
+	 * The reference to the class that orchestrates the hooks with the plugin.
+	 *
+	 * @since     1.0.0
+	 * @return    HMU_Loader    Orchestrates the hooks of the plugin.
+	 */
+	public function get_loader() {
+		return $this->loader;
+	}
+
+	/**
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
@@ -253,16 +191,6 @@ final class HookMeUp {
 	}
 
 	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    Hookmeup_Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
-	}
-
-	/**
 	 * Retrieve the version number of the plugin.
 	 *
 	 * @since     1.0.0
@@ -271,19 +199,20 @@ final class HookMeUp {
 	public function get_version() {
 		return $this->version;
 	}
+
 }
 
 endif;
 
 /**
- * Main instance of HookMeUp.
+ * Main instance of HMU.
  *
  * Returns the main instance of WC to prevent the need to use globals.
  *
- * @return HookMeUp
+ * @return HMU
  */
 function hookmeup() {
-	return HookMeUp::instance();
+	return HMU::instance();
 }
 
 hookmeup();
