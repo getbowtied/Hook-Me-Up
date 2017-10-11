@@ -2,3 +2,11 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.btn-disabled {
+    pointer-events: none !important;
+}
+
+.customize-control-content.disabled {
+	cursor: not-allowed !important;
+}
