@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Plugin Name:       Hook Me Up – Easy Hooks for WooCommerce
- * Plugin URI:        hookmeup.wp-theme.design
- * Description:       Helps you customize WooCommerce templates without altering the code.
- * Version:           1.0.0
- * Author:            GetBowtied
- * Author URI:        getbowtied.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       hookmeup
- * Domain Path:       /languages
+ * Plugin Name:       		Hook Me Up – Easy Hooks for WooCommerce
+ * Plugin URI:        		hookmeup.wp-theme.design
+ * Description:       		Helps you customize WooCommerce templates without altering the code.
+ * Version:           		1.0.0
+ * Author:            		GetBowtied
+ * Author URI:        		getbowtied.com
+ * License:           		GPL-2.0+
+ * License URI:       		http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       		hookmeup
+ * Domain Path:       		/languages
+ * WC requires at least: 	3.0.0 
+ * WC tested up to: 		3.2.0 
  *
  * @link              getbowtied.com
  * @since             1.0.0
@@ -25,7 +27,9 @@ if ( ! defined( 'HMU_DIR' ) ) {
     define( 'HMU_DIR', plugin_dir_path( __FILE__ ) );
 }
 
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( ! function_exists( 'is_plugin_active' ) ) {
+    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+}
 
 if ( ! class_exists( 'HMU' ) ) :
 
