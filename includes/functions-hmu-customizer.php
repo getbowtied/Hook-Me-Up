@@ -95,14 +95,14 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
 		);
 	}
 
+	$sep = 0;
+
 	foreach( $hooks as $hook ) {
 
-	    $fields[] = array(
-			'type'        => 'toggle',
-			'settings'    => $hook['hook'],
-			'label'       => esc_attr__( $hook['label'], 'hookmeup' ),
+		$fields[] = array(
+			'type'        => 'separator',
+			'settings'    => $hook['hook'] . '_separator',
 			'section'     => $hook['section'],
-			'default'     => false,
 			'priority'    => 10
 		);
 
@@ -110,17 +110,10 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
 			'type'        => 'editor',
 			'transport'   => 'auto',
 			'settings'    => $hook['hook'] . '_editor',
-			'label'       => esc_attr__( 'Editor Control', 'hookmeup' ),
+			'label'       => esc_attr__( $hook['label'], 'hookmeup' ),
 			'section'     => $hook['section'],
 			'default'     => '',
-			'priority'    => 10,
-			'required'    => array(
-				array(
-					'setting'  => $hook['hook'],
-					'operator' => '==',
-					'value'    => true,
-				)
-			)
+			'priority'    => 10
 		);
 	}
 
