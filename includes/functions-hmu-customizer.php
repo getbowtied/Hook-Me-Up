@@ -73,17 +73,21 @@ function hookmeup_fields( $wp_customize ) {
 
 	$hooks  = new HMU_Hooks();
 
-	$hook_sections = $hooks->get_hook_sections();
-	$hooks 		   = $hooks->get_all_hooks();
-
-	return hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections );
-}
-
-function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
-
 	$fields = [];
+	$hook_sections = $hooks->get_hook_sections();
 
 	foreach( $hook_sections as $section ) {
+		$section_select_hooks = $hooks->get_select_hooks( $section );
+		$section_hooks = $hooks->get_hooks( $section );
+		$fields = array_merge( $fields, hookmeup_kirki_fields( $wp_customize, $section_hooks, $section_select_hooks, $section ) );
+	}
+
+	return $fields;
+}
+
+function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section ) {
+
+	$fields = [];
 
 		$fields[] = array(
 			'type'        => 'toggle',
@@ -93,30 +97,79 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $hook_sections ) {
 			'default'     => true,
 			'priority'    => 10,
 		);
-	}
-
-	$sep = 0;
-
-	foreach( $hooks as $hook ) {
 
 		$fields[] = array(
 			'type'        => 'separator',
-			'settings'    => $hook['hook'] . '_separator',
-			'section'     => $hook['section'],
+			'settings'    => $section . 'preview_separator',
+			'section'     => $section,
 			'priority'    => 10
 		);
 
 		$fields[] = array(
-			'type'        => 'editor',
-			'transport'   => 'auto',
-			'settings'    => $hook['hook'] . '_editor',
-			'label'       => esc_attr__( $hook['label'], 'hookmeup' ),
-			'section'     => $hook['section'],
-			'default'     => '',
-			'priority'    => 10
-		);
-	}
+	        'type'     		=> 'select',
+	        'settings' 		=> $section . '_select',
+	        'label'    	  	=> esc_attr__( 'Select the hook you want to modify', 'hookmeup' ),
+	        'section'  		=> $section,
+	        'multiple'    	=> 1,
+	        'priority' 		=> 10,
+	        'choices'     	=> $select_hooks
+	    );
+
+	    foreach( $hooks as $hook ) {
+
+			$fields[] = array(
+				'type'        => 'separator',
+				'settings'    => $hook['hook'] . '_separator',
+				'section'     => $hook['section'],
+				'priority'    => 10,
+				'active_callback' => array(
+					array(
+						'setting'  => $section . '_select',
+						'operator' => '==',
+						'value'    => $hook['hook'],
+					),
+				),
+			);
+
+			$fields[] = array(
+				'type'        => 'text',
+				'settings'    => $hook['hook'] . '_text',
+				'section'     => $hook['section'],
+				'label'		  => esc_attr__( $hook['label'] . ' Enabled', 'hookmeup' ),
+				'default'	  => 'Enabled',
+				'priority'    => 10,
+				'active_callback' => array(
+					array(
+						'setting'  => $hook['hook'] . '_editor',
+						'operator' => '!=',
+						'value'    => '',
+					),
+					array(
+						'setting'  => $section . '_select',
+						'operator' => '==',
+						'value'    => $hook['hook'],
+					),
+				),
+			);
+
+			$fields[] = array(
+				'type'        => 'editor',
+				'transport'   => 'auto',
+				'settings'    => $hook['hook'] . '_editor',
+				'label'       => esc_attr__( $hook['label'] . ' Editor', 'hookmeup' ),
+				'section'     => $hook['section'],
+				'priority'    => 10,
+				'active_callback' => array(
+					array(
+						'setting'  => $section . '_select',
+						'operator' => '==',
+						'value'    => $hook['hook'],
+					),
+				),
+			);
+		}
 
     return $fields;
 }
+
 ?>

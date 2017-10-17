@@ -459,6 +459,37 @@ class HMU_Hooks {
 		return $this->product_hooks;
 	}
 
+	public function get_select_hooks( $section ) {
+
+		switch( $section ) {
+			case 'hookmeup_shop_section': 	  $hooks = $this->archive_hooks;  break;
+			case 'hookmeup_product_section':  $hooks = $this->product_hooks;  break;
+			case 'hookmeup_cart_section':	  $hooks = $this->cart_hooks; 	  break;
+			case 'hookmeup_checkout_section': $hooks = $this->checkout_hooks; break;
+			case 'hookmeup_account_section':  $hooks = $this->account_hooks;  break;
+			default: 						  $hooks = ''; 					  break;
+		}
+
+		$section_hooks['default'] = 'Choose...';
+		foreach( $hooks as $hook ) {
+			$section_hooks[$hook['hook']] = $hook['label'];
+		}
+
+		return $section_hooks;
+	}
+
+	public function get_hooks( $section ) {
+
+		switch( $section ) {
+			case 'hookmeup_shop_section': 	  return $this->archive_hooks;  break;
+			case 'hookmeup_product_section':  return $this->product_hooks;  break;
+			case 'hookmeup_cart_section':	  return $this->cart_hooks; 	break;
+			case 'hookmeup_checkout_section': return $this->checkout_hooks; break;
+			case 'hookmeup_account_section':  return $this->account_hooks;  break;
+			default: 						  return ''; 					break;
+		}
+	}
+
 	/**
 	 * Retrieve array of all registered hooks
 	 * @access   public
