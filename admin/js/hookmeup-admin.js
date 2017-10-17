@@ -10,7 +10,7 @@
 		    jQuery( '.customize-control-kirki-editor .customize-control-content' ).removeClass('disabled');
 		}
 
-	}, 1000);
+	}, 700);
 
 	$(document).on('click', '.toggle-editor', function(){
 		var buttons = document.getElementsByClassName('toggle-editor');

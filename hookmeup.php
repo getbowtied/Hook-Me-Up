@@ -152,16 +152,16 @@ final class HMU {
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
-
-		// generate all of the registered hooks
-		$plugin_public->generate_hooks();
 	}
 
 	public function woocommerce_not_installed_warning() {
 
-		echo '<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured"><p>';
-		echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' );
-		echo '</p></div>';
+	?>
+		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
+			<p><?php echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
+		</div>
+		
+	<?php
 	}
 
 	/**

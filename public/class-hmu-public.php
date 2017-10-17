@@ -52,6 +52,8 @@ class HMU_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		// generate all of the registered hooks
+		$this->generate_hooks();
 	}
 
 	/**
