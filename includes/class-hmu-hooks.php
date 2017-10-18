@@ -169,7 +169,7 @@ class HMU_Hooks {
 			],
 			[
 				'hook' => 'woocommerce_before_shipping_calculator', 
-				'label' => 'Before Shippinh Calculator',
+				'label' => 'Before Shipping Calculator',
 				'section' => 'hookmeup_cart_section'
 			],
 			[

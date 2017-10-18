@@ -75,7 +75,7 @@ function hookmeup_fields( $wp_customize ) {
 
 	$fields = [];
 	$hook_sections = $hooks->get_hook_sections();
-
+	
 	foreach( $hook_sections as $section ) {
 		$section_select_hooks = $hooks->get_select_hooks( $section );
 		$section_hooks = $hooks->get_hooks( $section );
@@ -133,15 +133,36 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section )
 
 			$fields[] = array(
 				'type'        => 'text',
-				'settings'    => $hook['hook'] . '_text',
+				'settings'    => $hook['hook'] . '_enabled',
 				'section'     => $hook['section'],
 				'label'		  => esc_attr__( $hook['label'] . ' Enabled', 'hookmeup' ),
-				'default'	  => 'Enabled',
+				'default'	  => esc_attr__( $hook['label'], 'hookmeup' ),
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
 						'setting'  => $hook['hook'] . '_editor',
 						'operator' => '!=',
+						'value'    => '',
+					),
+					array(
+						'setting'  => $section . '_select',
+						'operator' => '==',
+						'value'    => $hook['hook'],
+					),
+				),
+			);
+
+			$fields[] = array(
+				'type'        => 'text',
+				'settings'    => $hook['hook'] . '_disabled',
+				'section'     => $hook['section'],
+				'label'		  => esc_attr__( $hook['label'] . ' Disabled', 'hookmeup' ),
+				'default'	  => esc_attr__( $hook['label'], 'hookmeup' ),
+				'priority'    => 10,
+				'active_callback' => array(
+					array(
+						'setting'  => $hook['hook'] . '_editor',
+						'operator' => '==',
 						'value'    => '',
 					),
 					array(
