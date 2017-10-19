@@ -90,6 +90,7 @@ class HMU_Public {
  
 		    	$hook_name = $hook['hook'];
 
+		    	$option_toggle	= get_theme_mod( $hook_name . '_toggle', false );
 		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
 		        $option_content = get_theme_mod( $hook_name . '_editor', '' );
 
@@ -97,7 +98,7 @@ class HMU_Public {
 
 			        echo '<div id="' . $hook_name . '">'; 
 
-			        if( $option_content ) {
+			    	if( $option_toggle && $option_content ) {
 			            echo $option_content;
 			        } else {
 			            echo '<p class="hook">' . $hook_name . '</p>';
@@ -105,7 +106,7 @@ class HMU_Public {
 
 			        echo '</div>';
 			    } else {
-			    	if( $option_content ) {
+			    	if( $option_toggle && $option_content ) {
 			            echo $option_content;
 			        }
 			    }
