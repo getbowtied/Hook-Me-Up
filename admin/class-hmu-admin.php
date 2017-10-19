@@ -70,4 +70,33 @@ class HMU_Admin {
 		wp_enqueue_script( $this->plugin_name,  plugin_dir_url( __FILE__ ) . 'js/hookmeup-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
+	public function get_url() {
+
+		$page = $_POST['page'];
+
+		switch($page) {
+			case 'shop': 
+				echo get_permalink( wc_get_page_id( 'shop' ) ); 
+				break;
+			case 'cart': 
+				echo wc_get_cart_url(); 
+				break;
+			case 'checkout': 
+				echo wc_get_checkout_url(); 
+				break;
+			case 'account': 
+				echo get_permalink( get_option('woocommerce_myaccount_page_id') ); 
+				break;
+			case 'product': 
+				$args = array('orderby' => 'rand'); 
+				$products = wc_get_products($args); 
+				echo get_permalink( $products[0]->get_id() ); 
+				break;
+			case 'default':
+				echo get_home_url();
+				break;
+		}
+
+	}
+
 }

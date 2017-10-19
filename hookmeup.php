@@ -137,6 +137,9 @@ final class HMU {
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
+
+		add_action( 'wp_ajax_get_url', array( $plugin_admin, 'get_url' ) );
+		add_action( 'wp_ajax_nopriv_get_url', array( $plugin_admin, 'get_url' ) );
 	}
 
 	/**
