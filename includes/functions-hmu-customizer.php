@@ -122,7 +122,6 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section )
 	        'settings' 		=> $section . '_select',
 	        'label'    	  	=> esc_attr__( 'Select the hook you want to modify', 'hookmeup' ),
 	        'section'  		=> $section,
-	        // 'transport'	  => 'postMessage',
 	        'multiple'    	=> 1,
 	        'priority' 		=> 10,
 	        'choices'     	=> $select_hooks

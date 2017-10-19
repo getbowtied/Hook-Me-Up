@@ -26,4 +26,21 @@
 		}
 	});
 
+	$(document).on('click', '.customize-section-back', function(){
+		close_editor();
+	});
+
+	$(document).on('change', '.customize-control-kirki-select select', function(){
+		close_editor();
+	});
+
+	function close_editor() {
+
+		var editorWrapper = jQuery( '#kirki_editor_pane' );
+		editorWrapper.removeClass();
+		editorWrapper.addClass( 'hide' );
+		jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
+		jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( editorKirkiL10n['open-editor'] ).removeClass( 'button-close' );
+	}
+
 })( jQuery );
