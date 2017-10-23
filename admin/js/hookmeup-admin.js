@@ -49,84 +49,40 @@
 
 	(function ( api ) {
 	    api.section( 'hookmeup_shop_section', function( section ) {
-	        section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-
-	            	var data = {
-	            		'action' : 'get_url',
-	            		'page'	 : 'shop'
-	            	};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-	                	api.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
+	        go_to_page( section, 'shop' );
 	    } );
 
 	    api.section( 'hookmeup_cart_section', function( section ) {
-	        section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-
-	            	var data = {
-	            		'action' : 'get_url',
-	            		'page'	 : 'cart'
-	            	};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-	                	api.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
+	        go_to_page( section, 'cart' );
 	    } );
 
 	    api.section( 'hookmeup_checkout_section', function( section ) {
-	        section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-
-	            	var data = {
-	            		'action' : 'get_url',
-	            		'page'	 : 'checkout'
-	            	};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-	                	api.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
+	        go_to_page( section, 'checkout' );
 	    } );
 
 	    api.section( 'hookmeup_account_section', function( section ) {
-	        section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
+	        go_to_page( section, 'account' );
+	    } );
 
+    	api.section( 'hookmeup_product_section', function( section ) {
+    		go_to_page( section, 'product' );
+	    } );
+
+	    function go_to_page( section, page ) {
+
+	    	section.expanded.bind( function( isExpanded ) {
+	            if ( isExpanded ) {
 	            	var data = {
 	            		'action' : 'get_url',
-	            		'page'	 : 'account'
+	            		'page'	 : page
 	            	};
 
 					jQuery.post( 'admin-ajax.php', data, function(response) {
-	                	api.previewer.previewUrl.set(response);
+						api.previewer.previewUrl.set(response);
 					});		
 	            }
 	        } );
-	    } );
-
-	    api.section( 'hookmeup_product_section', function( section ) {
-	        section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-
-	            	var data = {
-	            		'action' : 'get_url',
-	            		'page'	 : 'product'
-	            	};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-	                	api.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
-	    } );
+	    }
 
 } ( wp.customize ) );
 
