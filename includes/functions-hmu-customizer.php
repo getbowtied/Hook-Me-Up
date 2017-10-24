@@ -82,11 +82,11 @@ if ( class_exists( 'Kirki' ) ) {
 		foreach( $hook_sections as $section ) {
 			$section_select_hooks = $hooks->get_select_hooks( $section );
 			$section_hooks = $hooks->get_hooks( $section );
-			hookmeup_fields( $wp_customize, $section_hooks, $section_select_hooks, $section );
+			hookmeup_fields( $section_hooks, $section_select_hooks, $section );
 		}
 	}
 
-	function hookmeup_fields( $wp_customize, $hooks, $select_hooks, $section ) {
+	function hookmeup_fields( $hooks, $select_hooks, $section ) {
 
 		Kirki::add_config( 'hmu_field', array(
 			'capability'    => 'edit_theme_options',

@@ -1,5 +1,5 @@
 (function( $ ) {
-	
+
 	'use strict';
 
 	$(document).on('click', '.toggle-editor', function(){
@@ -80,7 +80,7 @@
 	            	};
 
 					jQuery.post( 'admin-ajax.php', data, function(response) {
-						wp.customize.previewer.previewUrl.set(response);
+						wp.customize.previewer.previewUrl.set(response.slice(0, -1));
 					});		
 	            }
 	        } );
