@@ -47,43 +47,43 @@
 		jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( editorKirkiL10n['open-editor'] ).removeClass( 'button-close' );
 	}
 
-	(function ( api ) {
-	    api.section( 'hookmeup_shop_section', function( section ) {
-	        go_to_page( section, 'shop' );
-	    } );
+	( function( api ) {
 
-	    api.section( 'hookmeup_cart_section', function( section ) {
-	        go_to_page( section, 'cart' );
-	    } );
+    api.section( 'hookmeup_shop_section', function( section ) {
+        go_to_page( section, 'shop' );
+    } );
 
-	    api.section( 'hookmeup_checkout_section', function( section ) {
-	        go_to_page( section, 'checkout' );
-	    } );
+    api.section( 'hookmeup_cart_section', function( section ) {
+        go_to_page( section, 'cart' );
+    } );
 
-	    api.section( 'hookmeup_account_section', function( section ) {
-	        go_to_page( section, 'account' );
-	    } );
+    api.section( 'hookmeup_checkout_section', function( section ) {
+        go_to_page( section, 'checkout' );
+    } );
 
-    	api.section( 'hookmeup_product_section', function( section ) {
-    		go_to_page( section, 'product' );
-	    } );
+    api.section( 'hookmeup_account_section', function( section ) {
+        go_to_page( section, 'account' );
+    } );
 
-	    function go_to_page( section, page ) {
+	api.section( 'hookmeup_product_section', function( section ) {
+		go_to_page( section, 'product' );
+    } );
 
-	    	section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-	            	var data = {
-	            		'action' : 'get_url',
-	            		'page'	 : page
-	            	};
+    function go_to_page( section, page ) {
 
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-						api.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
-	    }
+    	section.expanded.bind( function( isExpanded ) {
+            if ( isExpanded ) {
+            	var data = {
+            		'action' : 'get_url',
+            		'page'	 : page
+            	};
 
-} ( wp.customize ) );
+				jQuery.post( 'admin-ajax.php', data, function(response) {
+					api.previewer.previewUrl.set(response);
+				});		
+            }
+        } );
+    }
+} )( wp.customize );
 
 })( jQuery );

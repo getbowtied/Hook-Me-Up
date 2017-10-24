@@ -30,7 +30,7 @@ function hookmeup_kirki_sections( $wp_customize ) {
      $wp_customize->add_section( 'hookmeup_shop_section', array(
  		'title'       => esc_attr__('Shop Archives', 'hookmeup'),
  		'priority'    => 10,
- 		'capability'    => 'edit_theme_options',
+ 		'capability'  => 'edit_theme_options',
  		'panel'       => 'hookmeup_section',
  	) );
 
