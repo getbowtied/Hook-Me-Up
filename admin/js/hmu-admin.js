@@ -3,18 +3,6 @@
 	'use strict';
 
 	$(document).on('click', '.toggle-editor', function(){
-		var buttons = document.getElementsByClassName('toggle-editor');
-
-		for( var i = 0; i < buttons.length; i++ ) {
-			if(buttons.item(i).innerHTML == 'Switch Editor') {
-				(buttons.item(i)).className = 'button button-primary toggle-editor button-switch';
-			} else if(buttons.item(i).innerHTML == 'Open Editor') {
-				(buttons.item(i)).className = 'button button-primary toggle-editor button-open';
-			} else if(buttons.item(i).innerHTML == 'Close Editor') {
-				(buttons.item(i)).className = 'button button-primary toggle-editor button-close';
-			}
-		}
-
 		if( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
 
 			setInterval(function(){
@@ -25,10 +13,25 @@
 				    jQuery( '.customize-control-kirki-editor .toggle-editor' ).removeClass('btn-disabled');
 				    jQuery( '.customize-control-kirki-editor .customize-control-content' ).removeClass('disabled');
 				}
-
+				
 			}, 700);
 		}
-		
+	});
+
+	$(document).on('click', '#customize-control-hookmeup_shop_section_select .select2', function(){
+		$('.select2-results__options').addClass('hookmeup-select');
+	});
+	$(document).on('click', '#customize-control-hookmeup_cart_section_select .select2', function(){
+		$('.select2-results__options').addClass('hookmeup-select');
+	});
+	$(document).on('click', '#customize-control-hookmeup_checkout_section_select .select2', function(){
+		$('.select2-results__options').addClass('hookmeup-select');
+	});
+	$(document).on('click', '#customize-control-hookmeup_account_section_select .select2', function(){
+		$('.select2-results__options').addClass('hookmeup-select');
+	});
+	$(document).on('click', '#customize-control-hookmeup_product_section_select .select2', function(){
+		$('.select2-results__options').addClass('hookmeup-select');
 	});
 
 	$(document).on('click', '.customize-section-back', function(){
