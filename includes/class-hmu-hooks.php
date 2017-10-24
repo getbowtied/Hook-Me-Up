@@ -62,13 +62,13 @@ class HMU_Hooks {
 			[
 				'hook' 			=> 'woocommerce_before_main_content', 
 				'label' 		=> 'Before Main Content',
-				'description' 	=> 'This is just a description for this hook',
+				'description' 	=> 'woocommerce_before_main_content',
 				'section' 	  	=> 'hookmeup_shop_section'
 			],
 			[
 				'hook' => 'woocommerce_archive_description', 
 				'label' => 'Archive Description',
-				'description' 	=> 'This is just a description for this hook dog',
+				'description' 	=> 'woocommerce_archive_description',
 				'section' => 'hookmeup_shop_section'
 			],
 			[
