@@ -106,8 +106,8 @@ final class HMU {
 		require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
 		require_once( HMU_DIR . 'admin/class-hmu-admin.php' );
 		require_once( HMU_DIR . 'public/class-hmu-public.php' );
-		require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
 		require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
+		require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
 	}
 
 	/**

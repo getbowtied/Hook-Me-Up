@@ -16,123 +16,115 @@ function hookmeup_kirki_configuration() {
     return array( 'url_path' => get_site_url() . '/wp-content/plugins/hookmeup/includes/kirki/' );
 }
 
-add_action( 'customize_register', 'hookmeup_kirki_sections' );
-function hookmeup_kirki_sections( $wp_customize ) {
+// add_action( 'customize_register', 'hookmeup_kirki_sections' );
+if ( class_exists( 'Kirki' ) ) {
 
-	// Woocommerce Hooks
-	$wp_customize->add_panel( 'hookmeup_section', array(
-		'priority'    => 10,
-		'title'       => esc_attr__('WooCommerce Hooks', 'hookmeup'),
-		'capability'  => 'edit_theme_options'
-	) );
-
-	// Shop Archives
-     $wp_customize->add_section( 'hookmeup_shop_section', array(
- 		'title'       => esc_attr__('Shop Archives', 'hookmeup'),
- 		'priority'    => 10,
- 		'capability'  => 'edit_theme_options',
- 		'panel'       => 'hookmeup_section',
- 	) );
-
-     // Single Product
-     $wp_customize->add_section( 'hookmeup_product_section', array(
- 		'title'       => esc_attr__('Product Page', 'hookmeup'),
- 		'priority'    => 10,
- 		'capability'  => 'edit_theme_options',
- 		'panel'       => 'hookmeup_section',
- 	) );
-
-     // Cart
-     $wp_customize->add_section( 'hookmeup_cart_section', array(
- 		'title'       => esc_attr__('Cart', 'hookmeup'),
- 		'priority'    => 10,
- 		'capability'  => 'edit_theme_options',
- 		'panel'       => 'hookmeup_section',
- 	) );
-
-     // Checkout
-     $wp_customize->add_section( 'hookmeup_checkout_section', array(
- 		'title'       => esc_attr__('Checkout', 'hookmeup'),
- 		'priority'    => 10,
- 		'capability'  => 'edit_theme_options',
- 		'panel'       => 'hookmeup_section',
- 	) );
-
-     // My Account / Login
-     $wp_customize->add_section( 'hookmeup_account_section', array(
- 		'title'       => esc_attr__('My Account', 'hookmeup'),
- 		'priority'    => 10,
- 		'capability'  => 'edit_theme_options',
- 		'panel'       => 'hookmeup_section',
- 	) );
-
-}
-
-add_action( 'init', 'reset_select_to_default' );
-function reset_select_to_default() {
-	$hooks  = new HMU_Hooks();
-	$hook_sections = $hooks->get_hook_sections();
-
-    foreach( $hook_sections as $section ) {
-
-    	$section_select_hooks = $hooks->get_select_hooks( $section );
-		set_theme_mod( $section . '_select', $section_select_hooks );
-	}
-}
-
-add_filter( 'kirki/fields', 'hookmeup_fields' );
-function hookmeup_fields( $wp_customize ) {
-
-	$hooks  = new HMU_Hooks();
-
-	$fields = [];
-	$hook_sections = $hooks->get_hook_sections();
-
-	foreach( $hook_sections as $section ) {
-		$section_select_hooks = $hooks->get_select_hooks( $section );
-		$section_hooks = $hooks->get_hooks( $section );
-		$fields = array_merge( $fields, hookmeup_kirki_fields( $wp_customize, $section_hooks, $section_select_hooks, $section ) );
+	function generate_kirki_fields() {
+		hookmeup_kirki_sections();
+		hookmeup_kirki_fields();
 	}
 
-	return $fields;
-}
+	function hookmeup_kirki_sections() {
 
-function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section ) {
+		// Woocommerce Hooks
+		Kirki::add_panel( 'hookmeup_section', array(
+			'priority'    => 10,
+			'title'       => esc_attr__('WooCommerce Hooks', 'hookmeup'),
+			'capability'  => 'edit_theme_options'
+		) );
 
-	$fields = [];
+		// Shop Archives
+	     Kirki::add_section( 'hookmeup_shop_section', array(
+	 		'title'       => esc_attr__('Shop Archives', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 	) );
 
-		$fields[] = array(
+	     // Single Product
+	     Kirki::add_section( 'hookmeup_product_section', array(
+	 		'title'       => esc_attr__('Product Page', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 	) );
+
+	     // Cart
+	     Kirki::add_section( 'hookmeup_cart_section', array(
+	 		'title'       => esc_attr__('Cart', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 	) );
+
+	     // Checkout
+	     Kirki::add_section( 'hookmeup_checkout_section', array(
+	 		'title'       => esc_attr__('Checkout', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 	) );
+
+	     // My Account / Login
+	     Kirki::add_section( 'hookmeup_account_section', array(
+	 		'title'       => esc_attr__('My Account', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 	) );
+	}
+
+	function hookmeup_kirki_fields() {
+
+		$hooks  = new HMU_Hooks();
+		$hook_sections = $hooks->get_hook_sections();
+
+		foreach( $hook_sections as $section ) {
+			$section_select_hooks = $hooks->get_select_hooks( $section );
+			$section_hooks = $hooks->get_hooks( $section );
+			hookmeup_fields( $wp_customize, $section_hooks, $section_select_hooks, $section );
+		}
+	}
+
+	function hookmeup_fields( $wp_customize, $hooks, $select_hooks, $section ) {
+
+		Kirki::add_config( 'hmu_field', array(
+			'capability'    => 'edit_theme_options',
+			'option_type'   => 'theme_mod',
+		) );
+
+		Kirki::add_field( 'hmu_field', array(
 			'type'        => 'toggle',
-			'settings'    => $section. '_preview',
+			'settings'	  => $section. '_preview',
 			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
 			'section'     => $section,
 			'default'     => true,
 			'priority'    => 10,
-		);
+		));
 
-		$fields[] = array(
+		Kirki::add_field( 'hmu_field', array(
 			'type'        => 'separator',
-			'settings'    => $section . 'preview_separator',
+			'settings'	  => $section . 'preview_separator',
 			'section'     => $section,
 			'priority'    => 10
-		);
+		));
 
-		$fields[] = array(
+		Kirki::add_field( 'hmu_field', array(
 	        'type'     		=> 'select',
-	        'settings' 		=> $section . '_select',
 	        'label'    	  	=> esc_attr__( 'Select the hook you want to modify', 'hookmeup' ),
 	        'section'  		=> $section,
+	        'settings'	    => $section . '_select',
 	        'multiple'    	=> 1,
 	        'priority' 		=> 10,
 	        'choices'     	=> $select_hooks
-	    );
+	    ));
 
 	    foreach( $hooks as $hook ) {
 
-			$fields[] = array(
+			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'separator',
-				'settings'    => $hook['hook'] . '_separator',
 				'section'     => $hook['section'],
+				'settings'	  => $hook['hook'] . '_separator',
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
@@ -141,14 +133,14 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section )
 						'value'    => $hook['hook'],
 					),
 				),
-			);
+			));
 
-			$fields[] = array(
+			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'toggle',
-				'settings'    => $hook['hook'] . '_toggle',
 				'section'     => $hook['section'],
+				'settings'	  => $hook['hook'] . '_toggle',
 				'label'		  => esc_attr__( $hook['label'], 'hookmeup' ),
-				'default'	  => false,
+				'default'	  => true,
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
@@ -157,13 +149,13 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section )
 						'value'    => $hook['hook'],
 					),
 				),
-			);
+			));
 
-			$fields[] = array(
+			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'editor',
-				'settings'    => $hook['hook'] . '_editor',
 				'label'       => esc_attr__( $hook['label'] . ' Editor', 'hookmeup' ),
 				'section'     => $hook['section'],
+				'settings'	  => $hook['hook'] . '_editor',
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
@@ -171,16 +163,30 @@ function hookmeup_kirki_fields( $wp_customize, $hooks, $select_hooks, $section )
 						'operator' => '==',
 						'value'    => $hook['hook'],
 					),
-					array(
-						'setting'  => $hook['hook'] . '_toggle',
-						'operator' => '==',
-						'value'    => true,
-					),
+					// array(
+					// 	'setting'  => $hook['hook'] . '_toggle',
+					// 	'operator' => '==',
+					// 	'value'    => true,
+					// ),
 				),
-			);
+			));
 		}
+	}
 
-    return $fields;
+	add_action( 'init', 'reset_select_to_default' );
+	function reset_select_to_default() {
+		$hooks  = new HMU_Hooks();
+		$hook_sections = $hooks->get_hook_sections();
+
+	    foreach( $hook_sections as $section ) {
+
+	    	$section_select_hooks = $hooks->get_select_hooks( $section );
+			set_theme_mod( $section . '_select', $section_select_hooks );
+		}
+	}
+
+	generate_kirki_fields();
+
 }
 
 ?>
