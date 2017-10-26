@@ -68,13 +68,12 @@ class HMU_Admin {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( $this->plugin_name,  plugin_dir_url( __FILE__ ) . 'js/hmu-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '_customizer',  plugin_dir_url( __FILE__ ) . 'js/hmu-customizer.js', array( 'jquery' ), $this->version, false );
 	}
 
-	public function get_url() {
+	public function get_customize_section_url() {
 
-		$page = $_POST['page'];
-
-		switch($page) {
+		switch($_POST['page']) {
 			case 'shop': 
 				echo get_permalink( wc_get_page_id( 'shop' ) ); 
 				break;
@@ -88,15 +87,15 @@ class HMU_Admin {
 				echo get_permalink( get_option('woocommerce_myaccount_page_id') ); 
 				break;
 			case 'product': 
-				$args = array('orderby' => 'rand'); 
+				$args = array('orderby' => 'rand', 'limit' => 1); 
 				$products = wc_get_products($args); 
 				echo get_permalink( $products[0]->get_id() ); 
 				break;
-			case 'default':
+			default:
 				echo get_home_url();
 				break;
 		}
-
+		exit();
 	}
 
 }
