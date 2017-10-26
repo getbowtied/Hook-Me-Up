@@ -86,22 +86,20 @@ class HMU_Public {
 
 		foreach( $hooks_list as $hook) {
 
-		    add_action( $hook['hook'], function() use ($hook) {
+		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$hook_name = $hook['hook'];
-
-		    	$option_toggle	= get_theme_mod( $hook_name . '_toggle', false );
+		    	$option_toggle	= get_theme_mod( $hook['slug'] . '_toggle', false );
 		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
-		        $option_content = get_theme_mod( $hook_name . '_editor', '' );
+		        $option_content = get_theme_mod( $hook['slug'] . '_editor', '' );
 
 		        if( $option_section ) {
 
-			        echo '<div id="' . $hook_name . '">'; 
+			        echo '<div id="' . $hook['slug'] . '">'; 
 
 			    	if( $option_toggle && $option_content ) {
 			            echo $option_content;
 			        } else {
-			            echo '<p class="hook">' . $hook_name . '</p>';
+			            echo '<p class="hook">' . $hook['slug'] . '</p>';
 			        }
 
 			        echo '</div>';

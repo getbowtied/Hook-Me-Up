@@ -124,13 +124,13 @@ if ( class_exists( 'Kirki' ) ) {
 			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'separator',
 				'section'     => $hook['section'],
-				'settings'	  => $hook['hook'] . '_separator',
+				'settings'	  => $hook['slug'] . '_separator',
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
 						'setting'  => $section . '_select',
 						'operator' => '==',
-						'value'    => $hook['hook'],
+						'value'    => $hook['slug'],
 					),
 				),
 			));
@@ -138,7 +138,7 @@ if ( class_exists( 'Kirki' ) ) {
 			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'toggle',
 				'section'     => $hook['section'],
-				'settings'	  => $hook['hook'] . '_toggle',
+				'settings'	  => $hook['slug'] . '_toggle',
 				'label'		  => esc_attr__( $hook['label'], 'hookmeup' ),
 				'default'	  => true,
 				'priority'    => 10,
@@ -146,7 +146,7 @@ if ( class_exists( 'Kirki' ) ) {
 					array(
 						'setting'  => $section . '_select',
 						'operator' => '==',
-						'value'    => $hook['hook'],
+						'value'    => $hook['slug'],
 					),
 				),
 			));
@@ -155,16 +155,16 @@ if ( class_exists( 'Kirki' ) ) {
 				'type'        => 'editor',
 				'label'       => esc_attr__( $hook['label'] . ' Editor', 'hookmeup' ),
 				'section'     => $hook['section'],
-				'settings'	  => $hook['hook'] . '_editor',
+				'settings'	  => $hook['slug'] . '_editor',
 				'priority'    => 10,
 				'active_callback' => array(
 					array(
 						'setting'  => $section . '_select',
 						'operator' => '==',
-						'value'    => $hook['hook'],
+						'value'    => $hook['slug'],
 					),
 					// array(
-					// 	'setting'  => $hook['hook'] . '_toggle',
+					// 	'setting'  => $hook['slug'] . '_toggle',
 					// 	'operator' => '==',
 					// 	'value'    => true,
 					// ),
