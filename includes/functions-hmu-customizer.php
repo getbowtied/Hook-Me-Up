@@ -16,7 +16,6 @@ function hookmeup_kirki_configuration() {
     return array( 'url_path' => get_site_url() . '/wp-content/plugins/hookmeup/includes/kirki/' );
 }
 
-// add_action( 'customize_register', 'hookmeup_kirki_sections' );
 if ( class_exists( 'Kirki' ) ) {
 
 	function generate_kirki_fields() {
@@ -103,11 +102,13 @@ if ( class_exists( 'Kirki' ) ) {
 		));
 
 		Kirki::add_field( 'hmu_field', array(
-			'type'        => 'separator',
-			'settings'	  => $section . 'preview_separator',
-			'section'     => $section,
-			'priority'    => 10
-		));
+		    'type'        => 'custom',
+		    'settings'    => $section . '_preview_separator',
+		    'label'       => '',
+		    'section'     => $section,
+		    'default'     => '<hr>',
+		    'priority'    => 10,
+		) );
 
 		Kirki::add_field( 'hmu_field', array(
 	        'type'     		=> 'select',
@@ -121,18 +122,20 @@ if ( class_exists( 'Kirki' ) ) {
 
 	    foreach( $hooks as $hook ) {
 
-			Kirki::add_field( 'hmu_field', array(
-				'type'        => 'separator',
-				'section'     => $hook['section'],
-				'settings'	  => $hook['slug'] . '_separator',
-				'priority'    => 10,
-				'active_callback' => array(
+	    	Kirki::add_field( 'hmu_field', array(
+			    'type'        => 'custom',
+			    'settings'    =>  $hook['slug'] . '_separator',
+			    'label'       => '',
+			    'section'     => $hook['section'],
+			    'default'     => '<hr>',
+			    'priority'    => 10,
+			    'active_callback' => array(
 					array(
 						'setting'  => $section . '_select',
 						'operator' => '==',
 						'value'    => $hook['slug'],
-					),
-				),
+					)
+				)
 			));
 
 			Kirki::add_field( 'hmu_field', array(
@@ -147,8 +150,8 @@ if ( class_exists( 'Kirki' ) ) {
 						'setting'  => $section . '_select',
 						'operator' => '==',
 						'value'    => $hook['slug'],
-					),
-				),
+					)
+				)
 			));
 
 			Kirki::add_field( 'hmu_field', array(
@@ -162,13 +165,8 @@ if ( class_exists( 'Kirki' ) ) {
 						'setting'  => $section . '_select',
 						'operator' => '==',
 						'value'    => $hook['slug'],
-					),
-					// array(
-					// 	'setting'  => $hook['slug'] . '_toggle',
-					// 	'operator' => '==',
-					// 	'value'    => true,
-					// ),
-				),
+					)
+				)
 			));
 		}
 	}
