@@ -11,12 +11,12 @@
 
 if ( !class_exists( 'Kirki' ) ) {
 	include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );
-}
 
-// add_filter( 'kirki/config', 'hookmeup_kirki_configuration', 999 );
-// function hookmeup_kirki_configuration() {
-//     return array( 'url_path' => get_site_url() . '/wp-content/plugins/hookmeup/includes/kirki/' );
-// }
+	add_filter( 'kirki/config', 'hookmeup_kirki_configuration', 999 );
+	function hookmeup_kirki_configuration() {
+	    return array( 'url_path' => get_site_url() . '/wp-content/plugins/hookmeup/includes/kirki/' );
+	}
+}
 
 if ( class_exists( 'Kirki' ) ) {
 
