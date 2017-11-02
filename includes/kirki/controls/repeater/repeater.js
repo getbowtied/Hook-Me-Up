@@ -1,4 +1,4 @@
-/*jshint -W065 */
+/* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	'use strict';
@@ -126,7 +126,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Default limit choice
 		limit = false;
 		if ( ! _.isUndefined( this.params.choices.limit ) ) {
-			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit );
+			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit, 10 );
 		}
 
 		this.container.on( 'click', 'button.repeater-add', function( e ) {
@@ -171,18 +171,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		 */
 		this.repeaterTemplate = _.memoize( function() {
 			var compiled,
-			/*
-			 * Underscore's default ERB-style templates are incompatible with PHP
-			 * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
-			 *
-			 * @see trac ticket #22344.
-			 */
-			options = {
-				evaluate: /<#([\s\S]+?)#>/g,
-				interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
-				escape: /\{\{([^\}]+?)\}\}(?!\})/g,
-				variable: 'data'
-			};
+			    /*
+			     * Underscore's default ERB-style templates are incompatible with PHP
+			     * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
+			     *
+			     * @see trac ticket #22344.
+			     */
+			    options = {
+					evaluate: /<#([\s\S]+?)#>/g,
+					interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
+					escape: /\{\{([^\}]+?)\}\}(?!\})/g,
+					variable: 'data'
+			    };
 
 			return function( data ) {
 				compiled = _.template( control.container.find( '.customize-control-repeater-content' ).first().html(), null, options );
@@ -434,23 +434,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		'use strict';
 
-		if ( true === flexW && true === flexH ) {
-			return false;
-		}
-
-		if ( true === flexW && dstH === imgH ) {
-			return false;
-		}
-
-		if ( true === flexH && dstW === imgW ) {
-			return false;
-		}
-
-		if ( dstW === imgW && dstH === imgH ) {
-			return false;
-		}
-
-		if ( imgW <= dstW ) {
+		if ( ( true === flexW && true === flexH ) || ( true === flexW && dstH === imgH ) || ( true === flexH && dstW === imgW ) || ( dstW === imgW && dstH === imgH ) || ( imgW <= dstW ) ) {
 			return false;
 		}
 
@@ -853,8 +837,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			var currentPicker   = jQuery( event.target ),
 			    row             = currentPicker.closest( '.repeater-row' ),
-				rowIndex        = row.data( 'row' ),
-				currentSettings = control.getValue();
+			    rowIndex        = row.data( 'row' ),
+			    currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
 			control.setValue( currentSettings, true );
@@ -893,7 +877,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		dataField = dropdown.data( 'field' );
 		multiple  = jQuery( dropdown ).data( 'multiple' );
 		if ( 'undefed' !== multiple && jQuery.isNumeric( multiple ) ) {
-			multiple = parseInt( multiple );
+			multiple = parseInt( multiple, 10 );
 			if ( 1 < multiple ) {
 				select2Options.maximumSelectionLength = multiple;
 			}
@@ -903,13 +887,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 
 			var currentDropdown = jQuery( event.target ),
-				row             = currentDropdown.closest( '.repeater-row' ),
-				rowIndex        = row.data( 'row' ),
-				currentSettings = control.getValue();
+			    row             = currentDropdown.closest( '.repeater-row' ),
+			    rowIndex        = row.data( 'row' ),
+			    currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );
-
 		});
 	}
 });

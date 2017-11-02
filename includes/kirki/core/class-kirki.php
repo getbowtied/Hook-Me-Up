@@ -100,7 +100,6 @@ class Kirki extends Kirki_Init {
 	public static function get_option( $config_id = '', $field_id = '' ) {
 
 		return Kirki_Values::get_value( $config_id, $field_id );
-
 	}
 
 	/**
@@ -116,7 +115,6 @@ class Kirki extends Kirki_Init {
 		$config = Kirki_Config::get_instance( $config_id, $args );
 		$config_args = $config->get_config();
 		self::$config[ $config_args['id'] ] = $config_args;
-
 	}
 
 	/**
@@ -139,7 +137,6 @@ class Kirki extends Kirki_Init {
 		}
 
 		self::$panels[ $args['id'] ] = $args;
-
 	}
 
 	/**
@@ -163,7 +160,6 @@ class Kirki extends Kirki_Init {
 		}
 
 		self::$sections[ $args['id'] ] = $args;
-
 	}
 
 	/**
@@ -176,23 +172,48 @@ class Kirki extends Kirki_Init {
 	 */
 	public static function add_field( $config_id, $args ) {
 
-		if ( isset( $args['type'] ) ) {
-			$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
-			$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
+		if ( doing_action( 'customize_register' ) ) {
+			_doing_it_wrong( __METHOD__, esc_attr__( 'Kirki fields should not be added on customize_register. Please add them directly, or on init.', 'kirki' ), '3.0.10' );
+		}
+
+		// Early exit if 'type' is not defined.
+		if ( ! isset( $args['type'] ) ) {
+			return;
+		}
+
+		$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
+		$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
+		if ( class_exists( $classname ) ) {
+			new $classname( $config_id, $args );
+			return;
+		}
+		if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
+			$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
 			if ( class_exists( $classname ) ) {
 				new $classname( $config_id, $args );
 				return;
-			}
-			if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
-				$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
-				if ( class_exists( $classname ) ) {
-					new $classname( $config_id, $args );
-					return;
-				}
 			}
 		}
 
 		new Kirki_Field( $config_id, $args );
 
+	}
+
+	/**
+	 * Gets a parameter for a config-id.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.10
+	 * @param string $id    The config-ID.
+	 * @param string $param The parameter we want.
+	 * @return string
+	 */
+	public static function get_config_param( $id, $param ) {
+
+		if ( ! isset( self::$config[ $id ] ) || ! isset( self::$config[ $id ][ $param ] ) ) {
+			return '';
+		}
+		return self::$config[ $id ][ $param ];
 	}
 }

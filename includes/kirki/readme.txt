@@ -3,8 +3,8 @@ Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.8
-Tested up to: 4.8
-Stable tag: 3.0.9
+Tested up to: 4.9
+Stable tag: 3.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,85 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 3.0.12 =
+
+* Fix: WordPress 4.9 compatibility for colorpickers.
+* Fix: WordPress 4.9 compatibility for typography controls.
+* Fix: WordPress 4.9 compatibility for multicolor contols.
+* Fix: WordPress 4.9 compatibility for background contols.
+* Fix: Refactored editor controls to make them compatible with WP 4.9
+* Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
+* Fix: Use new DateTimeControl if in WP 4.9+.
+* Fix: Text field styling.
+* Fix: Switch controls labels.
+* Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
+* Tweak: Improved styling of color-palette controls.
+* Tweak: Radio-Image controls now display images inline (using flexbox).
+* Tweak: Removed the reset switch from slider controls & improved their styling.
+
+= 3.0.11 =
+
+October 12 2017, dev time: 3 hours.
+
+* Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
+* Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
+* Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
+* Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
+* Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
+* Fix: Remove Reset in default sections [#1580](https://github.com/aristath/kirki/issues/1580)
+* Fix: Uncaught TypeError: data.value[choiceKey].replace is not a function [#1578](https://github.com/aristath/kirki/issues/1578)
+* Fix: Other code cleanup.
+* Fix: Updated google-fonts.
+
+= 3.0.10 =
+
+September 21 2017, dev time: 74 hours.
+
+* Fix: Allow HTML tags in tooltips [#1536](https://github.com/aristath/kirki/issues/1536)
+* Fix: Default System Font Stack for Sans Serif Fonts in Typography Fields [#1530](https://github.com/aristath/kirki/issues/1530)
+* Fix: HTML entities in repeater text field being encoded on each save? [#1523](https://github.com/aristath/kirki/issues/1523)
+* Fix: Some resetting issues [#1474](https://github.com/aristath/kirki/issues/1474)
+* Fix: Allow saving image fields as arrays (url,id,width,height) [#1529](https://github.com/aristath/kirki/issues/1529)
+* Fix: Allow saving image fields as ID [#1498](https://github.com/aristath/kirki/issues/1498)
+* Fix: Inline docs improvements.
+* Fix: `$subsets` not defined in the `Kirki_Modules_Webfonts_Link` class.
+* Fix: Coding improvements in the `Kirki_Field` class.
+* Fix: Performance Improvements in the autoloader [see commit](https://github.com/aristath/kirki/pull/1454/commits/dd518f7dc35cacf4f2ed571b033519b353aa2545)
+* Fix: Undefined index notice in the `Kirki_Output` class.
+* Fix: Sanitization for `checkbox`, `switch` and `toggle` controls.
+* Fix: `select2` CSS fix for `z-index` [#1459](https://github.com/aristath/kirki/issues/1459)
+* Fix: Remove button in image controls when there's no image [#1469](https://github.com/aristath/kirki/issues/1469)
+* Fix: Background control styling issue when no other color control exists [#1472](https://github.com/aristath/kirki/issues/1472)
+* Fix: Checkbox and Toggle don't respect "value_pattern" [#1467](https://github.com/aristath/kirki/issues/1467)
+* Fix: Array to string conversion when clicking reset button [#1477](https://github.com/aristath/kirki/issues/1477)
+* Fix: Input Field Validation Issue [#1486](https://github.com/aristath/kirki/issues/1486)
+* Fix: Typography: output property not working [#1484](https://github.com/aristath/kirki/issues/1484)
+* Fix: postMessage does not work properly when using `prefix` [#1479](https://github.com/aristath/kirki/issues/1479)
+* Fix: Use `wp_json_encode` instead of `json_encode`.
+* Fix: Use `rawurlencode` instead of `urlencode`.
+* New: Added warnings for deprecated functions/methods.
+* New: `code` control now loads dynamically (performance improvement).
+* New: `color-palette` control now loads dynamically (performance improvement).
+* New: `color` control now loads dynamically (performance improvement).
+* New: `dashicons` control now loads dynamically (performance improvement).
+* New: `date` control now loads dynamically (performance improvement).
+* New: `dimension` control now loads dynamically (performance improvement).
+* New: `dimensions` control now loads dynamically (performance improvement).
+* New: `editor` control now loads dynamically (performance improvement).
+* New: `fontawesome` control now loads dynamically (performance improvement).
+* New: `generic` control now loads dynamically (performance improvement).
+* New: `multicheck` control now loads dynamically (performance improvement).
+* New: `number` control now loads dynamically (performance improvement).
+* New: `palette` control now loads dynamically (performance improvement).
+* New: `preset` control now loads dynamically (performance improvement).
+* New: `radio-buttonset` control now loads dynamically (performance improvement).
+* New: `radio-image` control now loads dynamically (performance improvement).
+* New: `radio` control now loads dynamically (performance improvement).
+* New: `select` control now loads dynamically (performance improvement).
+* New: `slider` control now loads dynamically (performance improvement).
+* New: `switch` control now loads dynamically (performance improvement).
+* New: `toggle` control now loads dynamically (performance improvement).
 
 = 3.0.9 =
 

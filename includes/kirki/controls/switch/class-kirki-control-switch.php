@@ -50,7 +50,8 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-switch', trailingslashit( Kirki::$url ) . 'controls/switch/switch.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-switch', trailingslashit( Kirki::$url ) . 'controls/switch/switch.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-switch-css', trailingslashit( Kirki::$url ) . 'controls/switch/switch.css', null );
 	}
 
@@ -96,7 +97,6 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">
 				{{{ data.label }}}
@@ -106,8 +106,14 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 			<# } #>
 			<input class="screen-reader-text" {{{ data.inputAttrs }}} name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
 			<label class="switch-label" for="switch_{{ data.id }}">
-				<span class="switch-on">{{ data.choices['on'] }}</span>
-				<span class="switch-off">{{ data.choices['off'] }}</span>
+				<span class="switch-on">
+					<# data.choices.on = data.choices.on || '<?php esc_attr_e( 'On', 'kirki' ); ?>' #>
+					{{ data.choices.on }}
+				</span>
+				<span class="switch-off">
+					<# data.choices.off = data.choices.off || '<?php esc_attr_e( 'Off', 'kirki' ); ?>' #>
+					{{ data.choices.off }}
+				</span>
 			</label>
 		</div>
 		<?php

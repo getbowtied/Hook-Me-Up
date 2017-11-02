@@ -1,3 +1,4 @@
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -28,8 +29,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    irisInput,
 		    irisPicker;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
 
@@ -48,7 +47,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
 						}, 100 );
 					}
-				};
+			    };
 
 			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
@@ -72,7 +71,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			jQuery( irisPicker[0] ).detach().appendTo( target[0] );
 
 			i++;
-
 		}
 	},
 
@@ -81,15 +79,13 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 	 */
 	saveValue: function( property, value ) {
 
-		'use strict';
+		var control = this,
+		    input   = control.container.find( '.multicolor-hidden-value' ),
+		    val     = control.setting._value;
 
-		var control   = this,
-		    input     = control.container.find( '.multicolor-hidden-value' ),
-		    valueJSON = jQuery( input ).val(),
-		    valueObj  = JSON.parse( valueJSON );
+		val[ property ] = value;
 
-		valueObj[ property ] = value;
-		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-		control.setting.set( valueObj );
+		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
+		control.setting.set( val );
 	}
 });

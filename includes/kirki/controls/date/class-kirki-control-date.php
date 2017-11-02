@@ -49,9 +49,17 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
+		global $wp_version;
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
-		wp_enqueue_script( 'kirki-date', trailingslashit( Kirki::$url ) . 'controls/date/date.js', array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ), false, true );
-		wp_enqueue_style( 'kirki-date-css', trailingslashit( Kirki::$url ) . 'controls/date/date.css', null );
+		$dependencies = array( 'jquery', 'customize-base', 'kirki-dynamic-control' );
+		// Only add extra scripts for WP 4.9-.
+		if ( version_compare( $wp_version, '4.9-beta' ) < 0 ) {
+			wp_enqueue_style( 'kirki-date-css', trailingslashit( Kirki::$url ) . 'controls/date/date.css', null );
+			$dependencies[] = 'jquery-ui-datepicker';
+		}
+		wp_enqueue_script( 'kirki-date', trailingslashit( Kirki::$url ) . 'controls/date/date.js', $dependencies, false, true );
+
 	}
 
 	/**
@@ -90,8 +98,12 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	 * @access protected
 	 */
 	protected function content_template() {
+		global $wp_version;
+		// If we're on WP 4.9+, then we don't need to add anything here.
+		if ( version_compare( $wp_version, '4.9-beta' ) >= 0 ) {
+			return;
+		}
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>

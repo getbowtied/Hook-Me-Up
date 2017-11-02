@@ -1,35 +1,31 @@
-wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
+wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
-
-		'use strict';
 
 		var control  = this,
 		    selector = control.selector + ' input.datepicker';
 
-		// Init the datepicker
-		jQuery( selector ).datepicker();
+		// Add the control (fallback for older versions of WP).
+		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+			// Init the datepicker
+			jQuery( selector ).datepicker();
 
-		// Save the changes
-		this.container.on( 'change keyup paste', 'input.datepicker', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
+			// Save the changes
+			this.container.on( 'change keyup paste', 'input.datepicker', function() {
+				control.setting.set( jQuery( this ).val() );
+			} );
+			return;
+		}
+
+		// New method for the DateTime control.
+		wp.customize.control.add( new wp.customize.DateTimeControl( control.id, {
+			section: control.params.section,
+			priority: control.params.priority,
+			label: control.params.label,
+			description: control.params.description,
+			setting: control.id,
+			'default': control.params['default']
+		} ) );
 	}
 });

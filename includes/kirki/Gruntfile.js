@@ -19,7 +19,6 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css':          'modules/collapsible/collapsible.scss',
-					'modules/resize/resize.css':                    'modules/resize/resize.scss',
 
 					'controls/background/background.css':           'controls/background/background.scss',
 					'controls/code/code.css':                       'controls/code/code.scss',
@@ -32,10 +31,10 @@ module.exports = function( grunt ) {
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
 					'controls/fontawesome/fontawesome.css':         'controls/fontawesome/fontawesome.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
-					'controls/gradient/gradient.css':               'controls/gradient/gradient.scss',
 					'controls/image/image.css':                     'controls/image/image.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
 					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
+					'controls/multicolor/multicolor-legacy.css':    'controls/multicolor/multicolor-legacy.scss',
 					'controls/number/number.css':                   'controls/number/number.scss',
 					'controls/palette/palette.css':                 'controls/palette/palette.scss',
 					'controls/preset/preset.css':                   'controls/preset/preset.scss',
@@ -48,7 +47,9 @@ module.exports = function( grunt ) {
 					'controls/sortable/sortable.css':               'controls/sortable/sortable.scss',
 					'controls/switch/switch.css':                   'controls/switch/switch.scss',
 					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
-					'controls/typography/typography.css':           'controls/typography/typography.scss'
+					'controls/typography/typography.css':           'controls/typography/typography.scss',
+
+					'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css': 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.scss'
 				}
 			},
 
