@@ -99,7 +99,7 @@ if ( class_exists( 'Kirki' ) ) {
 			'settings'	  => $section. '_preview',
 			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
 			'section'     => $section,
-			'default'     => true,
+			'default'     => false,
 			'priority'    => 10,
 		));
 
@@ -119,6 +119,7 @@ if ( class_exists( 'Kirki' ) ) {
 	        'settings'	    => $section . '_select',
 	        'multiple'    	=> 1,
 	        'priority' 		=> 10,
+	        'default'		=> 'Choose...',
 	        'choices'     	=> $select_hooks
 	    ));
 

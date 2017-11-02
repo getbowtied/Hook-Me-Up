@@ -462,8 +462,7 @@ class HMU_Hooks {
 	public function get_select_hooks( $section ) {
 
 		$hooks = $this->get_hooks( $section );
-
-		$section_hooks['default'] = 'Choose...';
+		
 		foreach( $hooks as $hook ) {
 			$section_hooks[$hook['slug']] = $hook['label'] . '<p class="hook-description">' . $hook['slug'] . '</p>';
 		}

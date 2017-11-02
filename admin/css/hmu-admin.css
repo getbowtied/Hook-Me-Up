@@ -3,20 +3,18 @@
  * included in this file.
  */
 
-.btn-disabled {
-    pointer-events: none !important;
-}
-
-.customize-control-content.disabled {
-	cursor: not-allowed !important;
-}
-
 #sub-accordion-section-hookmeup_shop_section.control-section .customize-control-kirki-editor .customize-control-title,
 #sub-accordion-section-hookmeup_product_section.control-section .customize-control-kirki-editor .customize-control-title,
 #sub-accordion-section-hookmeup_cart_section.control-section .customize-control-kirki-editor .customize-control-title,
 #sub-accordion-section-hookmeup_checkout_section.control-section .customize-control-kirki-editor .customize-control-title,
-#sub-accordion-section-hookmeup_account_section.control-section .customize-control-kirki-editor .customize-control-title {
+#sub-accordion-section-hookmeup_account_section.control-section .customize-control-kirki-editor .customize-control-title,
+.select2-selection__rendered .hook-description,
+.mce-branding-powered-by {
     display: none;
+}
+
+.kirki-customizer-loading-wrapper {
+	background-image: none !important;
 }
 
 p.hook-description {
@@ -31,18 +29,30 @@ p.hook-description {
 	color: #fff;
 }
 
-.select2-selection__rendered .hook-description {
-	display: none;
+.wp-full-overlay-header,
+span.select2.select2-container,
+span.select2.select2-container.select2-container--default.select2-container--focus {
+	z-index: 0 !important;
 }
 
 @media all and (min-height: 600px) and (max-height: 800px) {
 	.select2-results__options.hookmeup-select {
 		max-height: 250px !important;
 	}
+
+	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area,
+	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area iframe {
+		height: 100px !important;
+	}
 }
 
 @media all and (min-height: 800px) {
 	.select2-results__options.hookmeup-select {
 		max-height: 450px !important;
+	}
+
+	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area,
+	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area iframe {
+		height: 200px !important;
 	}
 }
