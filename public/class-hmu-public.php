@@ -88,7 +88,7 @@ class HMU_Public {
 
 		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$option_toggle	= get_theme_mod( $hook['slug'] . '_toggle', false );
+		    	$option_toggle	= get_theme_mod( $hook['slug'] . '_toggle', true );
 		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
 		        $option_content = get_theme_mod( $hook['slug'] . '_editor', '' );
 
