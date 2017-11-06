@@ -99,7 +99,9 @@ class HMU_Public {
 			    	if( $option_toggle && $option_content ) {
 			            echo $option_content;
 			        } else {
-			            echo '<p class="hook">' . $hook['slug'] . '</p>';
+			        	if( is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
+			            	echo '<p class="hook">' . $hook['slug'] . '</p>';
+			            }
 			        }
 
 			        echo '</div>';
