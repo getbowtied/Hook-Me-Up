@@ -11,7 +11,8 @@
     background: #FFFDE7;
     padding: 10px;
     text-align: center;
-    font-size: 12px;
+    font-size: 12px !important;
+    color: #545454 !important;
     border: 2px dashed;
     border-color: #F8E71C;
 }

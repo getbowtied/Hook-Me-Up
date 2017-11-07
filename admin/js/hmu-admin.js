@@ -19,8 +19,8 @@
     });
 
     jQuery( document ).on( 'tinymce-editor-setup', function( event, editor ) {
-        editor.settings.toolbar1 = 'insert,bold,italic,underline,blockquote,strikethrough,bullist,numlist,fullscreen';
-        editor.settings.toolbar1 += ',alignleft,aligncenter,alignright,alignjustify,link,unlink,formatselect,forecolor,outdent,indent,undo,redo';
+        editor.settings.toolbar1 = 'bold,italic,underline,blockquote,strikethrough,bullist,numlist,charmap,fullscreen';
+        editor.settings.toolbar1 += ',alignleft,aligncenter,alignright,alignjustify,link,unlink,formatselect,forecolor,backcolor,hr,outdent,indent,undo,redo';
     });
 
 } )( jQuery );
