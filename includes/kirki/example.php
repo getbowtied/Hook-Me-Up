@@ -167,6 +167,16 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color',
+	'settings'    => 'color_setting_hue',
+	'label'       => __( 'Color Control - hue only.', 'kirki' ),
+	'description' => esc_attr__( 'This is a color control - hue only.', 'kirki' ),
+	'section'     => 'color_section',
+	'default'     => '#0088CC',
+	'mode'        => 'hue',
+) );
+
 /**
  * DateTime Control.
  */
@@ -362,8 +372,8 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'text',
 	'settings'    => 'generic_text_setting',
-	'label'       => esc_attr__( 'Text Control' ),
-	'description' => esc_attr__( 'Description' ),
+	'label'       => esc_attr__( 'Text Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
 ) );
@@ -371,8 +381,8 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'textarea',
 	'settings'    => 'generic_textarea_setting',
-	'label'       => esc_attr__( 'Textarea Control' ),
-	'description' => esc_attr__( 'Description' ),
+	'label'       => esc_attr__( 'Textarea Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
 ) );
@@ -380,7 +390,7 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'generic',
 	'settings'    => 'generic_custom_setting',
-	'label'       => esc_attr__( 'Custom input Control.' ),
+	'label'       => esc_attr__( 'Custom input Control.', 'kirki' ),
 	'description' => esc_attr__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
@@ -586,7 +596,8 @@ Kirki::add_field( 'kirki_demo', array(
 	'choices'     => array(
 		'min'  => 0,
 		'max'  => 20,
-		'step' => .1,
+		'step' => 1,
+		'suffix' => 'px',
 	),
 ) );
 
@@ -631,4 +642,52 @@ Kirki::add_field( 'kirki_demo', array(
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'toggle_section',
 	'default'     => true,
+) );
+
+/**
+ * Typography Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'typography',
+	'settings'    => 'typography_setting_0',
+	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
+	'description' => esc_attr__( 'The full set of options.', 'kirki' ),
+	'section'     => 'typography_section',
+	'default'     => array(
+		'font-family'    => 'Roboto',
+		'variant'        => 'regular',
+		'font-size'      => '14px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'subsets'        => array( 'latin-ext' ),
+		'color'          => '#333333',
+		'text-transform' => 'none',
+		'text-align'     => 'left',
+	),
+	'priority'    => 10,
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'typography',
+	'settings'    => 'typography_setting_1',
+	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
+	'description' => esc_attr__( 'Just the font-family.', 'kirki' ),
+	'section'     => 'typography_section',
+	'default'     => array(
+		'font-family'    => 'Roboto',
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'typography',
+	'settings'    => 'typography_setting_2',
+	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
+	'description' => esc_attr__( 'Only font-size, line-height, letter-spacing and color.', 'kirki' ),
+	'section'     => 'typography_section',
+	'default'     => array(
+		'font-size'      => '14px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'color'          => '#333333',
+	),
 ) );
