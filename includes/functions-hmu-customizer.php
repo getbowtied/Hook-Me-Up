@@ -9,6 +9,9 @@
  * @author     GetBowtied <adi@getbowtied.com>
  */
 
+/**
+ * Kirki config
+ */
 if ( !class_exists( 'Kirki' ) ) {
 	include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );
 
@@ -20,21 +23,31 @@ if ( !class_exists( 'Kirki' ) ) {
 
 if ( class_exists( 'Kirki' ) ) {
 
+	/**
+	 * HMU customizer
+	 */
 	function generate_kirki_fields() {
 		hookmeup_kirki_sections();
 		hookmeup_kirki_fields();
 	}
 
+	/**
+	 * Define Kirki sections
+	 */
 	function hookmeup_kirki_sections() {
 
-		// Woocommerce Hooks
+		/**
+		 * Woocommerce Hooks
+		 */
 		Kirki::add_panel( 'hookmeup_section', array(
 			'priority'    => 10,
 			'title'       => esc_attr__('WooCommerce Hooks', 'hookmeup'),
 			'capability'  => 'edit_theme_options'
 		) );
 
-		// Shop Archives
+		/**
+		 * Shop Archives
+		 */
 	     Kirki::add_section( 'hookmeup_shop_section', array(
 	 		'title'       => esc_attr__('Shop Archives', 'hookmeup'),
 	 		'priority'    => 10,
@@ -42,7 +55,9 @@ if ( class_exists( 'Kirki' ) ) {
 	 		'panel'       => 'hookmeup_section',
 	 	) );
 
-	     // Single Product
+	     /**
+	      * Single Product
+	      */
 	     Kirki::add_section( 'hookmeup_product_section', array(
 	 		'title'       => esc_attr__('Product Page', 'hookmeup'),
 	 		'priority'    => 10,
@@ -50,7 +65,9 @@ if ( class_exists( 'Kirki' ) ) {
 	 		'panel'       => 'hookmeup_section',
 	 	) );
 
-	     // Cart
+	     /**
+	      * Cart
+	      */
 	     Kirki::add_section( 'hookmeup_cart_section', array(
 	 		'title'       => esc_attr__('Cart', 'hookmeup'),
 	 		'priority'    => 10,
@@ -58,7 +75,9 @@ if ( class_exists( 'Kirki' ) ) {
 	 		'panel'       => 'hookmeup_section',
 	 	) );
 
-	     // Checkout
+	     /**
+	      * Checkout
+	      */
 	     Kirki::add_section( 'hookmeup_checkout_section', array(
 	 		'title'       => esc_attr__('Checkout', 'hookmeup'),
 	 		'priority'    => 10,
@@ -66,7 +85,9 @@ if ( class_exists( 'Kirki' ) ) {
 	 		'panel'       => 'hookmeup_section',
 	 	) );
 
-	     // My Account / Login
+	     /**
+	      * My Account / Login
+	      */
 	     Kirki::add_section( 'hookmeup_account_section', array(
 	 		'title'       => esc_attr__('My Account', 'hookmeup'),
 	 		'priority'    => 10,
@@ -75,6 +96,9 @@ if ( class_exists( 'Kirki' ) ) {
 	 	) );
 	}
 
+	/**
+	 * Define Kirki fields
+	 */
 	function hookmeup_kirki_fields() {
 
 		$hooks  = new HMU_Hooks();
@@ -87,6 +111,9 @@ if ( class_exists( 'Kirki' ) ) {
 		}
 	}
 
+	/**
+	 * Generate Kirki fields
+	 */
 	function hookmeup_fields( $hooks, $select_hooks, $section ) {
 
 		Kirki::add_config( 'hmu_field', array(
@@ -174,6 +201,9 @@ if ( class_exists( 'Kirki' ) ) {
 		}
 	}
 
+	/**
+	 * Reset select field on unload
+	 */
 	add_action( 'init', 'reset_select_to_default' );
 	function reset_select_to_default() {
 		$hooks  = new HMU_Hooks();

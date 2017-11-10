@@ -14,49 +14,52 @@ class HMU_Hooks {
 
 	/**
 	 * Archive hooks list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $archive_hooks;
 
 	/**
 	 * Cart hooks list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $cart_hooks;
 
 	/**
 	 * Checkout hooks list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $checkout_hooks;
 
 	/**
 	 * Account hooks list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $account_hooks;
 
 	/**
 	 * Single Product hooks list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $product_hooks;
 
 	/**
 	 * Hook sections list
-	 * @access   protected
-	 * @var      array
+	 * @var array
 	 */
 	protected $hook_sections;
 
+	/**
+	 * HMU_Hooks constructor
+	 */
 	public function __construct() {
 
-		$this->hook_sections = [ 'hookmeup_shop_section', 'hookmeup_product_section', 'hookmeup_cart_section', 'hookmeup_checkout_section', 'hookmeup_account_section' ];
+		$this->hook_sections = [ 
+			'hookmeup_shop_section', 
+			'hookmeup_product_section', 
+			'hookmeup_cart_section', 
+			'hookmeup_checkout_section', 
+			'hookmeup_account_section'
+		];
 
 		$this->archive_hooks = [
 			[
@@ -421,7 +424,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of archive hooks
-	 * @access   public
 	 */
 	public function get_archive_hooks() {
 		return $this->archive_hooks;
@@ -429,7 +431,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of cart hooks
-	 * @access   public
 	 */
 	public function get_cart_hooks() {
 		return $this->cart_hooks;
@@ -437,7 +438,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of checkout hooks
-	 * @access   public
 	 */
 	public function get_checkout_hooks() {
 		return $this->checkout_hooks;
@@ -445,7 +445,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of account hooks
-	 * @access   public
 	 */
 	public function get_account_hooks() {
 		return $this->account_hooks;
@@ -453,12 +452,14 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of single product hooks
-	 * @access   public
 	 */
 	public function get_product_hooks() {
 		return $this->product_hooks;
 	}
 
+	/**
+	 * Retrieve array of section hooks used for customizer select field 
+	 */
 	public function get_select_hooks( $section ) {
 
 		$hooks = $this->get_hooks( $section );
@@ -470,6 +471,9 @@ class HMU_Hooks {
 		return $section_hooks;
 	}
 
+	/**
+	 * Retrieve array of section hooks used for customizer
+	 */
 	public function get_hooks( $section ) {
 
 		switch( $section ) {
@@ -484,7 +488,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of all registered hooks
-	 * @access   public
 	 */
 	public function get_all_hooks() {
 
@@ -495,7 +498,6 @@ class HMU_Hooks {
 
 	/**
 	 * Retrieve array of hook sections
-	 * @access   public
 	 */
 	public function get_hook_sections() {
 		return $this->hook_sections;

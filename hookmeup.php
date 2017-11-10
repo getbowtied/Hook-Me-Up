@@ -12,7 +12,7 @@
  * Text Domain:       		hookmeup
  * Domain Path:       		/languages
  * WC requires at least: 	3.0.0 
- * WC tested up to: 		3.2.0 
+ * WC tested up to: 		3.2.3 
  *
  * @link              getbowtied.com
  * @since             1.0.0
@@ -33,193 +33,157 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 
 if ( ! class_exists( 'HMU' ) ) :
 
-/**
- * HMU
- * @version	1.0
- */
-final class HMU {
-
 	/**
-	 * Maintaining and registering all hooks that power the plugin.
+	 * Hook Me Up class.
 	 *
-	 * @access protected
+	 * @class HMU
+	 * @version 1.0.0
 	 */
-	protected $loader;
+	final class HMU {
 
-	/**
-	 * The unique identifier of this plugin.
-	 *
-	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
-	 */
-	protected $plugin_name = "hookmeup";
+		/**
+		 * Maintaining and registering all hooks that power the plugin.
+		 *
+		 * @access protected
+		 */
+		protected $loader;
 
-	/**
-	 * The current version of the plugin.
-	 *
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
-	 */
-	protected $version = '1.0.0';
+		/**
+		 * The unique identifier of this plugin.
+		 *
+		 * @var string
+		 */
+		protected $plugin_name = "hookmeup";
 
-	/**
-	 * The single instance of the class.
-	 *
-	 * @var HMU
-	 */
-	protected static $_instance = null;
+		/**
+		 * The current version of the plugin.
+		 *
+		 * @var string
+		 */
+		protected $version = '1.0.0';
 
-	public function __construct() {
+		/**
+		 * The single instance of the class.
+		 *
+		 * @var HMU
+		 */
+		protected static $_instance = null;
 
-		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-			$this->includes();
-			$this->loader = new HMU_Loader();
-			$this->set_locale();
-			$this->define_admin_hooks();
-			$this->define_public_hooks();  
-	    } else {
-	    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
-	    }
-	}
+		/**
+		 * HMU constructor
+		 */
+		public function __construct() {
 
-	/**
-	 * Main HMU Instance.
-	 *
-	 * Ensures only one instance of HMU is loaded or can be loaded.
-	 *
-	 * @static
-	 * @return HMU - Main instance.
-	 */
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+			/**
+			 * Die if WooCommerce not installed/activated
+			 */
+			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+				$this->includes();
+				$this->loader = new HMU_Loader();
+				$this->set_locale();
+				$this->define_admin_hooks();
+				$this->define_public_hooks();  
+		    } else {
+		    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
+		    }
 		}
-		return self::$_instance;
+
+		/**
+		 * Ensures only one instance of HMU is loaded or can be loaded.
+		 */
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
+		}
+
+		/**
+		 * Include required core files used in admin and on the frontend.
+		 */
+		public function includes() {
+
+			require_once( HMU_DIR . 'includes/class-hmu-loader.php' );
+			require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
+			require_once( HMU_DIR . 'admin/class-hmu-admin.php' );
+			require_once( HMU_DIR . 'public/class-hmu-public.php' );
+			require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
+			require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
+		}
+
+		/**
+		 * Define the locale for this plugin for internationalization.
+		 */
+		private function set_locale() {
+			$plugin_i18n = new HMU_i18n();
+			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		}
+
+		/**
+		 * Register all of the hooks related to the admin area functionality of the plugin.
+		 */
+		private function define_admin_hooks() {
+
+			$plugin_admin = new HMU_Admin( $this->get_plugin_name(), $this->get_version() );
+
+			add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
+			add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
+			add_action( 'wp_ajax_get_customize_section_url', array( $plugin_admin, 'get_customize_section_url' ) );
+		}
+
+		/**
+		 * Register all of the hooks related to the public-facing functionality of the plugin.
+		 */
+		private function define_public_hooks() {
+
+			$plugin_public = new HMU_Public( $this->get_plugin_name(), $this->get_version() );
+
+			add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
+		}
+
+		/**
+		 * Display warning when WooCommerce not installed or activated
+		 */
+		public function woocommerce_not_installed_warning() {
+		?>
+			<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
+				<p><?php echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
+			</div>
+		<?php
+		}
+
+		/**
+		 * Run the loader to execute all of the hooks with WordPress.
+		 */
+		public function run() {
+			$this->loader->run();
+		}
+
+		/**
+		 * The reference to the class that orchestrates the hooks with the plugin.
+		 */
+		public function get_loader() {
+			return $this->loader;
+		}
+
+		/**
+		 * The name of the plugin used to uniquely identify it within the context of
+		 * WordPress and to define internationalization functionality.
+		 */
+		public function get_plugin_name() {
+			return $this->plugin_name;
+		}
+
+		/**
+		 * Retrieve the version number of the plugin.
+		 */
+		public function get_version() {
+			return $this->version;
+		}
+
 	}
-
-	/**
-	 * Include required core files used in admin and on the frontend.
-	 */
-	public function includes() {
-
-		require_once( HMU_DIR . 'includes/class-hmu-loader.php' );
-		require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
-		require_once( HMU_DIR . 'admin/class-hmu-admin.php' );
-		require_once( HMU_DIR . 'public/class-hmu-public.php' );
-		require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
-		require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the HMU_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-		$plugin_i18n = new HMU_i18n();
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-	}
-
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_admin_hooks() {
-
-		$plugin_admin = new HMU_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
-
-		add_action( 'wp_ajax_get_customize_section_url', array( $plugin_admin, 'get_customize_section_url' ) );
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new HMU_Public( $this->get_plugin_name(), $this->get_version() );
-
-		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
-	}
-
-	public function woocommerce_not_installed_warning() {
-
-	?>
-		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-			<p><?php echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
-		</div>
-		
-	<?php
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    HMU_Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
-	}
-
-	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version() {
-		return $this->version;
-	}
-
-}
 
 endif;
 
-/**
- * Main instance of HMU.
- *
- * Returns the main instance of WC to prevent the need to use globals.
- *
- * @return HMU
- */
-function hookmeup() {
-	return HMU::instance();
-}
-
-hookmeup();
+$hmu = new HMU;
 
