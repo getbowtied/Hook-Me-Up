@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       3.0.13
+ * Version:       3.0.15
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -35,6 +35,16 @@ new Kirki_Autoload();
 
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
+}
+
+// Define the KIRKI_VERSION constant.
+if ( ! defined( 'KIRKI_VERSION' ) ) {
+	if ( ! function_exists( 'get_plugin_data' ) ) {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+	$data = get_plugin_data( KIRKI_PLUGIN_FILE );
+	$version = ( isset( $data['Version'] ) ) ? $data['Version'] : false;
+	define( 'KIRKI_VERSION', $version );
 }
 
 // Make sure the path is properly set.
