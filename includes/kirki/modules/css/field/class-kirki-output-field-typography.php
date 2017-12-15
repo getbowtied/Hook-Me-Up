@@ -33,6 +33,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 		$properties = array(
 			'font-family',
 			'font-size',
+			'variant',
 			'font-weight',
 			'font-style',
 			'letter-spacing',
@@ -40,14 +41,40 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			'line-height',
 			'text-align',
 			'text-transform',
+			'text-decoration',
 			'color',
 		);
 
 		foreach ( $properties as $property ) {
+
+			// Early exit if the value is not in the defaults.
+			if ( ! isset( $this->field['default'][ $property ] ) ) {
+				continue;
+			}
+
+			// Early exit if the value is not saved in the values.
 			if ( ! isset( $value[ $property ] ) || ! $value[ $property ] ) {
 				continue;
 			}
+
+			// Early exit if we use "choice" but not for this property.
 			if ( isset( $output['choice'] ) && $output['choice'] !== $property ) {
+				continue;
+			}
+
+			// Take care of variants.
+			if ( 'variant' == $property && isset( $value['variant'] ) && ! empty( $value['variant'] ) ) {
+
+				// Get the font_weight.
+				$font_weight = str_replace( 'italic', '', $value['variant'] );
+				$font_weight = ( in_array( $font_weight, array( '', 'regular' ) ) ) ? '400' : $font_weight;
+
+				// Is this italic?
+				$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
+				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-weight'] = $font_weight;
+				if ( $is_italic ) {
+					$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = 'italic';
+				}
 				continue;
 			}
 
