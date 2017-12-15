@@ -24,6 +24,11 @@ p.hook-description {
 	color: #fff;
 }
 
+.select2-results__option,
+.select2-selection {
+	outline: 0;
+}
+
 .wp-full-overlay-header,
 span.select2.select2-container,
 span.select2.select2-container.select2-container--default.select2-container--focus {
