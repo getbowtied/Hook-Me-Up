@@ -31,7 +31,8 @@ span.select2.select2-container.select2-container--default.select2-container--foc
 }
 
 @media all and (min-height: 600px) and (max-height: 800px) {
-	.select2-results__options.hookmeup-select {
+	.select2-results__options.hookmeup-select,
+	.select2-results {
 		max-height: 250px !important;
 	}
 
@@ -42,7 +43,8 @@ span.select2.select2-container.select2-container--default.select2-container--foc
 }
 
 @media all and (min-height: 800px) {
-	.select2-results__options.hookmeup-select {
+	.select2-results__options.hookmeup-select,
+	.select2-results {
 		max-height: 450px !important;
 	}
 

@@ -465,7 +465,7 @@ class HMU_Hooks {
 		$hooks = $this->get_hooks( $section );
 		
 		foreach( $hooks as $hook ) {
-			$section_hooks[$hook['slug']] = $hook['label'] . '<p class="hook-description">' . $hook['slug'] . '</p>';
+			$section_hooks[$hook['slug']] = $hook['label'] . '&lt;p class="hook-description"&gt;' . $hook['slug'] . '&lt;/p&gt;';
 		}
 
 		return $section_hooks;
