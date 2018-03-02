@@ -146,7 +146,7 @@ if ( class_exists( 'Kirki' ) ) {
 	        'settings'	    => $section . '_select',
 	        'multiple'    	=> 1,
 	        'priority' 		=> 10,
-	        'default'		=> 'Choose...',
+	        'default'		=> $select_hooks['default'],
 	        'choices'     	=> $select_hooks
 	    ));
 
