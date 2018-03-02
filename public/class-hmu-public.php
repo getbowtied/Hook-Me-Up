@@ -65,7 +65,7 @@ class HMU_Public {
 
 		        if( $option_section ) {
 
-			        echo '<div id="' . $hook['slug'] . '">'; 
+			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">'; 
 
 			    	if( $option_toggle && $option_content ) {
 			            echo $option_content;
