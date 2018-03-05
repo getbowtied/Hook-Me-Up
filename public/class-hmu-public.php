@@ -63,23 +63,14 @@ class HMU_Public {
 		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
 		        $option_content = get_theme_mod( $hook['slug'] . '_editor', '' );
 
-		        if( $option_section ) {
+		        if( $option_toggle && isset($option_content) && $option_content != "" ) {
 
-			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">'; 
+			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . $option_content . '</div>';
 
-			    	if( $option_toggle && $option_content ) {
-			            echo $option_content;
-			        } else {
-			        	if( is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
-			            	echo '<p class="hook">' . $hook['slug'] . '</p>';
-			            }
-			        }
+			    } else if( $option_section && is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
 
-			        echo '</div>';
-			    } else {
-			    	if( $option_toggle && $option_content ) {
-			            echo $option_content;
-			        }
+			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook"><p class="hook">' . $hook['slug'] . '</p></div>';
+			        
 			    }
 
 		    }, 20 );
