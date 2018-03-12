@@ -340,11 +340,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_product_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_after_single_product_summary', 
-				'label' 	=> 'After Single Product Summary',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_after_single_product', 
 				'label' 	=> 'After Single Product',
 				'section' 	=> 'hookmeup_product_section'
