@@ -254,11 +254,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_checkout_after_order_review', 
-				'label' 	=> 'After Order Review',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_after_checkout_form', 
 				'label' 	=> 'After Checkout Form',
 				'section' 	=> 'hookmeup_checkout_section'
