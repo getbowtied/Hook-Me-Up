@@ -275,11 +275,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_product_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_before_single_product_summary', 
-				'label' 	=> 'Before Single Product Summary',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_single_product_summary', 
 				'label' 	=> 'Single Product Summary',
 				'section' 	=> 'hookmeup_product_section'
