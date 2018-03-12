@@ -121,11 +121,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_before_cart_contents', 
-				'label' 	=> 'Before Cart Contents',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_cart_totals_before_order_total', 
 				'label' 	=> 'Cart Totals Before Order Total',
 				'section' 	=> 'hookmeup_cart_section'
@@ -136,18 +131,8 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_cart_contents', 
-				'label' 	=> 'Cart Contents',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_cart_coupon', 
 				'label' 	=> 'Cart Coupon',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_after_cart_contents', 
-				'label' 	=> 'After Cart Contents',
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
@@ -166,11 +151,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_cart_totals_before_shipping', 
-				'label' 	=> 'Cart Totals Before Shipping',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_before_shipping_calculator', 
 				'label' 	=> 'Before Shipping Calculator',
 				'section' 	=> 'hookmeup_cart_section'
@@ -178,11 +158,6 @@ class HMU_Hooks {
 			[
 				'slug' 		=> 'woocommerce_after_shipping_calculator', 
 				'label' 	=> 'After Shipping Calculator',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_cart_totals_after_shipping', 
-				'label' 	=> 'Cart Totals After Shipping',
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
@@ -254,43 +229,8 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_checkout_after_customer_details', 
-				'label' 	=> 'After Customer Details',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_checkout_before_order_review', 
 				'label' 	=> 'Before Order Review',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_before_cart_contents', 
-				'label' 	=> 'Review Order Before Cart Contents',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_after_cart_contents', 
-				'label' 	=> 'Review Order After Cart Contents',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_before_shipping', 
-				'label' 	=> 'Review Order Before Shipping',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_after_shipping', 
-				'label' 	=> 'Review Order After Shipping',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_before_order_total', 
-				'label' 	=> 'Review Order Before Order Total',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_after_order_total', 
-				'label' 	=> 'Review Order After Order Total',
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
