@@ -94,6 +94,29 @@ if ( class_exists( 'Kirki' ) ) {
 	 		'capability'  => 'edit_theme_options',
 	 		'panel'       => 'hookmeup_section',
 	 	) );
+
+	     Kirki::add_section( 'hookmeup_test_section', array(
+	 		'title'       => esc_attr__('Test Section', 'hookmeup'),
+	 		'priority'    => 10,
+	 		'capability'  => 'edit_theme_options',
+	 		'panel'       => 'hookmeup_section',
+	 		'active_callback' => array(
+				array(
+					'setting'  => 'hookmeup_account_section_preview',
+					'operator' => '==',
+					'value'    => false,
+				)
+			)
+	 	) );
+
+	     Kirki::add_field( 'hmu_field', array(
+			'type'        => 'toggle',
+			'settings'	  => $section. '_preview',
+			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
+			'section'     => 'hookmeup_test_section',
+			'default'     => false,
+			'priority'    => 10,
+		));
 	}
 
 	/**
