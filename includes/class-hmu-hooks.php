@@ -68,11 +68,6 @@ class HMU_Hooks {
 				'section'	=> 'hookmeup_shop_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_archive_description', 
-				'label'		=> 'Archive Description',
-				'section'	=> 'hookmeup_shop_section'
-			],
-			[
 				'slug'		=> 'woocommerce_before_shop_loop', 
 				'label'		=> 'Before Shop Loop',
 				'section'	=> 'hookmeup_shop_section'
@@ -121,28 +116,8 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_cart_totals_before_order_total', 
-				'label' 	=> 'Cart Totals Before Order Total',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_cart_totals_after_order_total', 
-				'label' 	=> 'Cart Totals After Order Total',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_cart_coupon', 
-				'label' 	=> 'Cart Coupon',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_after_cart_table', 
 				'label' 	=> 'After Cart Table',
-				'section' 	=> 'hookmeup_cart_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_cart_collaterals', 
-				'label' 	=> 'Cart Collaterals',
 				'section' 	=> 'hookmeup_cart_section'
 			],
 			[
@@ -189,11 +164,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_checkout_before_customer_details', 
-				'label' 	=> 'Before Customer Details',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_before_checkout_billing_form', 
 				'label' 	=> 'Before Checkout Billing Form',
 				'section' 	=> 'hookmeup_checkout_section'
@@ -219,11 +189,6 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_before_order_notes', 
-				'label' 	=> 'Before Order Notes',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_after_order_notes', 
 				'label' 	=> 'After Order Notes',
 				'section' 	=> 'hookmeup_checkout_section'
@@ -236,16 +201,6 @@ class HMU_Hooks {
 			[
 				'slug' 		=> 'woocommerce_review_order_before_payment', 
 				'label' 	=> 'Review Order Before Payment',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_before_submit', 
-				'label' 	=> 'Review Order Before Submit',
-				'section' 	=> 'hookmeup_checkout_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_review_order_after_submit', 
-				'label' 	=> 'Review Order After Submit',
 				'section' 	=> 'hookmeup_checkout_section'
 			],
 			[
@@ -285,53 +240,8 @@ class HMU_Hooks {
 				'section' 	=> 'hookmeup_product_section'
 			],
 			[
-				'slug' 		=> 'woocommerce_before_add_to_cart_button', 
-				'label' 	=> 'Before Add To Cart Button',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_before_variations_form', 
-				'label' 	=> 'Before Variations Form',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_before_single_variation', 
-				'label' 	=> 'Before Single Variation',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_single_variation', 
-				'label' 	=> 'Single Variation',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_after_single_variation', 
-				'label' 	=> 'After Single Variation',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_after_add_to_cart_button', 
-				'label' 	=> 'After Add To Cart Button',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_after_variations_form', 
-				'label' 	=> 'After Variations Form',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
 				'slug' 		=> 'woocommerce_after_add_to_cart_form', 
 				'label' 	=> 'After Add To Cart Form',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_product_meta_start', 
-				'label' 	=> 'Product Meta Start',
-				'section' 	=> 'hookmeup_product_section'
-			],
-			[
-				'slug' 		=> 'woocommerce_product_meta_end', 
-				'label' 	=> 'Product Meta End',
 				'section' 	=> 'hookmeup_product_section'
 			],
 			[

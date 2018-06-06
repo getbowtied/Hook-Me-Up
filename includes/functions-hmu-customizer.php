@@ -145,102 +145,37 @@ if ( class_exists( 'Kirki' ) ) {
 		) );
 
 		Kirki::add_field( 'hmu_field', array(
-			'type'        => 'toggle',
+			'type'        => 'switch',
 			'settings'	  => $section. '_preview',
 			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
 			'section'     => $section,
+			'tooltip'        => esc_attr__( 'They will only be visible while logged in as admin.', 'hookmeup' ),
 			'default'     => false,
 			'priority'    => 10,
 		));
 
-		Kirki::add_field( 'hmu_field', array(
-		    'type'        => 'custom',
-		    'settings'    => $section . '_preview_separator',
-		    'label'       => '',
-		    'section'     => $section,
-		    'default'     => '<hr>',
-		    'priority'    => 10,
-		) );
-
-		Kirki::add_field( 'hmu_field', array(
-	        'type'     		=> 'select',
-	        'label'    	  	=> esc_attr__( 'Select the hook you want to modify', 'hookmeup' ),
-	        'section'  		=> $section,
-	        'settings'	    => $section . '_select',
-	        'multiple'    	=> 1,
-	        'priority' 		=> 10,
-	        'default'		=> $select_hooks['default'],
-	        'choices'     	=> $select_hooks
-	    ));
-
 	    foreach( $hooks as $hook ) {
 
 	    	Kirki::add_field( 'hmu_field', array(
-			    'type'        => 'custom',
-			    'settings'    =>  $hook['slug'] . '_separator',
-			    'label'       => '',
-			    'section'     => $hook['section'],
-			    'default'     => '<hr>',
-			    'priority'    => 10,
-			    'active_callback' => array(
-					array(
-						'setting'  => $section . '_select',
-						'operator' => '==',
-						'value'    => $hook['slug'],
-					)
-				)
-			));
-
-			Kirki::add_field( 'hmu_field', array(
-				'type'        => 'toggle',
+				'type'        => 'custom',
+				'settings'    => $hook['slug'] . '_collapsible',
 				'section'     => $hook['section'],
-				'settings'	  => $hook['slug'] . '_toggle',
-				'label'		  => esc_attr__( $hook['label'], 'hookmeup' ),
-				'default'	  => true,
+				'tooltip'	  => $hook['slug'],
+				'default'     => '<div class="customize-control-collapsible"><span class="'.$hook['slug'].'"></span><h3><div></div>' . $hook['label'] . '</h3></div>',
 				'priority'    => 10,
-				'active_callback' => array(
-					array(
-						'setting'  => $section . '_select',
-						'operator' => '==',
-						'value'    => $hook['slug'],
-					)
-				)
 			));
 
 			Kirki::add_field( 'hmu_field', array(
 				'type'        => 'editor',
-				'label'       => esc_attr__( $hook['label'] . ' Editor', 'hookmeup' ),
+				'label'       => '',
 				'section'     => $hook['section'],
 				'settings'	  => $hook['slug'] . '_editor',
 				'priority'    => 10,
-				'active_callback' => array(
-					array(
-						'setting'  => $section . '_select',
-						'operator' => '==',
-						'value'    => $hook['slug'],
-					)
-				)
 			));
 		}
 	}
 
-	/**
-	 * Reset select field on unload
-	 */
-	add_action( 'init', 'reset_select_to_default' );
-	function reset_select_to_default() {
-		$hooks  = new HMU_Hooks();
-		$hook_sections = $hooks->get_hook_sections();
-
-	    foreach( $hook_sections as $section ) {
-
-	    	$section_select_hooks = $hooks->get_select_hooks( $section );
-			set_theme_mod( $section . '_select', $section_select_hooks );
-		}
-	}
-
 	generate_kirki_fields();
-
 }
 
 ?>
