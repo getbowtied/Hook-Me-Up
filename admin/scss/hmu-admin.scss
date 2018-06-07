@@ -30,8 +30,6 @@
 
 		    .tooltip-content
 		    {
-		    	width: 225px;
-    			left: -250px;
     			font-size: 11px;
 
     			&:after
@@ -80,7 +78,6 @@
 	  opacity: 0;
 	  visibility: hidden;
 	  max-height: 0;
-	  z-index: 0;
 	  transition: all 0.3s ease-in-out;
 	}
 
@@ -90,7 +87,6 @@
 		opacity: 1;
 	  	visibility: visible;
 	  	max-height: 500px;
-	  	z-index: 0;
 	  	transition: all 0.3s ease-in-out;
 	}
 
