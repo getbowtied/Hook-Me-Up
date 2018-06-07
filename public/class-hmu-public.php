@@ -59,11 +59,10 @@ class HMU_Public {
 
 		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$option_toggle	= get_theme_mod( $hook['slug'] . '_toggle', true );
 		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
 		        $option_content = get_theme_mod( $hook['slug'] . '_editor', '' );
 
-		        if( $option_toggle && isset($option_content) && $option_content != "" ) {
+		        if( isset($option_content) && $option_content != "" ) {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . $option_content . '</div>';
 

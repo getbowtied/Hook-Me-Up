@@ -1,52 +1,41 @@
 (function( $ ) {
 
-	'use strict';
+    'use strict';
 
-	var in_customizer = false;
+    $( document ).ready( function( $ ) {
 
-    if ( typeof wp !== 'undefined' ) {
-    	if ( typeof wp.customize !== 'undefined' ) {
-        	in_customizer =  typeof wp.customize.section !== 'undefined' ? true : false;
-        }
-    }
+        // Collapse all collapsible controls.
+        $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
+        $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
 
-    if ( in_customizer ) {
+        // Expand collapsible controls on click.
+        $( '.customize-control-collapsible' ).click( function() {
 
-	    wp.customize.section( 'hookmeup_shop_section', function( section ) {
-	        go_to_page( section, 'shop' );
-	    } );
+            $(this).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
+            $(this).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
 
-	    wp.customize.section( 'hookmeup_cart_section', function( section ) {
-	        go_to_page( section, 'cart' );
-	    } );
+            // Mark as enabled if editor has content
+            var editor = $(this).find('span').attr('class') + '_editor';
+            if( wp.customize(editor).get().length > 0) {
+                $(this).find('div').addClass('enabled');
+            } else {
+                $(this).find('div').removeClass('enabled');
+            }
 
-	    wp.customize.section( 'hookmeup_checkout_section', function( section ) {
-	        go_to_page( section, 'checkout' );
-	    } );
+        } );
 
-	    wp.customize.section( 'hookmeup_account_section', function( section ) {
-	        go_to_page( section, 'account' );
-	    } );
+        $( '.customize-control-collapsible' ).each( function() {
+            var editor = $(this).find('span').attr('class') + '_editor';
+            if( wp.customize(editor).get().length > 0) {
+                $(this).find('div').addClass('enabled');
+            }
+        });
+    });
 
-		wp.customize.section( 'hookmeup_product_section', function( section ) {
-			go_to_page( section, 'product' );
-	    } );
+    // Editor Settings
+    $( document ).on( 'tinymce-editor-setup', function( event, editor ) {
+        editor.settings.toolbar1 = 'bold,italic,underline,blockquote,strikethrough,bullist,numlist,charmap,fullscreen';
+        editor.settings.toolbar1 += ',alignleft,aligncenter,alignright,alignjustify,link,unlink,formatselect,forecolor,backcolor,hr,outdent,indent,undo,redo';
+    });
 
-	    function go_to_page( section, page ) {
-
-	    	section.expanded.bind( function( isExpanded ) {
-	            if ( isExpanded ) {
-	            	var data = {
-	            		'action' : 'get_customize_section_url',
-	            		'page'	 : page
-	            	};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) {
-						wp.customize.previewer.previewUrl.set(response);
-					});		
-	            }
-	        } );
-	    }
-	}
-
-})( jQuery );
+} )( jQuery );

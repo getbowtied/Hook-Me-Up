@@ -293,21 +293,6 @@ class HMU_Hooks {
 	}
 
 	/**
-	 * Retrieve array of section hooks used for customizer select field 
-	 */
-	public function get_select_hooks( $section ) {
-
-		$hooks = $this->get_hooks( $section );
-		$section_hooks['default'] = 'Choose...';
-		
-		foreach( $hooks as $hook ) {
-			$section_hooks[$hook['slug']] = $hook['label'] . '&lt;p class="hook-description"&gt;' . $hook['slug'] . '&lt;/p&gt;';
-		}
-
-		return $section_hooks;
-	}
-
-	/**
 	 * Retrieve array of section hooks used for customizer
 	 */
 	public function get_hooks( $section ) {
