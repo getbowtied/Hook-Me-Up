@@ -7,3 +7,8 @@
     border: 2px dashed;
     border-color: #F8E71C;
 }
+
+.kirki-customizer-loading-wrapper
+{
+	background-image: none !important;
+}
