@@ -19,36 +19,36 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 
 = Archive Page =
 
-- Before Main Content (woocommerce_before_main_content)
-- Before Shop Loop (woocommerce_before_shop_loop)
-- Before Shop Loop Item (woocommerce_before_shop_loop_item)
-- Before Shop Loop Item Title (woocommerce_before_shop_loop_item_title)
-- After Shop Loop Item Title (woocommerce_after_shop_loop_item_title)
-- After Shop Loop Item (woocommerce_after_shop_loop_item)
-- After Shop Loop (woocommerce_after_shop_loop)
-- After Main Content (woocommerce_after_main_content)
+- Before Main Content (`woocommerce_before_main_content`)
+- Before Shop Loop (`woocommerce_before_shop_loop`)
+- Before Shop Loop Item (`woocommerce_before_shop_loop_item`)
+- Before Shop Loop Item Title (`woocommerce_before_shop_loop_item_title`)
+- After Shop Loop Item Title (`woocommerce_after_shop_loop_item_title`)
+- After Shop Loop Item (`woocommerce_after_shop_loop_item`)
+- After Shop Loop (`woocommerce_after_shop_loop`)
+- After Main Content (`woocommerce_after_main_content`)
 
 = Single Product Page =
 
-- Before Single Product ()
-- Single Product Summary
-- Before Add To Cart Form
-- After Add To Cart Form
-- Share
-- After Single Product
+- Before Single Product (`woocommerce_before_single_product`)
+- Single Product Summary (`woocommerce_single_product_summary`)
+- Before Add To Cart Form (`woocommerce_before_add_to_cart_form`)
+- After Add To Cart Form (`woocommerce_after_add_to_cart_form`)
+- Share (`woocommerce_share`)
+- After Single Product (`woocommerce_after_single_product`)
 
 = Cart Page =
 
-- Before Cart
-- Before Cart Table
-- After Cart Table
-- Before Cart Totals
-- Before Shipping Calculator
-- After Shipping Calculator
-- Proceed To Checkout
-- After Cart Totals
-- After Cart
-- Cart Is Empty
+- Before Cart ()
+- Before Cart Table ()
+- After Cart Table ()
+- Before Cart Totals ()
+- Before Shipping Calculator ()
+- After Shipping Calculator ()
+- Proceed To Checkout ()
+- After Cart Totals ()
+- After Cart ()
+- Cart Is Empty ()
 
 = Checkout Page =
 
