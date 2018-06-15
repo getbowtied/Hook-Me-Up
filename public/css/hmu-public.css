@@ -1,4 +1,10 @@
-.hook {
+.kirki-customizer-loading-wrapper
+{
+	background-image: none !important;
+}
+
+.hook
+{
     background: #FFFDE7;
     padding: 10px;
     text-align: center;
@@ -6,9 +12,4 @@
     color: #545454 !important;
     border: 2px dashed;
     border-color: #F8E71C;
-}
-
-.kirki-customizer-loading-wrapper
-{
-	background-image: none !important;
 }
