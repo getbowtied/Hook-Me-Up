@@ -12,10 +12,63 @@ Here is a short description of the plugin.  This should be no more than 150 char
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+Hook Me Up plugin helps you customize WooCommerce templates without altering the code.
+Using this plugin, you are just a few clicks away from having your desired e-commerce website.
+You can add and manage custom code anywhere in the WooCommerce template just using the Wordpress Customizer. It works with any theme as long as WooCommerce plugin is installed and activated.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+List of WooCommerce Hooks that can be customized using Hook Me Up:
+
+Archive Page
+
+Before Main Content
+Before Shop Loop
+Before Shop Loop Item
+Before Shop Loop Item Title
+After Shop Loop Item Title
+After Shop Loop Item
+After Shop Loop
+After Main Content
+
+Cart Page
+
+Before Cart
+Before Cart Table
+After Cart Table
+Before Cart Totals
+Before Shipping Calculator
+After Shipping Calculator
+Proceed To Checkout
+After Cart Totals
+After Cart
+Cart Is Empty
+
+Checkout Page
+
+Before Checkout Form
+Before Checkout Billing Form
+After Checkout Registration Form
+After Checkout Billing Form
+Before Checkout Shipping Form
+After Checkout Shipping Form
+After Order Notes
+Before Order Review
+Review Order - Before Payment
+Review Order - After Payment
+After Checkout Form
+
+Single Product Page
+
+Before Single Product
+Single Product Summary
+Before Add To Cart Form
+After Add To Cart Form
+Share
+After Single Product
+
+Account Page
+
+Before Customer Login Form
+
 
 A few notes about the sections above:
 
@@ -39,13 +92,21 @@ you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+The easiest way:
+Go to the Plugins Menu in WordPress
+Search for “Hook Me Up”
+Click “Install”
 
-e.g.
+Or this easy way:
+Download the plugin archive using the above button
+Go to the Plugins Menu in WordPress and click "Add New"
+Click on "Upload Plugin" and upload your archive 
+Click "Install Now"
 
-1. Upload `hookmeup.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+The not so easy way:
+Upload the hookmeup folder to the /wp-content/plugins/directory
+Activate the plugin through the ‘Plugins’ menu in WordPress
+
 
 == Frequently Asked Questions ==
 
