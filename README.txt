@@ -19,54 +19,54 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 
 = Archive Page =
 
-- Before Main Content (`woocommerce_before_main_content`)
-- Before Shop Loop (`woocommerce_before_shop_loop`)
-- Before Shop Loop Item (`woocommerce_before_shop_loop_item`)
-- Before Shop Loop Item Title (`woocommerce_before_shop_loop_item_title`)
-- After Shop Loop Item Title (`woocommerce_after_shop_loop_item_title`)
-- After Shop Loop Item (`woocommerce_after_shop_loop_item`)
-- After Shop Loop (`woocommerce_after_shop_loop`)
-- After Main Content (`woocommerce_after_main_content`)
+- Before Main Content `woocommerce_before_main_content`
+- Before Shop Loop `woocommerce_before_shop_loop`
+- Before Shop Loop Item `woocommerce_before_shop_loop_item`
+- Before Shop Loop Item Title `woocommerce_before_shop_loop_item_title`
+- After Shop Loop Item Title `woocommerce_after_shop_loop_item_title`
+- After Shop Loop Item `woocommerce_after_shop_loop_item`
+- After Shop Loop `woocommerce_after_shop_loop`
+- After Main Content `woocommerce_after_main_content`
 
 = Single Product Page =
 
-- Before Single Product (`woocommerce_before_single_product`)
-- Single Product Summary (`woocommerce_single_product_summary`)
-- Before Add To Cart Form (`woocommerce_before_add_to_cart_form`)
-- After Add To Cart Form (`woocommerce_after_add_to_cart_form`)
-- Share (`woocommerce_share`)
-- After Single Product (`woocommerce_after_single_product`)
+- Before Single Product `woocommerce_before_single_product`
+- Single Product Summary `woocommerce_single_product_summary`
+- Before Add To Cart Form `woocommerce_before_add_to_cart_form`
+- After Add To Cart Form `woocommerce_after_add_to_cart_form`
+- Share `woocommerce_share`
+- After Single Product `woocommerce_after_single_product`
 
 = Cart Page =
 
-- Before Cart ()
-- Before Cart Table ()
-- After Cart Table ()
-- Before Cart Totals ()
-- Before Shipping Calculator ()
-- After Shipping Calculator ()
-- Proceed To Checkout ()
-- After Cart Totals ()
-- After Cart ()
-- Cart Is Empty ()
+- Before Cart `woocommerce_before_cart`
+- Before Cart Table `woocommerce_before_cart_table`
+- After Cart Table `woocommerce_after_cart_table`
+- Before Cart Totals `woocommerce_before_cart_totals`
+- Before Shipping Calculator `woocommerce_before_shipping_calculator`
+- After Shipping Calculator `woocommerce_after_shipping_calculator`
+- Proceed To Checkout `woocommerce_proceed_to_checkout`
+- After Cart Totals `woocommerce_after_cart_totals`
+- After Cart `woocommerce_after_cart`
+- Cart Is Empty `woocommerce_cart_is_empty`
 
 = Checkout Page =
 
-- Before Checkout Form
-- Before Checkout Billing Form
-- After Checkout Registration Form
-- After Checkout Billing Form
-- Before Checkout Shipping Form
-- After Checkout Shipping Form
-- After Order Notes
-- Before Order Review
-- Review Order - Before Payment
-- Review Order - After Payment
-- After Checkout Form
+- Before Checkout Form `woocommerce_before_checkout_form`
+- Before Checkout Billing Form `woocommerce_before_checkout_billing_form`
+- After Checkout Registration Form `woocommerce_after_checkout_registration_form`
+- After Checkout Billing Form `woocommerce_after_checkout_billing_form`
+- Before Checkout Shipping Form `woocommerce_before_checkout_shipping_form`
+- After Checkout Shipping Form `woocommerce_after_checkout_shipping_form`
+- After Order Notes `woocommerce_after_order_notes`
+- Before Order Review `woocommerce_checkout_before_order_review`
+- Review Order - Before Payment `woocommerce_review_order_before_payment`
+- Review Order - After Payment `woocommerce_review_order_after_payment`
+- After Checkout Form `woocommerce_after_checkout_form`
 
 = Account Page =
 
-- Before Customer Login Form
+- Before Customer Login Form `woocommerce_before_customer_login_form`
 
 == Installation ==
 
