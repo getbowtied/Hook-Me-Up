@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name:       		Hook Me Up – Easy Hooks for WooCommerce
- * Plugin URI:        		hookmeup.wp-theme.design
+ * Plugin Name:       		Hook Me Up – Additional Content for WooCommerce
+ * Plugin URI:        		https://github.com/getbowtied/Hook-Me-Up
  * Description:       		Helps you customize WooCommerce templates without altering the code.
  * Version:           		1.0.0
  * Author:            		GetBowtied
- * Author URI:        		getbowtied.com
+ * Author URI:        		https://getbowtied.com/
  * License:           		GPL-2.0+
  * License URI:       		http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       		hookmeup
