@@ -7,7 +7,7 @@ Stable tag: 1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Hook Me Up helps non-developers insert additional content in WooCommerce templates via Appearance > Customize. No coding required.
+Hook Me Up helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
 == Description ==
 
