@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: vanesareinerth (this should be a list of wordpress.org userid's)
+Contributors: vanesareinerth, traians
 Donate link: getbowtied.com
-Tags: hooks
-Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 3.0
+Tags: hooks, theme, templates, woocommerce
+Requires at least: 4.9
+Tested up to: 4.9.6
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,22 +68,6 @@ After Single Product
 Account Page
 
 Before Customer Login Form
-
-
-A few notes about the sections above:
-
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
 
