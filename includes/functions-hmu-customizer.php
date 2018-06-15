@@ -6,7 +6,7 @@
  * @since      1.0.0
  * @package    HMU
  * @subpackage HMU/includes
- * @author     GetBowtied <adi@getbowtied.com>
+ * @author     GetBowtied 
  */
 
 /**
