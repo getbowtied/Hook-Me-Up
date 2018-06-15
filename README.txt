@@ -11,7 +11,7 @@ Hook Me Up helps non-developers insert additional content in WooCommerce templat
 
 == Description ==
 
-Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via Appearance > Customize. 
+Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
 
 [youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
 
