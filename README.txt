@@ -4,69 +4,69 @@ Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
 Tested up to: 4.9.6
 Stable tag: 1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Hook Me Up is a plugin that helps you customize WooCommerce templates without altering the code.
+Hook Me Up helps non-developers insert additional content in WooCommerce templates via Appearance > Customize. No coding required.
 
 == Description ==
 
-Hook Me Up plugin helps you customize WooCommerce templates without altering the code.
-Using this plugin, you are just a few clicks away from having your desired e-commerce website.
-You can add and manage custom code anywhere in the WooCommerce template just using the Wordpress Customizer. It works with any theme as long as WooCommerce plugin is installed and activated.
+Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via Appearance > Customize. 
+
+[youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
 
 List of WooCommerce Hooks that can be customized using Hook Me Up:
 
-Archive Page
+= Archive Page =
 
-Before Main Content
-Before Shop Loop
-Before Shop Loop Item
-Before Shop Loop Item Title
-After Shop Loop Item Title
-After Shop Loop Item
-After Shop Loop
-After Main Content
+- Before Main Content (woocommerce_before_main_content)
+- Before Shop Loop (woocommerce_before_shop_loop)
+- Before Shop Loop Item (woocommerce_before_shop_loop_item)
+- Before Shop Loop Item Title (woocommerce_before_shop_loop_item_title)
+- After Shop Loop Item Title (woocommerce_after_shop_loop_item_title)
+- After Shop Loop Item (woocommerce_after_shop_loop_item)
+- After Shop Loop (woocommerce_after_shop_loop)
+- After Main Content (woocommerce_after_main_content)
 
-Cart Page
+= Single Product Page =
 
-Before Cart
-Before Cart Table
-After Cart Table
-Before Cart Totals
-Before Shipping Calculator
-After Shipping Calculator
-Proceed To Checkout
-After Cart Totals
-After Cart
-Cart Is Empty
+- Before Single Product ()
+- Single Product Summary
+- Before Add To Cart Form
+- After Add To Cart Form
+- Share
+- After Single Product
 
-Checkout Page
+= Cart Page =
 
-Before Checkout Form
-Before Checkout Billing Form
-After Checkout Registration Form
-After Checkout Billing Form
-Before Checkout Shipping Form
-After Checkout Shipping Form
-After Order Notes
-Before Order Review
-Review Order - Before Payment
-Review Order - After Payment
-After Checkout Form
+- Before Cart
+- Before Cart Table
+- After Cart Table
+- Before Cart Totals
+- Before Shipping Calculator
+- After Shipping Calculator
+- Proceed To Checkout
+- After Cart Totals
+- After Cart
+- Cart Is Empty
 
-Single Product Page
+= Checkout Page =
 
-Before Single Product
-Single Product Summary
-Before Add To Cart Form
-After Add To Cart Form
-Share
-After Single Product
+- Before Checkout Form
+- Before Checkout Billing Form
+- After Checkout Registration Form
+- After Checkout Billing Form
+- Before Checkout Shipping Form
+- After Checkout Shipping Form
+- After Order Notes
+- Before Order Review
+- Review Order - Before Payment
+- Review Order - After Payment
+- After Checkout Form
 
-Account Page
+= Account Page =
 
-Before Customer Login Form
+- Before Customer Login Form
 
 == Installation ==
 
