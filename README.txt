@@ -4,8 +4,10 @@ Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
 Tested up to: 4.9.6
 Stable tag: 1.0
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+WC requires at least: 3.3.4
+WC tested up to: 3.4.2
 
 Hook Me Up helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 

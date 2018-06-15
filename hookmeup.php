@@ -11,8 +11,10 @@
  * License URI:       		http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       		hookmeup
  * Domain Path:       		/languages
- * WC requires at least: 	3.0 
- * WC tested up to: 		3.4.2 
+ * Requires at least: 		4.9
+ * Tested up to: 			4.9.6
+ * WC requires at least: 	3.3.4
+ * WC tested up to: 		3.4.2
  *
  * @link              getbowtied.com
  * @since             1.0.0
