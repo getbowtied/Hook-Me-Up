@@ -1,14 +1,14 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: vanesareinerth (this should be a list of wordpress.org userid's)
 Donate link: getbowtied.com
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tags: hooks
+Requires at least: 3.0
+Tested up to: 3.4.2
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Hook Me Up is a plugin that helps you customize WooCommerce templates without altering the code.
 
 == Description ==
 
@@ -72,11 +72,6 @@ Before Customer Login Form
 
 A few notes about the sections above:
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
 *   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
 stable.
 
@@ -107,7 +102,6 @@ The not so easy way:
 Upload the hookmeup folder to the /wp-content/plugins/directory
 Activate the plugin through the ‘Plugins’ menu in WordPress
 
-
 == Frequently Asked Questions ==
 
 = A question that someone might have =
@@ -132,16 +126,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 * A change since the previous version.
 * Another change.
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
 == Upgrade Notice ==
 
 = 1.0 =
 Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
 
 == Arbitrary section ==
 
