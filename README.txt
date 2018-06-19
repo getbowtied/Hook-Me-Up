@@ -1,4 +1,4 @@
-=== Hook Me Up ===
+=== Hook Me Up – Additional Content for WooCommerce ===
 Contributors: vanesareinerth, traians
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
