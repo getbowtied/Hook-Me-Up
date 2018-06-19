@@ -12,4 +12,5 @@
     color: #545454 !important;
     border: 2px dashed;
     border-color: #F8E71C;
+    word-wrap: break-word;
 }
