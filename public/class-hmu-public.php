@@ -59,7 +59,7 @@ class HMU_Public {
 
 		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$option_section = get_theme_mod( $hook['section'] . '_preview', true );
+		    	$option_section = get_theme_mod( $hook['section'] . '_preview', false );
 		        $option_content = get_theme_mod( $hook['slug'] . '_editor', '' );
 
 		        if( isset($option_content) && $option_content != "" ) {
