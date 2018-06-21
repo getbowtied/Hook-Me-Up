@@ -16,6 +16,8 @@ Hook Me Up helps non-developers insert additional content in WooCommerce templat
 
 Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
 
+The plugin was built to answer common questions such as: How to add a banner above the shop page?
+
 [youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
 
 List of WooCommerce Hooks that can be customized using Hook Me Up:
