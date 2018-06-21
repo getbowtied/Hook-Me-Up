@@ -29,7 +29,7 @@ Hook Me Up will help you add additional content in the following WooCommerce tem
 - Checkout 
 - My Account / Login
 
-[Read more](https://wordpress.org/plugins/hookmeup/#What WooCommerce Hooks are included%3F) about the exact hooks/locations available for your custom content.
+[Read more](https://wordpress.org/plugins/hookmeup/#what%20woocommerce%20hooks%20are%20included%3F) about the exact hooks/locations available for your custom content.
 
 
 == Installation ==
