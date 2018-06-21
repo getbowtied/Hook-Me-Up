@@ -29,14 +29,12 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 - Checkout 
 - My Account / Login
 
-[Read more](https://wordpress.org/plugins/hookmeup/#what%20woocommerce%20hooks%20are%20included%3F) about the exact hooks/locations available for your custom content.
-
 
 == Installation ==
 
 The easiest way:
 In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
-Search for “HookMeUp – Additional Content for WooCommerce”
+Search for “HookMeUp”
 Click the “Install” button.
 
 == Frequently Asked Questions ==
@@ -110,7 +108,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 == Changelog ==
 
 = 1.0.1 =
-Set customizer Hooks Preview option default to false
+- Set customizer Hooks Preview option default to false
 
 = 1.0 =
-Initial Version
+- Initial Version
