@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       		Hook Me Up – Additional Content for WooCommerce
+ * Plugin Name:       		HookMeUp – Additional Content for WooCommerce
  * Plugin URI:        		https://github.com/getbowtied/Hook-Me-Up
  * Description:       		Helps you customize WooCommerce templates without altering the code.
  * Version:           		1.0.0
@@ -36,7 +36,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 if ( ! class_exists( 'HMU' ) ) :
 
 	/**
-	 * Hook Me Up class.
+	 * HookMeUp class.
 	 *
 	 * @class HMU
 	 * @version 1.0.0
@@ -149,7 +149,7 @@ if ( ! class_exists( 'HMU' ) ) :
 		public function woocommerce_not_installed_warning() {
 		?>
 			<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-				<p><?php echo esc_html_e( 'Hook Me Up is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
+				<p><?php echo esc_html_e( 'HookMeUp is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
 			</div>
 		<?php
 		}

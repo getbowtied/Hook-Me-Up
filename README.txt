@@ -1,4 +1,4 @@
-=== Hook Me Up – Additional Content for WooCommerce ===
+=== HookMeUp – Additional Content for WooCommerce ===
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
@@ -10,18 +10,18 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 3.3.4
 WC tested up to: 3.4.2
 
-Hook Me Up helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
+HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
 == Description ==
 
-Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
+HookMeUp helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
 
 The plugin was built to answer common questions such as: 
 How to add a banner above the shop page? 
 
 [youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
 
-Hook Me Up will help you add additional content in the following WooCommerce templates:
+HookMeUp will help you add additional content in the following WooCommerce templates:
 
 - Shop & Categories (Archives)
 - Single Product
@@ -36,20 +36,20 @@ Hook Me Up will help you add additional content in the following WooCommerce tem
 
 The easiest way:
 In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
-Search for “Hook Me Up – Additional Content for WooCommerce”
+Search for “HookMeUp – Additional Content for WooCommerce”
 Click the “Install” button.
 
 == Frequently Asked Questions ==
 
 = Will WooCommerce work with my theme? =
-Yes; Hook Me Up should work with any WooCommerce compatible theme. Please not that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
+Yes; HookMeUp should work with any WooCommerce compatible theme. Please not that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
 
 = Where can I report bugs or contribute to the project? =
-Use the [Hook Me Up GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
+Use the [HookMeUp GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
 
 = What WooCommerce Hooks are included? =
 
-Hook Me Up doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations. 
+HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations. 
 
 **Archive Page**
 
