@@ -102,6 +102,9 @@ Hook Me Up doesn't include the full list of [WooCommerce Hooks](https://docs.woo
 
 - Before Customer Login Form `woocommerce_before_customer_login_form`
 
+== Screenshots ==
+
+1. Customizer Preview.
 
 
 == Changelog ==
