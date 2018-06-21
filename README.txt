@@ -1,5 +1,5 @@
 === Hook Me Up – Additional Content for WooCommerce ===
-Contributors: vanesareinerth, traians
+Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
 Tested up to: 4.9.6
@@ -16,13 +16,42 @@ Hook Me Up helps non-developers insert additional content in WooCommerce templat
 
 Hook Me Up helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
 
-The plugin was built to answer common questions such as: How to add a banner above the shop page?
+The plugin was built to answer common questions such as: 
+How to add a banner above the shop page? 
 
 [youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
 
-List of WooCommerce Hooks that can be customized using Hook Me Up:
+Hook Me Up will help you add additional content in the following WooCommerce templates:
 
-= Archive Page =
+- Shop & Categories (Archives)
+- Single Product
+- Cart
+- Checkout 
+- My Account / Login
+
+[Read more](https://wordpress.org/plugins/hookmeup/#What WooCommerce Hooks are included%3F) about the exact hooks/locations available for your custom content.
+
+
+== Installation ==
+
+The easiest way:
+In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
+Search for “Hook Me Up – Additional Content for WooCommerce”
+Click the “Install” button.
+
+== Frequently Asked Questions ==
+
+= Will WooCommerce work with my theme? =
+Yes; Hook Me Up should work with any WooCommerce compatible theme. Please not that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
+
+= Where can I report bugs or contribute to the project? =
+Use the [Hook Me Up GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
+
+= What WooCommerce Hooks are included? =
+
+Hook Me Up doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations. 
+
+**Archive Page**
 
 - Before Main Content `woocommerce_before_main_content`
 - Before Shop Loop `woocommerce_before_shop_loop`
@@ -33,7 +62,7 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 - After Shop Loop `woocommerce_after_shop_loop`
 - After Main Content `woocommerce_after_main_content`
 
-= Single Product Page =
+**Single Product Page**
 
 - Before Single Product `woocommerce_before_single_product`
 - Single Product Summary `woocommerce_single_product_summary`
@@ -42,7 +71,7 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 - Share `woocommerce_share`
 - After Single Product `woocommerce_after_single_product`
 
-= Cart Page =
+**Cart Page**
 
 - Before Cart `woocommerce_before_cart`
 - Before Cart Table `woocommerce_before_cart_table`
@@ -55,7 +84,7 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 - After Cart `woocommerce_after_cart`
 - Cart Is Empty `woocommerce_cart_is_empty`
 
-= Checkout Page =
+**Checkout Page**
 
 - Before Checkout Form `woocommerce_before_checkout_form`
 - Before Checkout Billing Form `woocommerce_before_checkout_billing_form`
@@ -69,26 +98,11 @@ List of WooCommerce Hooks that can be customized using Hook Me Up:
 - Review Order - After Payment `woocommerce_review_order_after_payment`
 - After Checkout Form `woocommerce_after_checkout_form`
 
-= Account Page =
+**My Account / Login Page**
 
 - Before Customer Login Form `woocommerce_before_customer_login_form`
 
-== Installation ==
 
-The easiest way:
-Go to the Plugins Menu in WordPress
-Search for “Hook Me Up”
-Click “Install”
-
-Or this easy way:
-Download the plugin archive using the above button
-Go to the Plugins Menu in WordPress and click "Add New"
-Click on "Upload Plugin" and upload your archive 
-Click "Install Now"
-
-The not so easy way:
-Upload the hookmeup folder to the /wp-content/plugins/directory
-Activate the plugin through the ‘Plugins’ menu in WordPress
 
 == Changelog ==
 
