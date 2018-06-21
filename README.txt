@@ -109,5 +109,8 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
+= 1.0.1 =
+Set customizer Hooks Preview option default to false
+
 = 1.0 =
 Initial Version
