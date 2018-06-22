@@ -31,7 +31,7 @@ class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 		parent::__construct( $manager, $id, $args );
 
 		if ( ! empty( $args['slug'] ) ) {
-			$this->slug = wp_json_encode( $args['slug'] );
+			$this->slug = $args['slug'];
 		}
 	}
 
