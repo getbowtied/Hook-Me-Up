@@ -113,7 +113,7 @@ function hmu_sections( $wp_customize ) {
 }
 
 // Generate customizer Go-To-Page URL
-add_action( 'wp_ajax_get_customize_section_url', 'hmu_get_customize_section_url' );
+add_action( 'wp_ajax_hmu_get_customize_section_url', 'hmu_get_customize_section_url' );
 function hmu_get_customize_section_url() {
 
 	switch($_POST['page']) {
