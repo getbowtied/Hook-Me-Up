@@ -8,6 +8,11 @@
         $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
         $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
 
+        $( '.customize-control-collapsible' ).on('click', '.tooltip-wrapper', function(e) {
+            e.stopPropagation();
+            $(this).find('.tooltip-content').toggleClass('hidden');
+        } );
+
         // Expand collapsible controls on click.
         $( '.customize-control-collapsible' ).click( function() {
 

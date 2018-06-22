@@ -11,30 +11,67 @@
 {
 	overflow-y: hidden !important;
 
-	// .customize-control-kirki-custom
-	// {
-	// 	position: relative;
+	.customize-control-editor
+	{
+		textarea
+		{
+			width: 100%;
+		}
+	}
 
-	// 	.tooltip-wrapper
-	// 	{
-	// 		position: absolute;
-	// 	    z-index: 1;
-	// 	    right: 27px;
-	// 	    color: #8b8f94;
-	// 	    top: 12px;
+	.customize-control-toggle
+	{
+		margin-bottom: 25px;
 
-	// 	    .tooltip-content
-	// 	    {
- //    			font-size: 11px;
- //    			word-wrap: break-word;
+		.toggle-content
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
 
- //    			&:after
- //    			{
- //    				z-index: 1000;
- //    			}
-	// 	    }
-	// 	}
-	// }
+			.customize-control-title
+			{
+				flex: 2 0 0;
+				vertical-align: middle;
+			}
+		}
+
+		.toggle-description
+		{
+			width: 55%;
+
+			i
+			{
+				font-size: 11px;
+				color: #6b6b6b;
+			}
+		}
+	}
+
+	.customize-control-collapsible
+	{
+		position: relative;
+
+		.tooltip-wrapper
+		{
+			position: absolute;
+		    z-index: 1;
+		    right: 40px;
+		    color: #8b8f94;
+		    top: 11px;
+
+		    .tooltip-content
+		    {
+    			font-size: 11px;
+    			word-wrap: break-word;
+
+    			&:after
+    			{
+    				z-index: 1000;
+    			}
+		    }
+		}
+	}
 
 	.wp-editor-tools
 	{
@@ -91,9 +128,8 @@
 		position: relative;
 		margin: 0 -12px;
 		border-top: 1px solid rgba(0, 0, 0, 0.05);
-		z-index: 0;
 
-		div.enabled
+		div.enabled-hook.enabled
 		{
 			width: 15px;
 			height: 15px;

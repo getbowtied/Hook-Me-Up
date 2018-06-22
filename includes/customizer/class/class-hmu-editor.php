@@ -41,7 +41,6 @@ class WP_Customize_Editor_Control extends WP_Customize_Control {
 	public function render_content() {
 		?>
 		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 			<textarea class="customize-editor-control" id="customize-editor-control-<?php echo intval( $this->instance_number ); ?>" <?php $this->input_attrs(); ?> <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
 		</label>
 		<?php

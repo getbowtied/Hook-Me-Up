@@ -42,7 +42,18 @@ class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 		?>
 		<div class="customizer-control-collapsible">
 			<span class="<?php echo esc_html( $this->slug ); ?>"></span>
-			<h3><div></div><?php echo esc_html( $this->label ); ?></h3>
+
+			<div class="tooltip-wrapper">
+				<span class="tooltip-trigger" data-setting="<?php echo esc_html( $this->slug ); ?>_collapsible">
+					<span class="dashicons dashicons-editor-help"></span>
+				</span>
+				<div class="tooltip-content hidden" data-setting="<?php echo esc_html( $this->slug ); ?>_collapsible"><?php echo esc_html( $this->slug ); ?></div>
+			</div>
+
+			<h3>
+				<div class="enabled-hook"></div>
+				<?php echo esc_html( $this->label ); ?>
+			</h3>
 		</div>
 		<?php
 	}

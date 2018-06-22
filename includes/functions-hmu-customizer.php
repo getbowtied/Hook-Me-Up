@@ -74,11 +74,10 @@ function hookmeup_sections( $wp_customize ) {
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Toggle_Control( $wp_customize, $section . '_preview', array(
-			'type'        => 'light',
-			'label'       => esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
-			'section'     => $section,
-			//'tooltip'     => esc_attr__( 'They will only be visible while logged in as admin.', 'hookmeup' ),
-			'priority'    => 10,
+			'label'       	=> esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
+			'section'     	=> $section,
+			'description'	=> esc_attr__( 'They will only be visible while logged in as admin.', 'hookmeup' ),
+			'priority'    	=> 10,
 		) ) );
 
 	    foreach( $section_hooks as $hook ) {
@@ -102,11 +101,11 @@ function hookmeup_sections( $wp_customize ) {
 
 	     	$wp_customize->add_control( new WP_Customize_Editor_Control( $wp_customize, $hook['slug'] . '_editor', array(
 				'section' 			=> $hook['section'],
-				'label'				=> $hook['label'],
 				'priority'			=> 10,
 				'editor_settings' 	=> array(
-					'quicktags' => true,
-					'tinymce'   => true,
+					'quicktags' 	=> true,
+					'tinymce'   	=> true,
+					'mediaButtons' 	=> true
 				),
 			) ) );
 		}
