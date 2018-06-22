@@ -64,7 +64,7 @@ class HMU_Public {
 
 		        if( isset($option_content) && $option_content != "" ) {
 
-			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . $option_content . '</div>';
+			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . do_shortcode($option_content) . '</div>';
 
 			    } else if( $option_section && is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
 
