@@ -109,6 +109,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 = 1.1 =
 - Rebuild Customizer using WordPress Customizer API
+- Support for shortcodes
 
 = 1.0.1 =
 - Set customizer Hooks Preview option default to false
