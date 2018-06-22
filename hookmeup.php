@@ -83,7 +83,6 @@ if ( ! class_exists( 'HMU' ) ) :
 				$this->includes();
 				$this->loader = new HMU_Loader();
 				$this->set_locale();
-				$this->define_admin_hooks();
 				$this->define_public_hooks();  
 		    } else {
 		    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
@@ -105,9 +104,12 @@ if ( ! class_exists( 'HMU' ) ) :
 		 */
 		public function includes() {
 
+			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-editor.php' );
+			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
+			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
+			
 			require_once( HMU_DIR . 'includes/class-hmu-loader.php' );
 			require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
-			require_once( HMU_DIR . 'admin/class-hmu-admin.php' );
 			require_once( HMU_DIR . 'public/class-hmu-public.php' );
 			require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
 			require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
@@ -119,18 +121,6 @@ if ( ! class_exists( 'HMU' ) ) :
 		private function set_locale() {
 			$plugin_i18n = new HMU_i18n();
 			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-		}
-
-		/**
-		 * Register all of the hooks related to the admin area functionality of the plugin.
-		 */
-		private function define_admin_hooks() {
-
-			$plugin_admin = new HMU_Admin( $this->get_plugin_name(), $this->get_version() );
-
-			add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
-			add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
-			add_action( 'wp_ajax_get_customize_section_url', array( $plugin_admin, 'get_customize_section_url' ) );
 		}
 
 		/**
