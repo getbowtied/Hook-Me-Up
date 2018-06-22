@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
 Tested up to: 4.9.6
-Stable tag: 1.0.1
+Stable tag: 1.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -106,6 +106,9 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 
 == Changelog ==
+
+= 1.1 =
+- Rebuild Customizer using WordPress Customizer API
 
 = 1.0.1 =
 - Set customizer Hooks Preview option default to false
