@@ -9,15 +9,15 @@
  * @author     GetBowtied 
  */
 
-add_action( 'admin_enqueue_scripts', 'enqueue_customizer_styles' );
-function enqueue_customizer_styles() {
+add_action( 'admin_enqueue_scripts', 'hmu_enqueue_customizer_styles' );
+function hmu_enqueue_customizer_styles() {
 	wp_enqueue_script( 'hmu-customizer-scripts', plugins_url( 'includes/customizer/js/hmu-go-to-page.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0', false );
 	wp_enqueue_style( 'hmu-customizer-styles', plugins_url( 'includes/customizer/css/customizer.css', dirname( __FILE__ ) ), array(), '1.0', false );
 }
 
 // Customizer
-add_action( 'customize_register', 'hookmeup_sections' );
-function hookmeup_sections( $wp_customize ) {
+add_action( 'customize_register', 'hmu_sections' );
+function hmu_sections( $wp_customize ) {
 
 	// Woocommerce Hooks
 	$wp_customize->add_panel( 'hookmeup_section' , array(
