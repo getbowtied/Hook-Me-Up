@@ -14,12 +14,12 @@ HookMeUp helps non-developers insert additional content in WooCommerce templates
 
 == Description ==
 
-HookMeUp helps online store owners customize WooCommerce templates without any coding knowledge. Insert custom content in key areas of your store via **Appearance** > **Customize**. 
+**HookMeUp** helps online store owners to customize WooCommerce templates without any coding knowledge. Insert custom content or even shortcodes in key areas of your store via **Appearance** > **Customize**. 
 
 The plugin was built to answer common questions such as: 
 How to add a banner above the shop page? 
 
-[youtube https://www.youtube.com/watch?v=rdPGHUEW8zA]
+[youtube https://www.youtube.com/watch?v=Y8_u5AuX8_g]
 
 HookMeUp will help you add additional content in the following WooCommerce templates:
 
@@ -33,19 +33,19 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 == Installation ==
 
 The easiest way:
-In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
-Search for “HookMeUp”
-Click the “Install” button.
+* In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
+* Search for “HookMeUp”
+* Click the “Install” button.
 
 == Frequently Asked Questions ==
 
-= Will WooCommerce work with my theme? =
-Yes; HookMeUp should work with any WooCommerce compatible theme. Please not that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
+= Will HookMeUp work with my theme? =
+Yes; HookMeUp should work with any WooCommerce compatible theme. Please note that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
 
 = Where can I report bugs or contribute to the project? =
 Use the [HookMeUp GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
 
-= What WooCommerce Hooks are included? =
+= Which WooCommerce templates can I customize? =
 
 HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations. 
 
