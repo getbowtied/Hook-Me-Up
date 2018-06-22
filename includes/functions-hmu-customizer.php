@@ -11,8 +11,8 @@
 
 add_action( 'admin_enqueue_scripts', 'hmu_enqueue_customizer_styles' );
 function hmu_enqueue_customizer_styles() {
-	wp_enqueue_script( 'hmu-customizer-scripts', plugins_url( 'includes/customizer/js/hmu-go-to-page.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0', false );
-	wp_enqueue_style( 'hmu-customizer-styles', plugins_url( 'includes/customizer/css/customizer.css', dirname( __FILE__ ) ), array(), '1.0', false );
+	wp_enqueue_script( 'hmu-customizer-scripts', plugins_url( 'includes/customizer/js/hmu-go-to-page.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.1', true );
+	wp_enqueue_style( 'hmu-customizer-styles', plugins_url( 'includes/customizer/css/customizer.css', dirname( __FILE__ ) ), array(), '1.1', false );
 }
 
 // Customizer
