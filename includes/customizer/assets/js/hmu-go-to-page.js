@@ -37,7 +37,7 @@
 	    	section.expanded.bind( function( isExpanded ) {
 	            if ( isExpanded ) {
 	            	var data = {
-	            		'action' : 'hmu_get_customize_section_url',
+	            		'action' : 'get_hmu_customize_section_url',
 	            		'page'	 : page
 	            	};
 
