@@ -33,19 +33,19 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-if ( ! class_exists( 'HMU' ) ) :
+if ( ! class_exists( 'HookMeUp' ) ) :
 
 	/**
 	 * HookMeUp class.
 	 *
-	 * @class HMU
-	 * @version 1.0.0
+	 * @since 1.0.0.0
 	 */
-	final class HMU {
+	class HookMeUp {
 
 		/**
 		 * Maintaining and registering all hooks that power the plugin.
 		 *
+		 * @since 1.0.0
 		 * @access protected
 		 */
 		protected $loader;
@@ -53,6 +53,7 @@ if ( ! class_exists( 'HMU' ) ) :
 		/**
 		 * The unique identifier of this plugin.
 		 *
+		 * @since 1.0.0
 		 * @var string
 		 */
 		protected $plugin_name = "hookmeup";
@@ -60,6 +61,7 @@ if ( ! class_exists( 'HMU' ) ) :
 		/**
 		 * The current version of the plugin.
 		 *
+		 * @since 1.0.0
 		 * @var string
 		 */
 		protected $version = '1.0.0';
@@ -67,12 +69,15 @@ if ( ! class_exists( 'HMU' ) ) :
 		/**
 		 * The single instance of the class.
 		 *
-		 * @var HMU
+		 * @since 1.0.0
+		 * @var HookMeUp
 		 */
 		protected static $_instance = null;
 
 		/**
-		 * HMU constructor
+		 * HookMeUp constructor
+		 *
+		 * @since 1.0.0
 		 */
 		public function __construct() {
 
@@ -81,16 +86,22 @@ if ( ! class_exists( 'HMU' ) ) :
 			 */
 			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 				$this->includes();
-				$this->loader = new HMU_Loader();
+				$this->add_hooks();
+				$this->loader = new HookMeUp_Loader();
 				$this->set_locale();
 				$this->define_public_hooks();  
+				$this->define_customizer();
 		    } else {
 		    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
 		    }
 		}
 
 		/**
-		 * Ensures only one instance of HMU is loaded or can be loaded.
+		 * Ensures only one instance of HookMeUp is loaded or can be loaded.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return HookMeUp
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -101,40 +112,95 @@ if ( ! class_exists( 'HMU' ) ) :
 
 		/**
 		 * Include required core files used in admin and on the frontend.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
-		public function includes() {
+		protected function includes() {
 
-			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-editor.php' );
-			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
-			require_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
+			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-editor.php' );
+			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
+			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
 			
-			require_once( HMU_DIR . 'includes/class-hmu-loader.php' );
-			require_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
-			require_once( HMU_DIR . 'public/class-hmu-public.php' );
-			require_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
-			require_once( HMU_DIR . 'includes/functions-hmu-customizer.php' );
+			include_once( HMU_DIR . 'includes/class-hmu-loader.php' );
+			include_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
+			include_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
+			include_once( HMU_DIR . 'includes/class-hmu-customizer.php' );
+
+			include_once( HMU_DIR . 'public/class-hmu-public.php' );
+		}
+
+		/**
+		 * Add hooks.
+		 *
+		 * @since 1.2
+		 *
+		 * @return void
+		 */
+		protected function add_hooks() {
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_customizer_styles' ) );
+		}
+
+		public function enqueue_customizer_styles() {
+			wp_enqueue_script( 'hmu-customizer-scripts', 
+				plugins_url( 'includes/customizer/assets/js/hmu-go-to-page.js', __FILE__ ),
+				array( 'jquery' ),
+				$this->get_version(),
+				true
+			);
+
+			wp_enqueue_style( 'hmu-customizer-styles', 
+				plugins_url( 'includes/customizer/assets/css/customizer.css', __FILE__ ), 
+				array(), 
+				$this->get_version(),
+				false
+			);
 		}
 
 		/**
 		 * Define the locale for this plugin for internationalization.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		private function set_locale() {
-			$plugin_i18n = new HMU_i18n();
+			$plugin_i18n = new HookMeUp_i18n();
 			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 		}
 
 		/**
 		 * Register all of the hooks related to the public-facing functionality of the plugin.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		private function define_public_hooks() {
 
-			$plugin_public = new HMU_Public( $this->get_plugin_name(), $this->get_version() );
-
+			$plugin_public = new HookMeUp_Public( $this->get_plugin_name(), $this->get_version() );
 			add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		}
 
 		/**
+		 * Register all of the hooks related to the customizer.
+		 *
+		 * @since 1.2
+		 *
+		 * @return void
+		 */
+		private function define_customizer() {
+
+			$plugin_customizer = new HookMeUp_Customizer();
+		}
+
+		/**
 		 * Display warning when WooCommerce not installed or activated
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		public function woocommerce_not_installed_warning() {
 		?>
@@ -146,6 +212,10 @@ if ( ! class_exists( 'HMU' ) ) :
 
 		/**
 		 * Run the loader to execute all of the hooks with WordPress.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		public function run() {
 			$this->loader->run();
@@ -177,5 +247,5 @@ if ( ! class_exists( 'HMU' ) ) :
 
 endif;
 
-$hmu = new HMU;
+$hookmeup = new HookMeUp;
 
