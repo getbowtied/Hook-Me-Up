@@ -67,7 +67,7 @@ class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 			'customize-control-collapsible',
 			plugins_url( 'assets/js/hmu-collapsible.js', dirname( __FILE__ ) ),
 			array(),
-			'1.0.0',
+			'1.2',
 			true
 		);
 	}

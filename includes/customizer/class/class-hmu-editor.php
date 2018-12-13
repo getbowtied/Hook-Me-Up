@@ -57,7 +57,7 @@ class WP_Customize_Editor_Control extends WP_Customize_Control {
 			array(
 				'editor',
 			),
-			'1.0.0',
+			'1.2',
 			true
 		);
 	}
