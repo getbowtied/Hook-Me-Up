@@ -143,6 +143,9 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		}
 
 		public function enqueue_customizer_styles() {
+
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 			wp_enqueue_script( 'hmu-customizer-scripts', 
 				plugins_url( 'includes/customizer/assets/js/hmu-go-to-page.js', __FILE__ ),
 				array( 'jquery' ),
@@ -151,7 +154,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			);
 
 			wp_enqueue_style( 'hmu-customizer-styles', 
-				plugins_url( 'includes/customizer/assets/css/customizer.css', __FILE__ ), 
+				plugins_url( "includes/customizer/assets/css/customizer{$suffix}.css", __FILE__ ), 
 				array(), 
 				$this->get_version(),
 				false
@@ -167,7 +170,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		 */
 		private function set_locale() {
 			$plugin_i18n = new HookMeUp_i18n();
-			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'hookmeup' );
 		}
 
 		/**

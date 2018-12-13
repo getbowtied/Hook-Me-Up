@@ -8,7 +8,8 @@
 #sub-accordion-section-hookmeup_cart_section,
 #sub-accordion-section-hookmeup_checkout_section,
 #sub-accordion-section-hookmeup_account_section,
-#sub-accordion-section-hookmeup_minicart_section
+#sub-accordion-section-hookmeup_cart_widget_section,
+#sub-accordion-section-hookmeup_thankyou_section
 {
 	overflow-y: hidden !important;
 
@@ -90,13 +91,11 @@
 	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area,
 	.mce-tinymce:not(.mce-fullscreen) .mce-edit-area iframe
 	{
-		@media all and (min-height: 600px) and (max-height: 800px)
-		{
+		@media all and (min-height: 600px) and (max-height: 800px) {
 			height: 100px !important;
 		}
 
-		@media all and (min-height: 800px)
-		{
+		@media all and (min-height: 800px) {
 			height: 250px !important;
 		}
 	}
