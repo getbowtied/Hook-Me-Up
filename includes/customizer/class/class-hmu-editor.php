@@ -53,7 +53,7 @@ class WP_Customize_Editor_Control extends WP_Customize_Control {
 		wp_enqueue_editor();
 		wp_enqueue_script(
 			'customize-editor-control',
-			plugins_url( 'js/hmu-editor.js', dirname( __FILE__ ) ),
+			plugins_url( 'assets/js/hmu-editor.js', dirname( __FILE__ ) ),
 			array(
 				'editor',
 			),

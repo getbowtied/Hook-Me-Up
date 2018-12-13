@@ -9,7 +9,7 @@
  * @subpackage HMU/includes
  * @author     GetBowtied
  */
-class HMU_Loader {
+class HookMeUp_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

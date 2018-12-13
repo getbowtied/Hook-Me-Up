@@ -5,7 +5,7 @@
  *
  * @link       getbowtied.com
  * @since      1.0.0
- * @package    Hookmeup
+ * @package    HMU
  */
 
 // If uninstall not called from WordPress, then exit.

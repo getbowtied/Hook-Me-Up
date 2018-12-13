@@ -9,7 +9,7 @@
  * @subpackage HMU/includes
  * @author     GetBowtied
  */
-class HMU_i18n {
+class HookMeUp_i18n {
 
 
 	/**
