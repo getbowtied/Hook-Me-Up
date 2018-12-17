@@ -34,18 +34,20 @@
 			.customize-control-title
 			{
 				flex: 2 0 0;
+				margin-bottom: 0;
+				padding-top: 2px;
 				vertical-align: middle;
 			}
 		}
 
 		.toggle-description
 		{
-			width: 55%;
+			margin-top: 10px;
 
 			i
 			{
-				font-size: 11px;
 				color: #6b6b6b;
+				font-size: 11px;
 			}
 		}
 	}
@@ -56,20 +58,42 @@
 
 		.tooltip-wrapper
 		{
+			color: #8b8f94;
+			cursor: pointer;
 			position: absolute;
-		    z-index: 1;
 		    right: 40px;
-		    color: #8b8f94;
-		    top: 11px;
+		    top: 15px;
+		    z-index: 1;
+
+		    .tooltip-trigger {
+		    	span.dashicons {
+	    		    position: absolute;
+   					right: 0;
+		    	}
+		    }
 
 		    .tooltip-content
 		    {
+		    	background: #8b8f94;
+		    	border-radius: 5px;
+		    	color: #fff;
+		    	cursor: pointer;
     			font-size: 11px;
-    			word-wrap: break-word;
+			    padding: 5px 10px;
+		        position: absolute;
+			    right: 26px;
+			    top: -4px;
+			    word-wrap: break-word;
 
     			&:after
     			{
-    				z-index: 1000;
+				    content: "\f139";
+				    color: #8b8f94;
+				    font-size: 20px;
+				    font-family: dashicons;
+				    position: absolute;
+				    right: -11px;
+				    top: 5px;
     			}
 		    }
 		}
@@ -109,62 +133,80 @@
 	.customize-control-hidden .wp-editor-tools
 	{
 	  opacity: 0;
-	  visibility: hidden;
 	  max-height: 0;
 	  transition: all 0.3s ease-in-out;
+	  visibility: hidden;
 	}
 
 	.customize-control:not(.customize-control-hidden),
 	.customize-control:not(.customize-control-hidden) .wp-editor-tools
 	{
 		opacity: 1;
-	  	visibility: visible;
 	  	max-height: 500px;
 	  	transition: all 0.3s ease-in-out;
+	  	visibility: visible;
 	}
 
 	.customizer-control-collapsible
 	{
-		position: relative;
-		margin: 0 -12px;
 		border-top: 1px solid rgba(0, 0, 0, 0.05);
+		margin: 0 -12px;
+		position: relative;
 
-		div.enabled-hook.enabled
+		div.enabled-hook
 		{
-			width: 15px;
-			height: 15px;
-			float: left;
-			margin-right: 12px;
-			background-color: #73d673;
-			border-radius: 50%;
-			margin-top: 3px;	
+		    display: inline-block;
+    		margin-right: 5px;
+    		vertical-align: middle;
+
+    		svg
+    		{
+    			.svg-path
+    			{
+				    fill: #8b8f94;
+    			}
+
+    			.svg-circle
+    			{
+    				fill: none;
+    			}
+    		}
+
+    		&.enabled
+    		{
+    			.svg-circle
+    			{
+    				fill: #59ab59;
+    			}
+    		}
 		}
 
 		h3
 		{
-			display: block;
-			position: relative;
-			margin: 0;
-			font-size: 13px !important;
-			padding: 10px 14px;
-			color: #555;
 			background: white;
+			color: #555;
+			cursor: pointer;
+			display: block;
+			font-size: 13px !important;
 			line-height: 20px;
+			margin: 0;
+			padding: 12px 14px 8px 12px;
+			position: relative;
 
 			&:after
 			{
-				position: absolute;
-				top: 12px;
-				right: 14px;
+				content: "\f343";
 				color: #a0a5aa;
 				font: 400 20px/1 dashicons;
-				content: "\f343";
+				position: absolute;
+				right: 14px;
+				top: 12px;
 			}
 
 			&:hover
 			{
+				background: #f5f5f5;
 				color: #0073aa;
-	  			background: #f5f5f5;
 
 	  			&:after
 	  			{
@@ -182,64 +224,61 @@
 		.customizer-control-collapsible h3:after
 		{
 			content: "\f347";
+			top: 15px;
 		}
 	}
 }
 
-.disabled-control-title {
+.disabled-control-title
+{
   color: #a0a5aa;
 }
 
-input[type=checkbox].tgl {
+input[type=checkbox].tgl
+{
   display: none;
 }
 
-input[type=checkbox].tgl + .tgl-btn {
+input[type=checkbox].tgl + .tgl-btn
+{
   background: #a0a5aa;
-  outline: 0;
-  display: block;
   border-radius: 2em;
-  padding: 2px;
-  transition: all .4s ease;
-  width: 4em;
-  height: 2em;
-  position: relative;
   cursor: pointer;
+  display: block;
+  height: 1.8em;
+  outline: 0;
+  padding: 2px;
+  position: relative;
+  transition: all .4s ease;
+  width: 3.6em;
 }
 
-input[type=checkbox].tgl:checked + .tgl-btn {
+input[type=checkbox].tgl:checked + .tgl-btn
+{
   background: #0085ba;
 }
 
-input[type=checkbox].tgl:checked + .tgl-btn:after {
+input[type=checkbox].tgl:checked + .tgl-btn:after
+{
   left: 50%;
 }
 
-input[type=checkbox].tgl + .tgl-btn:after {
-  left: 0;
-  position: relative;
-  display: block;
-  content: "";
-  background: #f7f7f7;
-  width: 50%;
-  height: 100%;
-  border-radius: 50%;
-  background: #fff;
-  transition: all .2s ease;
-}
-
-input[type=checkbox].tgl + .tgl-btn:before {
-  display: none;
-}
-
-input[type=checkbox].tgl, input[type=checkbox].tgl:after,
-input[type=checkbox].tgl:before,
-input[type=checkbox].tgl *,
-input[type=checkbox].tgl *:after,
-input[type=checkbox].tgl *:before,
-input[type=checkbox].tgl + .tgl-btn
+input[type=checkbox].tgl + .tgl-btn:after
 {
-  box-sizing: border-box;
+	background: #fff;
+	border-radius: 50%;
+	content: "";
+	display: block;
+	height: 100%;
+	left: 0;
+	position: relative;
+	width: 50%;
+	transition: all .2s ease;
+}
+
+input[type=checkbox].tgl + .tgl-btn:before
+{
+  display: none;
 }
 
 input[type=checkbox].tgl::selection, 

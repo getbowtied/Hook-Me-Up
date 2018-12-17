@@ -51,7 +51,12 @@ class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 			</div>
 
 			<h3>
-				<div class="enabled-hook"></div>
+				<div class="enabled-hook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+						<path class="svg-path" d="M12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6m0-2c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z"/>
+						<circle class="svg-circle" cx="12" cy="12" r="8"/>
+					</svg>
+				</div>
 				<?php echo esc_html( $this->label ); ?>
 			</h3>
 		</div>

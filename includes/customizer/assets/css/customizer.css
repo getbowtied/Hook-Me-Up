@@ -52,6 +52,8 @@
         -webkit-box-flex: 2;
         -ms-flex: 2 0 0px;
         flex: 2 0 0;
+        margin-bottom: 0;
+        padding-top: 2px;
         vertical-align: middle; }
     #sub-accordion-section-hookmeup_shop_section .customize-control-toggle .toggle-description,
     #sub-accordion-section-hookmeup_product_section .customize-control-toggle .toggle-description,
@@ -60,7 +62,7 @@
     #sub-accordion-section-hookmeup_account_section .customize-control-toggle .toggle-description,
     #sub-accordion-section-hookmeup_cart_widget_section .customize-control-toggle .toggle-description,
     #sub-accordion-section-hookmeup_thankyou_section .customize-control-toggle .toggle-description {
-      width: 55%; }
+      margin-top: 10px; }
       #sub-accordion-section-hookmeup_shop_section .customize-control-toggle .toggle-description i,
       #sub-accordion-section-hookmeup_product_section .customize-control-toggle .toggle-description i,
       #sub-accordion-section-hookmeup_cart_section .customize-control-toggle .toggle-description i,
@@ -68,8 +70,8 @@
       #sub-accordion-section-hookmeup_account_section .customize-control-toggle .toggle-description i,
       #sub-accordion-section-hookmeup_cart_widget_section .customize-control-toggle .toggle-description i,
       #sub-accordion-section-hookmeup_thankyou_section .customize-control-toggle .toggle-description i {
-        font-size: 11px;
-        color: #6b6b6b; }
+        color: #6b6b6b;
+        font-size: 11px; }
   #sub-accordion-section-hookmeup_shop_section .customize-control-collapsible,
   #sub-accordion-section-hookmeup_product_section .customize-control-collapsible,
   #sub-accordion-section-hookmeup_cart_section .customize-control-collapsible,
@@ -85,11 +87,21 @@
     #sub-accordion-section-hookmeup_account_section .customize-control-collapsible .tooltip-wrapper,
     #sub-accordion-section-hookmeup_cart_widget_section .customize-control-collapsible .tooltip-wrapper,
     #sub-accordion-section-hookmeup_thankyou_section .customize-control-collapsible .tooltip-wrapper {
-      position: absolute;
-      z-index: 1;
-      right: 40px;
       color: #8b8f94;
-      top: 11px; }
+      cursor: pointer;
+      position: absolute;
+      right: 40px;
+      top: 15px;
+      z-index: 1; }
+      #sub-accordion-section-hookmeup_shop_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_product_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_cart_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_checkout_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_account_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_cart_widget_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons,
+      #sub-accordion-section-hookmeup_thankyou_section .customize-control-collapsible .tooltip-wrapper .tooltip-trigger span.dashicons {
+        position: absolute;
+        right: 0; }
       #sub-accordion-section-hookmeup_shop_section .customize-control-collapsible .tooltip-wrapper .tooltip-content,
       #sub-accordion-section-hookmeup_product_section .customize-control-collapsible .tooltip-wrapper .tooltip-content,
       #sub-accordion-section-hookmeup_cart_section .customize-control-collapsible .tooltip-wrapper .tooltip-content,
@@ -97,7 +109,15 @@
       #sub-accordion-section-hookmeup_account_section .customize-control-collapsible .tooltip-wrapper .tooltip-content,
       #sub-accordion-section-hookmeup_cart_widget_section .customize-control-collapsible .tooltip-wrapper .tooltip-content,
       #sub-accordion-section-hookmeup_thankyou_section .customize-control-collapsible .tooltip-wrapper .tooltip-content {
+        background: #8b8f94;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
         font-size: 11px;
+        padding: 5px 10px;
+        position: absolute;
+        right: 26px;
+        top: -4px;
         word-wrap: break-word; }
         #sub-accordion-section-hookmeup_shop_section .customize-control-collapsible .tooltip-wrapper .tooltip-content:after,
         #sub-accordion-section-hookmeup_product_section .customize-control-collapsible .tooltip-wrapper .tooltip-content:after,
@@ -106,7 +126,13 @@
         #sub-accordion-section-hookmeup_account_section .customize-control-collapsible .tooltip-wrapper .tooltip-content:after,
         #sub-accordion-section-hookmeup_cart_widget_section .customize-control-collapsible .tooltip-wrapper .tooltip-content:after,
         #sub-accordion-section-hookmeup_thankyou_section .customize-control-collapsible .tooltip-wrapper .tooltip-content:after {
-          z-index: 1000; }
+          content: "\f139";
+          color: #8b8f94;
+          font-size: 20px;
+          font-family: dashicons;
+          position: absolute;
+          right: -11px;
+          top: 5px; }
   #sub-accordion-section-hookmeup_shop_section .wp-editor-tools,
   #sub-accordion-section-hookmeup_product_section .wp-editor-tools,
   #sub-accordion-section-hookmeup_cart_section .wp-editor-tools,
@@ -199,11 +225,11 @@
   #sub-accordion-section-hookmeup_thankyou_section .customize-control-hidden,
   #sub-accordion-section-hookmeup_thankyou_section .customize-control-hidden .wp-editor-tools {
     opacity: 0;
-    visibility: hidden;
     max-height: 0;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    visibility: hidden; }
   #sub-accordion-section-hookmeup_shop_section .customize-control:not(.customize-control-hidden),
   #sub-accordion-section-hookmeup_shop_section .customize-control:not(.customize-control-hidden) .wp-editor-tools,
   #sub-accordion-section-hookmeup_product_section .customize-control:not(.customize-control-hidden),
@@ -219,11 +245,11 @@
   #sub-accordion-section-hookmeup_thankyou_section .customize-control:not(.customize-control-hidden),
   #sub-accordion-section-hookmeup_thankyou_section .customize-control:not(.customize-control-hidden) .wp-editor-tools {
     opacity: 1;
-    visibility: visible;
     max-height: 500px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    visibility: visible; }
   #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible,
   #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible,
   #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible,
@@ -231,23 +257,43 @@
   #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible,
   #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible,
   #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible {
-    position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     margin: 0 -12px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05); }
-    #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_checkout_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible div.enabled-hook.enabled,
-    #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible div.enabled-hook.enabled {
-      width: 15px;
-      height: 15px;
-      float: left;
-      margin-right: 12px;
-      background-color: #73d673;
-      border-radius: 50%;
-      margin-top: 3px; }
+    position: relative; }
+    #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_checkout_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible div.enabled-hook,
+    #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible div.enabled-hook {
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle; }
+      #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_checkout_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible div.enabled-hook svg .svg-path,
+      #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible div.enabled-hook svg .svg-path {
+        fill: #8b8f94; }
+      #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_checkout_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible div.enabled-hook svg .svg-circle,
+      #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible div.enabled-hook svg .svg-circle {
+        fill: none; }
+      #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_checkout_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle,
+      #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible div.enabled-hook.enabled .svg-circle {
+        fill: #59ab59; }
     #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible h3,
     #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible h3,
     #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible h3,
@@ -255,14 +301,15 @@
     #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible h3,
     #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible h3,
     #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible h3 {
-      display: block;
-      position: relative;
-      margin: 0;
-      font-size: 13px !important;
-      padding: 10px 14px;
-      color: #555;
       background: white;
-      line-height: 20px; }
+      color: #555;
+      cursor: pointer;
+      display: block;
+      font-size: 13px !important;
+      line-height: 20px;
+      margin: 0;
+      padding: 12px 14px 8px 12px;
+      position: relative; }
       #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible h3:after,
       #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible h3:after,
       #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible h3:after,
@@ -270,12 +317,12 @@
       #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible h3:after,
       #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible h3:after,
       #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible h3:after {
-        position: absolute;
-        top: 12px;
-        right: 14px;
+        content: "\f343";
         color: #a0a5aa;
         font: 400 20px/1 dashicons;
-        content: "\f343"; }
+        position: absolute;
+        right: 14px;
+        top: 12px; }
       #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible h3:hover,
       #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible h3:hover,
       #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible h3:hover,
@@ -283,8 +330,8 @@
       #sub-accordion-section-hookmeup_account_section .customizer-control-collapsible h3:hover,
       #sub-accordion-section-hookmeup_cart_widget_section .customizer-control-collapsible h3:hover,
       #sub-accordion-section-hookmeup_thankyou_section .customizer-control-collapsible h3:hover {
-        color: #0073aa;
-        background: #f5f5f5; }
+        background: #f5f5f5;
+        color: #0073aa; }
         #sub-accordion-section-hookmeup_shop_section .customizer-control-collapsible h3:hover:after,
         #sub-accordion-section-hookmeup_product_section .customizer-control-collapsible h3:hover:after,
         #sub-accordion-section-hookmeup_cart_section .customizer-control-collapsible h3:hover:after,
@@ -309,7 +356,8 @@
     #sub-accordion-section-hookmeup_account_section .customize-control-collapsed .customizer-control-collapsible h3:after,
     #sub-accordion-section-hookmeup_cart_widget_section .customize-control-collapsed .customizer-control-collapsible h3:after,
     #sub-accordion-section-hookmeup_thankyou_section .customize-control-collapsed .customizer-control-collapsible h3:after {
-      content: "\f347"; }
+      content: "\f347";
+      top: 15px; }
 
 .disabled-control-title {
   color: #a0a5aa; }
@@ -319,17 +367,17 @@ input[type=checkbox].tgl {
 
 input[type=checkbox].tgl + .tgl-btn {
   background: #a0a5aa;
-  outline: 0;
-  display: block;
   border-radius: 2em;
+  cursor: pointer;
+  display: block;
+  height: 1.8em;
+  outline: 0;
   padding: 2px;
+  position: relative;
   -webkit-transition: all .4s ease;
   -o-transition: all .4s ease;
   transition: all .4s ease;
-  width: 4em;
-  height: 2em;
-  position: relative;
-  cursor: pointer; }
+  width: 3.6em; }
 
 input[type=checkbox].tgl:checked + .tgl-btn {
   background: #0085ba; }
@@ -338,30 +386,20 @@ input[type=checkbox].tgl:checked + .tgl-btn:after {
   left: 50%; }
 
 input[type=checkbox].tgl + .tgl-btn:after {
+  background: #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 100%;
   left: 0;
   position: relative;
-  display: block;
-  content: "";
-  background: #f7f7f7;
   width: 50%;
-  height: 100%;
-  border-radius: 50%;
-  background: #fff;
   -webkit-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease; }
 
 input[type=checkbox].tgl + .tgl-btn:before {
   display: none; }
-
-input[type=checkbox].tgl, input[type=checkbox].tgl:after,
-input[type=checkbox].tgl:before,
-input[type=checkbox].tgl *,
-input[type=checkbox].tgl *:after,
-input[type=checkbox].tgl *:before,
-input[type=checkbox].tgl + .tgl-btn {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
 
 input[type=checkbox].tgl::-moz-selection,
 input[type=checkbox].tgl:after::-moz-selection,
