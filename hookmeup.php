@@ -4,7 +4,7 @@
  * Plugin Name:       		HookMeUp – Additional Content for WooCommerce
  * Plugin URI:        		https://github.com/getbowtied/Hook-Me-Up
  * Description:       		Helps you customize WooCommerce templates without altering the code.
- * Version:           		1.1.1
+ * Version:           		1.2
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com/
  * License:           		GPL-2.0+
