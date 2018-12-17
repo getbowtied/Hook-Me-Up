@@ -26,6 +26,8 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 - Shop & Categories (Archives)
 - Single Product
 - Cart
+- Cart Widget
+- Thank You Page
 - Checkout 
 - My Account / Login
 
@@ -81,6 +83,15 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - After Cart Totals `woocommerce_after_cart_totals`
 - After Cart `woocommerce_after_cart`
 - Cart Is Empty `woocommerce_cart_is_empty`
+
+**Cart Widget**
+- Before Mini Cart `woocommerce_before_mini_cart`
+- Mini Cart Contents `woocommerce_mini_cart_contents`
+- Shopping Cart Buttons `woocommerce_widget_shopping_cart_buttons`
+- After Mini Cart `woocommerce_after_mini_cart`
+
+**Thank You Page**
+- Thank You `woocommerce_thankyou`
 
 **Checkout Page**
 
