@@ -121,10 +121,20 @@ class HookMeUp_Customizer {
 				'transport' => 'refresh',
 			) );
 
+			$description = '<span>They will only be visible while logged in as admin.</span>';
+
+			if( $section == 'hookmeup_thankyou_section' ) {
+				$description .= '<span class="section_warning">There is no preview available for this page.</span>';
+			}
+
+			if( $section == 'hookmeup_cart_widget_section' ) {
+				$description .= '<span class="section_warning">In order to see the changes in your cart widget, you may need to update your cart items.</span>';
+			}
+
 			$wp_customize->add_control( new WP_Customize_Toggle_Control( $wp_customize, $section . '_preview', array(
 				'label'       	=> esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
 				'section'     	=> $section,
-				'description'	=> esc_attr__( 'They will only be visible while logged in as admin.', 'hookmeup' ),
+				'description'	=> __( $description, 'hookmeup' ),
 				'priority'    	=> 10,
 			) ) );
 

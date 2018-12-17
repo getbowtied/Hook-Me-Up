@@ -42,12 +42,30 @@
 
 		.toggle-description
 		{
-			margin-top: 10px;
-
 			i
 			{
 				color: #6b6b6b;
 				font-size: 11px;
+
+				span
+				{
+					display: block;
+					margin-top: 10px;
+
+					&.section_warning
+					{
+						&:before
+						{
+						    font-family: dashicons;
+						    content: '\f534';
+						    font-style: normal;
+						    font-size: 16px;
+						    margin-right: 5px;
+						    display: inline;
+						    vertical-align: top;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -65,8 +83,10 @@
 		    top: 15px;
 		    z-index: 1;
 
-		    .tooltip-trigger {
-		    	span.dashicons {
+		    .tooltip-trigger
+		    {
+		    	span.dashicons
+		    	{
 	    		    position: absolute;
    					right: 0;
 		    	}
