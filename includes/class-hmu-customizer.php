@@ -124,7 +124,7 @@ class HookMeUp_Customizer {
 			$description = '<span>They will only be visible while logged in as admin.</span>';
 
 			if( $section == 'hookmeup_thankyou_section' ) {
-				$description .= '<span class="section_warning">There is no preview available for this page.</span>';
+				$description .= '<span class="section_warning">There is no preview available for this page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.</span>';
 			}
 
 			if( $section == 'hookmeup_cart_widget_section' ) {
