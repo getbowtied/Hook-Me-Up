@@ -1,4 +1,4 @@
-<?php
+f<?php
 /**
  * Editor control class
  *
@@ -14,7 +14,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  */
 class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 
-	public $type = 'collapsible';
+	public $type = 'hmu-collapsible';
 
 	/**
 	 * Constructor.
@@ -69,7 +69,7 @@ class WP_Customize_Collapsible_Control extends WP_Customize_Control {
 	public function enqueue() {
 		wp_enqueue_editor();
 		wp_enqueue_script(
-			'customize-control-collapsible',
+			'customize-control-hmu-collapsible',
 			plugins_url( 'assets/js/hmu-collapsible.js', dirname( __FILE__ ) ),
 			array(),
 			'1.2',

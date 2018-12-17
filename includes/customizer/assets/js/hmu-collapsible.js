@@ -5,16 +5,16 @@
     $( document ).ready( function( $ ) {
 
         // Collapse all collapsible controls.
-        $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
-        $( '.customize-control-collapsible' ).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
+        $( '.customize-control-hmu-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
+        $( '.customize-control-hmu-collapsible' ).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
 
-        $( '.customize-control-collapsible' ).on('click', '.tooltip-wrapper', function(e) {
+        $( '.customize-control-hmu-collapsible' ).on('click', '.tooltip-wrapper', function(e) {
             e.stopPropagation();
             $(this).find('.tooltip-content').toggleClass('hidden');
         } );
 
         // Expand collapsible controls on click.
-        $( '.customize-control-collapsible' ).click( function() {
+        $( '.customize-control-hmu-collapsible' ).click( function() {
 
             $(this).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
             $(this).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
@@ -30,7 +30,7 @@
 
         } );
 
-        $( '.customize-control-collapsible' ).each( function() {
+        $( '.customize-control-hmu-collapsible' ).each( function() {
             var editor = $(this).find('span').attr('class') + '_editor';
             editor = editor.replace(/"/g, '');
             if( wp.customize.control(editor).setting.get().length > 0) {

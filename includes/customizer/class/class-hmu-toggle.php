@@ -14,7 +14,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  */
 class WP_Customize_Toggle_Control extends WP_Customize_Control {
 
-	public $type = 'toggle';
+	public $type = 'hmu-toggle';
 
 	/**
 	 * Constructor.

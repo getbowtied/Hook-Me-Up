@@ -14,7 +14,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  */
 class WP_Customize_Editor_Control extends WP_Customize_Control {
 
-	public $type = 'editor';
+	public $type = 'hmu-editor';
 
 	/**
 	 * Constructor.
@@ -52,7 +52,7 @@ class WP_Customize_Editor_Control extends WP_Customize_Control {
 	public function enqueue() {
 		wp_enqueue_editor();
 		wp_enqueue_script(
-			'customize-editor-control',
+			'customize-control-hmu-editor',
 			plugins_url( 'assets/js/hmu-editor.js', dirname( __FILE__ ) ),
 			array(
 				'editor',
