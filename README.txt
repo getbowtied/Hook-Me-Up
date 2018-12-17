@@ -2,13 +2,13 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
-Tested up to: 4.9.6
+Tested up to: 5.0.1
 Stable tag: 1.1.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 3.3.4
-WC tested up to: 3.4.2
+WC tested up to: 3.5.2
 
 HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
@@ -106,6 +106,10 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 
 == Changelog ==
+
+= 1.2 =
+- New hooks available for Cart Widget and Thank You Page
+- Style improvements for customizer hook sections
 
 = 1.1 =
 - Rebuild Customizer using WordPress Customizer API

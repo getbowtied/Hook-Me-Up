@@ -12,9 +12,9 @@
  * Text Domain:       		hookmeup
  * Domain Path:       		/languages
  * Requires at least: 		4.9
- * Tested up to: 			4.9.6
+ * Tested up to: 			5.0.1
  * WC requires at least: 	3.3.4
- * WC tested up to: 		3.4.2
+ * WC tested up to: 		3.5.2
  *
  * @link              getbowtied.com
  * @since             1.0.0
