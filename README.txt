@@ -85,12 +85,14 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - Cart Is Empty `woocommerce_cart_is_empty`
 
 **Cart Widget**
+
 - Before Mini Cart `woocommerce_before_mini_cart`
 - Mini Cart Contents `woocommerce_mini_cart_contents`
 - Shopping Cart Buttons `woocommerce_widget_shopping_cart_buttons`
 - After Mini Cart `woocommerce_after_mini_cart`
 
 **Thank You Page**
+
 - Thank You `woocommerce_thankyou`
 
 **Checkout Page**
