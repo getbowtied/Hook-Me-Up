@@ -121,14 +121,14 @@ class HookMeUp_Customizer {
 				'transport' => 'refresh',
 			) );
 
-			$description = '<span>They will only be visible while logged in as admin.</span>';
+			$description = '<span>'. __( 'They will only be visible while logged in as admin.', 'hookmeup') .'</span>';
 
 			if( $section == 'hookmeup_thankyou_section' ) {
-				$description .= '<span class="section_warning">There is no preview available for this page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.</span>';
+				$description .= '<span class="section_warning">'. __( 'There is no preview available for this page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ) . '</span>';
 			}
 
 			if( $section == 'hookmeup_cart_widget_section' ) {
-				$description .= '<span class="section_warning">In order to see the changes in your cart widget, you may need to update your cart items.</span>';
+				$description .= '<span class="section_warning">' .__( 'In order to see the changes in your cart widget, you may need to update your cart items.', 'hookmeup' ) .'</span>';
 			}
 
 			$wp_customize->add_control( new WP_Customize_Toggle_Control( $wp_customize, $section . '_preview', array(
