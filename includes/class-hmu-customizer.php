@@ -116,7 +116,7 @@ class HookMeUp_Customizer {
 			$section_hooks = $hooks->get_hooks( $section );
 
 			$wp_customize->add_setting( $section . '_preview', array(
-				'default'    => '1',
+				'default'    => '0',
 				'capability' => 'manage_options',
 				'transport' => 'refresh',
 			) );
