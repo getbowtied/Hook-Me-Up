@@ -40,6 +40,15 @@ class HookMeUp_Hooks {
 	protected $checkout_hooks;
 
 	/**
+	 * Login hooks list
+	 *
+	 * @var array
+	 *
+	 * @since 1.2.1
+	 */
+	protected $login_hooks;
+
+	/**
 	 * Account hooks list
 	 *
 	 * @var array
@@ -98,6 +107,7 @@ class HookMeUp_Hooks {
 		$this->define_cart_widget_hooks();
 		$this->define_thankyou_hooks();
 		$this->define_checkout_hooks();
+		$this->define_login_hooks();
 		$this->define_account_hooks();
 		$this->define_product_hooks();
 	}
@@ -107,18 +117,47 @@ class HookMeUp_Hooks {
 	 *
 	 * @since 1.2
 	 *
+	 * @since 1.2.1 change the array structure, add name and description for each section
+	 *
 	 * @return void
 	 */
 	protected function define_hook_sections() {
 
+		$default_description = '<span>'. __( 'They will only be visible while logged in as admin.', 'hookmeup') .'</span>';
+
 		$this->hook_sections = [ 
-			'hookmeup_shop_section', 
-			'hookmeup_product_section', 
-			'hookmeup_cart_section', 
-			'hookmeup_cart_widget_section',
-			'hookmeup_thankyou_section',
-			'hookmeup_checkout_section', 
-			'hookmeup_account_section'
+			[
+				'name' 			=> 'hookmeup_shop_section',
+				'description' 	=> $default_description,
+			], 
+			[
+				'name' 			=> 'hookmeup_product_section',
+				'description' 	=> $default_description,
+			], 
+			[
+				'name' 			=> 'hookmeup_cart_section',
+				'description' 	=> $default_description,
+			],  
+			[
+				'name' 			=> 'hookmeup_cart_widget_section',
+				'description' 	=> $default_description . '<span class="section_warning">' .__( 'In order to see the changes in your cart widget, you may need to update your cart items.', 'hookmeup' ) .'</span>',
+			], 
+			[
+				'name' 			=> 'hookmeup_thankyou_section',
+				'description' 	=> $default_description . '<span class="section_warning">'. __( 'There is no preview available for this page within the Customizer preview page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ) . '</span>',
+			], 
+			[
+				'name' 			=> 'hookmeup_checkout_section',
+				'description' 	=> $default_description,
+			], 
+			[
+				'name' 			=> 'hookmeup_login_section',
+				'description' 	=> '<span class="section_warning">'. __( 'There is no preview available for this page.', 'hookmeup' ) . '</span>',
+			], 
+			[
+				'name' 			=> 'hookmeup_account_section',
+				'description' 	=> $default_description,
+			], 
 		];
 	}
 
@@ -358,9 +397,64 @@ class HookMeUp_Hooks {
 	}
 
 	/**
+	 * Define login hooks
+	 *
+	 * @since 1.2.1
+	 *
+	 * @return void
+	 */
+	protected function define_login_hooks() {
+
+		$this->login_hooks = [
+			[
+				'slug' 		=> 'woocommerce_before_customer_login_form', 
+				'label' 	=> 'Before Customer Login Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_login_form_start', 
+				'label' 	=> 'Before Login Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_login_form', 
+				'label' 	=> 'Before Login Submit Button',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_login_form_end', 
+				'label' 	=> 'After Login Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_register_form_start', 
+				'label' 	=> 'Before Register Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_register_form', 
+				'label' 	=> 'Before Register Submit Button',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_register_form_end', 
+				'label' 	=> 'After Register Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_after_customer_login_form', 
+				'label' 	=> 'After Customer Login Form',
+				'section' 	=> 'hookmeup_login_section'
+			],
+		];
+	}
+
+	/**
 	 * Define account hooks
 	 *
 	 * @since 1.2
+	 *
+	 * @since 1.2.1 separate hooks into My Account Dashboard section and Login / Register form section
 	 *
 	 * @return void
 	 */
@@ -368,10 +462,20 @@ class HookMeUp_Hooks {
 
 		$this->account_hooks = [
 			[
-				'slug' 		=> 'woocommerce_before_customer_login_form', 
-				'label' 	=> 'Before Customer Login Form',
+				'slug' 		=> 'woocommerce_before_account_navigation', 
+				'label' 	=> 'Before Account Navigation',
 				'section' 	=> 'hookmeup_account_section'
-			]
+			],
+			[
+				'slug' 		=> 'woocommerce_account_content', 
+				'label' 	=> 'After Account Page Content',
+				'section' 	=> 'hookmeup_account_section'
+			],
+			[
+				'slug' 		=> 'woocommerce_account_dashboard', 
+				'label' 	=> 'Account Dashboard',
+				'section' 	=> 'hookmeup_account_section'
+			],
 		];
 	}
 
@@ -452,6 +556,17 @@ class HookMeUp_Hooks {
 	}
 
 	/**
+	 * Retrieve array of login hooks
+	 *
+	 * @since 1.2.1
+	 *
+	 * @return array
+	 */
+	public function get_login_hooks() {
+		return $this->login_hooks;
+	}
+
+	/**
 	 * Retrieve array of account hooks
 	 *
 	 * @since 1.0.0
@@ -511,6 +626,7 @@ class HookMeUp_Hooks {
 			case 'hookmeup_cart_widget_section': 	return $this->cart_widget_hooks; 	break;
 			case 'hookmeup_thankyou_section': 		return $this->thankyou_hooks; 		break;
 			case 'hookmeup_checkout_section': 		return $this->checkout_hooks; 		break;
+			case 'hookmeup_login_section':  		return $this->login_hooks;  		break;
 			case 'hookmeup_account_section':  		return $this->account_hooks;  		break;
 			default: 						  		return ''; 							break;
 		}
@@ -532,6 +648,7 @@ class HookMeUp_Hooks {
 			$this->cart_widget_hooks,
 			$this->thankyou_hooks,
 			$this->checkout_hooks,
+			$this->login_hooks,
 			$this->account_hooks
 		);
 

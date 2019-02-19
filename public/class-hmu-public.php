@@ -76,7 +76,7 @@ class HookMeUp_Public {
 		    	$option_section = get_option( $hook['section'] . '_preview', false );
 		        $option_content = get_option( $hook['slug'] . '_editor', '' );
 
-		        if( isset($option_content) && $option_content != "" ) {
+		        if( isset($option_content) && !empty($option_content) ) {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . do_shortcode(__( $option_content, 'hookmeup' )) . '</div>';
 
