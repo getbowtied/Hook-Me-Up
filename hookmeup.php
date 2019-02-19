@@ -124,10 +124,14 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			$hooks = new HookMeUp_Hooks();
 			$hooks_list = $hooks->get_all_hooks();
 			foreach( $hooks_list as $hook) {
-				update_option( $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
-				update_option( $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
-				remove_theme_mod( $hook['section'] . '_preview' );
-				remove_theme_mod( $hook['slug'] . '_editor' );
+				if( get_theme_mod( $hook['section'] . '_preview' ) ) {
+					update_option( $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
+					remove_theme_mod( $hook['section'] . '_preview' );
+				}
+				if( get_theme_mod( $hook['slug'] . '_editor' ) ) {
+					update_option( $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
+					remove_theme_mod( $hook['slug'] . '_editor' );
+				}
 			}
 		}
 
