@@ -116,15 +116,16 @@ class HookMeUp_Customizer {
 			$section_hooks = $hooks->get_hooks( $section );
 
 			$wp_customize->add_setting( $section . '_preview', array(
+				'type'		 => 'option',
 				'default'    => false,
 				'capability' => 'manage_options',
-				'transport' => 'refresh',
+				'transport'  => 'refresh',
 			) );
 
 			$description = '<span>'. __( 'They will only be visible while logged in as admin.', 'hookmeup') .'</span>';
 
 			if( $section == 'hookmeup_thankyou_section' ) {
-				$description .= '<span class="section_warning">'. __( 'There is no preview available for this page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ) . '</span>';
+				$description .= '<span class="section_warning">'. __( 'There is no preview available for this page within the Customizer preview page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ) . '</span>';
 			}
 
 			if( $section == 'hookmeup_cart_widget_section' ) {
@@ -153,8 +154,9 @@ class HookMeUp_Customizer {
 				) ) );
 
 				$wp_customize->add_setting( $hook['slug'] . '_editor', array(
+					'type' 		=> 'option',
 					'transport' => 'refresh',
-					'default' => '',
+					'default' 	=> '',
 				) );
 
 		     	$wp_customize->add_control( new WP_Customize_Editor_Control( $wp_customize, $hook['slug'] . '_editor', array(

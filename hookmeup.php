@@ -91,6 +91,10 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				$this->set_locale();
 				$this->define_public_hooks();  
 				$this->define_customizer();
+				if( !get_option( 'hookmeup_done_import', false ) ) {
+					$this->import_options();
+					update_option( 'hookmeup_done_import', true );
+				}
 		    } else {
 		    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
 		    }
@@ -108,6 +112,23 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				self::$_instance = new self();
 			}
 			return self::$_instance;
+		}
+
+		/**
+		 * Imports hooks stored as theme mods into the options WP table 
+		 *
+		 * @since 1.2.1
+		 * @return void
+		 */
+		private function import_options() {
+			$hooks = new HookMeUp_Hooks();
+			$hooks_list = $hooks->get_all_hooks();
+			foreach( $hooks_list as $hook) {
+				update_option( $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
+				update_option( $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
+				remove_theme_mod( $hook['section'] . '_preview' );
+				remove_theme_mod( $hook['slug'] . '_editor' );
+			}
 		}
 
 		/**
