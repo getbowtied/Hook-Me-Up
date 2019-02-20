@@ -14,6 +14,11 @@
 {
 	overflow-y: hidden !important;
 
+	.customize-section-description-container + .customize-control-hmu-info
+	{
+	    margin-top: 10px;
+	}
+
 	.customize-control-hmu-editor
 	{
 		textarea
@@ -59,8 +64,15 @@
 
 	.customize-control-hmu-info
 	{
+		margin-bottom: 25px;
+
 		.section_warning
 		{
+			display: block;
+		    border: 1px solid #8b8f9438;
+		    padding: 15px 10px 15px 18px;
+		    background: #fff;
+
 			&:before
 			{
 			    font-family: dashicons;

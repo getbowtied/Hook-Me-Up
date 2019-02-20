@@ -157,7 +157,7 @@ class HookMeUp_Hooks {
 			], 
 			[
 				'name' 		=> 'hookmeup_login_section',
-				'info' 		=> __( 'There is no preview available for this page.', 'hookmeup' ),
+				'info' 		=> __( 'There are no previews for the "Login / Register" page since this page can only be viewed before logging in. Logged in users will see the "My Account Dashboard" instead.', 'hookmeup' ),
 				'preview'	=> false,
 			], 
 			[

@@ -10,7 +10,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
 }
 
 /**
- * Class WP_Customize_Toggle_Control
+ * Class WP_Customize_Info_Control
  */
 class WP_Customize_Info_Control extends WP_Customize_Control {
 

@@ -1,11 +1,11 @@
 .hook
 {
     background: #FFFDE7;
+    border: 2px dashed #F8E71C;
+    clear: both;
+    color: #545454 !important;
+    font-size: 12px !important;
     padding: 10px;
     text-align: center;
-    font-size: 12px !important;
-    color: #545454 !important;
-    border: 2px dashed;
-    border-color: #F8E71C;
     word-wrap: break-word;
 }
