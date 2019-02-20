@@ -147,6 +147,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-editor.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
+			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-info.php' );
 			
 			include_once( HMU_DIR . 'includes/class-hmu-loader.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-i18n.php' );

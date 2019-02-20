@@ -122,18 +122,30 @@ class HookMeUp_Customizer {
 		foreach( $hook_sections as $section ) {
 			$section_hooks = $hooks->get_hooks( $section['name'] );
 
-			$wp_customize->add_setting( $section['name'] . '_preview', array(
-				'type'		 => 'option',
-				'default'    => false,
-				'capability' => 'manage_options',
-				'transport'  => 'refresh',
-			) );
+			if( $section['preview'] ) {
+				$wp_customize->add_setting( $section['name'] . '_preview', array(
+					'type'		 => 'option',
+					'default'    => false,
+					'capability' => 'manage_options',
+					'transport'  => 'refresh',
+				) );
 
-			if( $section['name'] != 'hookmeup_login_section' ) {
 				$wp_customize->add_control( new WP_Customize_Toggle_Control( $wp_customize, $section['name'] . '_preview', array(
 					'label'       	=> esc_attr__( 'Preview Available Hooks', 'hookmeup' ),
+					'description'	=> '<span>'. __( 'They will only be visible while logged in as admin.', 'hookmeup') .'</span>',
 					'section'     	=> $section['name'],
-					'description'	=> $section['description'], 'hookmeup',
+					'priority'    	=> 10,
+				) ) );
+			}
+
+			if( !empty($section['info']) ) {
+				$wp_customize->add_setting( $section['name'] . '_info', array(
+						'transport'  => 'refresh',
+					) );
+
+				$wp_customize->add_control( new WP_Customize_Info_Control( $wp_customize, $section['name'] . '_info', array(
+					'section'     	=> $section['name'],
+					'info'			=> $section['info'],
 					'priority'    	=> 10,
 				) ) );
 			}
@@ -141,8 +153,7 @@ class HookMeUp_Customizer {
 		    foreach( $section_hooks as $hook ) {
 
 		    	$wp_customize->add_setting( $hook['slug'] . '_collapsible', array(
-					'transport'  => 'postMessage',
-					'capability' => 'edit_theme_options'
+					'transport'  => 'refresh',
 				) );
 
 				$wp_customize->add_control( new WP_Customize_Collapsible_Control( $wp_customize, $hook['slug'] . '_collapsible', array(

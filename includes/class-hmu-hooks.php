@@ -117,46 +117,53 @@ class HookMeUp_Hooks {
 	 *
 	 * @since 1.2
 	 *
-	 * @since 1.2.1 change the array structure, add name and description for each section
+	 * @since 1.2.1 change the array structure, add name and additional info for each section;
+	 * also set a preview flag for each section, determining if there is a preview page available
 	 *
 	 * @return void
 	 */
 	protected function define_hook_sections() {
 
-		$default_description = '<span>'. __( 'They will only be visible while logged in as admin.', 'hookmeup') .'</span>';
-
 		$this->hook_sections = [ 
 			[
-				'name' 			=> 'hookmeup_shop_section',
-				'description' 	=> $default_description,
+				'name' 		=> 'hookmeup_shop_section',
+				'info' 		=> '',
+				'preview'	=> true,
 			], 
 			[
-				'name' 			=> 'hookmeup_product_section',
-				'description' 	=> $default_description,
+				'name' 		=> 'hookmeup_product_section',
+				'info' 		=> '',
+				'preview'	=> true,
 			], 
 			[
-				'name' 			=> 'hookmeup_cart_section',
-				'description' 	=> $default_description,
+				'name' 		=> 'hookmeup_cart_section',
+				'info' 		=> '',
+				'preview'	=> true,
 			],  
 			[
-				'name' 			=> 'hookmeup_cart_widget_section',
-				'description' 	=> $default_description . '<span class="section_warning">' .__( 'In order to see the changes in your cart widget, you may need to update your cart items.', 'hookmeup' ) .'</span>',
+				'name' 		=> 'hookmeup_cart_widget_section',
+				'info' 		=> __( 'In order to see the changes in your cart widget, you may need to update your cart items.', 'hookmeup' ),
+				'preview'	=> true,
 			], 
 			[
-				'name' 			=> 'hookmeup_thankyou_section',
-				'description' 	=> $default_description . '<span class="section_warning">'. __( 'There is no preview available for this page within the Customizer preview page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ) . '</span>',
+				'name' 		=> 'hookmeup_thankyou_section',
+				'info' 		=> __( 'There is no preview available for this page within the Customizer preview page. The hook will appear at the bottom of your Thank You Page, right below Billing and Shipping Addresses.', 'hookmeup' ),
+				'preview'	=> false,
 			], 
 			[
-				'name' 			=> 'hookmeup_checkout_section',
-				'description' 	=> $default_description,
+				'name' 		=> 'hookmeup_checkout_section',
+				'info' 		=> '',
+				'preview'	=> true,
 			], 
 			[
-				'name' 			=> 'hookmeup_login_section',
-				'description' 	=> '<span class="section_warning">'. __( 'There is no preview available for this page.', 'hookmeup' ) . '</span>',
+				'name' 		=> 'hookmeup_login_section',
+				'info' 		=> __( 'There is no preview available for this page.', 'hookmeup' ),
+				'preview'	=> false,
 			], 
 			[
 				'name' 			=> 'hookmeup_account_section',
-				'description' 	=> $default_description,
+				'info' 		=> '',
+				'preview'	=> true,
 			], 
 		];
 	}

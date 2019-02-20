@@ -80,21 +80,21 @@
       #sub-accordion-section-hookmeup_thankyou_section .customize-control-hmu-toggle .toggle-description i span {
         display: block;
         margin-top: 10px; }
-        #sub-accordion-section-hookmeup_shop_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_product_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_cart_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_checkout_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_account_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_login_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_cart_widget_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before,
-        #sub-accordion-section-hookmeup_thankyou_section .customize-control-hmu-toggle .toggle-description i span.section_warning:before {
-          font-family: dashicons;
-          content: '\f534';
-          font-style: normal;
-          font-size: 16px;
-          margin-right: 5px;
-          display: inline;
-          vertical-align: top; }
+  #sub-accordion-section-hookmeup_shop_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_product_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_cart_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_checkout_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_account_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_login_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_cart_widget_section .customize-control-hmu-info .section_warning:before,
+  #sub-accordion-section-hookmeup_thankyou_section .customize-control-hmu-info .section_warning:before {
+    font-family: dashicons;
+    content: '\f534';
+    font-style: normal;
+    font-size: 16px;
+    margin-right: 5px;
+    display: inline;
+    vertical-align: top; }
   #sub-accordion-section-hookmeup_shop_section .customize-control-hmu-collapsible,
   #sub-accordion-section-hookmeup_product_section .customize-control-hmu-collapsible,
   #sub-accordion-section-hookmeup_cart_section .customize-control-hmu-collapsible,

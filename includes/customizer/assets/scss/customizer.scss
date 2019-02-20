@@ -52,21 +52,24 @@
 				{
 					display: block;
 					margin-top: 10px;
-
-					&.section_warning
-					{
-						&:before
-						{
-						    font-family: dashicons;
-						    content: '\f534';
-						    font-style: normal;
-						    font-size: 16px;
-						    margin-right: 5px;
-						    display: inline;
-						    vertical-align: top;
-						}
-					}
 				}
+			}
+		}
+	}
+
+	.customize-control-hmu-info
+	{
+		.section_warning
+		{
+			&:before
+			{
+			    font-family: dashicons;
+			    content: '\f534';
+			    font-style: normal;
+			    font-size: 16px;
+			    margin-right: 5px;
+			    display: inline;
+			    vertical-align: top;
 			}
 		}
 	}
