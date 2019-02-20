@@ -29,7 +29,8 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 - Cart Widget
 - Thank You Page
 - Checkout 
-- My Account / Login
+- Login / Register
+- My Account
 
 
 == Installation ==
