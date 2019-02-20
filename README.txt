@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
 Tested up to: 5.0.3
-Stable tag: 1.2
+Stable tag: 1.2.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -109,9 +109,22 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - Review Order - After Payment `woocommerce_review_order_after_payment`
 - After Checkout Form `woocommerce_after_checkout_form`
 
-**My Account / Login Page**
+**Login / Register**
 
 - Before Customer Login Form `woocommerce_before_customer_login_form`
+- Before Login Form `woocommerce_login_form_start`
+- Before Login Submit Button `woocommerce_login_form`
+- After Login Form `woocommerce_login_form_end`
+- Before Register Form `woocommerce_register_form_start`
+- Before Register Submit Button `woocommerce_register_form`
+- After Register Form `woocommerce_register_form_end`
+- After Customer Login Form `woocommerce_after_customer_login_form`
+
+**My Account**
+
+- Before Account Navigation `woocommerce_before_account_navigation`
+- After Account Page Content `woocommerce_account_content`
+- Account Dashboard `woocommerce_account_dashboard`
 
 == Screenshots ==
 
@@ -119,6 +132,11 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 
 == Changelog ==
+
+= 1.2.1 =
+- New hooks available for My Account Dashboard and Login/Register Page
+- Fixed: Translation issues 
+- Fixed: Store and apply hooks to the site regardless of the active theme
 
 = 1.2 =
 - New hooks available for Cart Widget and Thank You Page
