@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HookMeUp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-19 11:12+0200\n"
-"PO-Revision-Date: 2019-02-19 11:12+0200\n"
+"POT-Creation-Date: 2019-02-20 11:29+0200\n"
+"PO-Revision-Date: 2019-02-20 11:29+0200\n"
 "Last-Translator: Get Bowtied <hq@getbowtied.com>\n"
 "Language-Team: Get Bowtied <hq@getbowtied.com>\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: hookmeup.php:211
+#: hookmeup.php:237
 msgid ""
 "HookMeUp is enabled but not effective. It requires WooCommerce in order to "
 "work."
@@ -55,26 +55,34 @@ msgid "Checkout"
 msgstr ""
 
 #: includes/class-hmu-customizer.php:97
+msgid "Login / Register"
+msgstr ""
+
+#: includes/class-hmu-customizer.php:104
 msgid "My Account"
 msgstr ""
 
-#: includes/class-hmu-customizer.php:124
+#: includes/class-hmu-customizer.php:134
+msgid "Preview Available Hooks"
+msgstr ""
+
+#: includes/class-hmu-customizer.php:135
 msgid "They will only be visible while logged in as admin."
 msgstr ""
 
-#: includes/class-hmu-customizer.php:127
+#: includes/class-hmu-hooks.php:145
+msgid ""
+"In order to see the changes in your cart widget, you may need to update your "
+"cart items."
+msgstr ""
+
+#: includes/class-hmu-hooks.php:150
 msgid ""
 "There is no preview available for this page within the Customizer preview "
 "page. The hook will appear at the bottom of your Thank You Page, right below "
 "Billing and Shipping Addresses."
 msgstr ""
 
-#: includes/class-hmu-customizer.php:131
-msgid ""
-"In order to see the changes in your cart widget, you may need to update your "
-"cart items."
-msgstr ""
-
-#: includes/class-hmu-customizer.php:135
-msgid "Preview Available Hooks"
+#: includes/class-hmu-hooks.php:160
+msgid "There is no preview available for this page."
 msgstr ""

@@ -64,7 +64,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		 * @since 1.0.0
 		 * @var string
 		 */
-		protected $version = '1.0.0';
+		protected $version = '1.2.1';
 
 		/**
 		 * The single instance of the class.
@@ -125,11 +125,11 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			$hooks_list = $hooks->get_all_hooks();
 			foreach( $hooks_list as $hook) {
 				if( get_theme_mod( $hook['section'] . '_preview' ) ) {
-					update_option( $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
+					update_option( 'hookmeup_' . $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
 					remove_theme_mod( $hook['section'] . '_preview' );
 				}
 				if( get_theme_mod( $hook['slug'] . '_editor' ) ) {
-					update_option( $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
+					update_option( 'hookmeup_' . $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
 					remove_theme_mod( $hook['slug'] . '_editor' );
 				}
 			}
