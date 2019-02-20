@@ -73,8 +73,8 @@ class HookMeUp_Public {
 
 		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$option_section = get_option( $hook['section'] . '_preview', false );
-		        $option_content = get_option( $hook['slug'] . '_editor', '' );
+		    	$option_section = get_option( 'hookmeup_' . $hook['section'] . '_preview', false );
+		        $option_content = get_option( 'hookmeup_' . $hook['slug'] . '_editor', '' );
 
 		        if( isset($option_content) && !empty($option_content) ) {
 

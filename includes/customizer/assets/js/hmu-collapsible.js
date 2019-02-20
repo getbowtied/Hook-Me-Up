@@ -20,7 +20,7 @@
             $(this).closest( 'li[id*="_collapsible"]' ).nextUntil( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-hidden' );
 
             // Mark as enabled if editor has content
-            var editor = $(this).find('span').attr('class') + '_editor';
+            var editor = 'hookmeup_' + $(this).find('span').attr('class') + '_editor';
             editor = editor.replace(/"/g, '');
             if( wp.customize.control(editor).setting.get().length > 0) {
                 $(this).find('div').addClass('enabled');
@@ -31,7 +31,7 @@
         } );
 
         $( '.customize-control-hmu-collapsible' ).each( function() {
-            var editor = $(this).find('span').attr('class') + '_editor';
+            var editor = 'hookmeup_' + $(this).find('span').attr('class') + '_editor';
             editor = editor.replace(/"/g, '');
             if( wp.customize.control(editor).setting.get().length > 0) {
                 $(this).find('div').addClass('enabled');
