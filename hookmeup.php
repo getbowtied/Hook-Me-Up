@@ -92,8 +92,10 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				$this->define_public_hooks();  
 				$this->define_customizer();
 				if( !get_option( 'hookmeup_done_import', false ) ) {
-					$this->import_options();
-					update_option( 'hookmeup_done_import', true );
+					$done_import = $this->import_options();
+					if( $done_import ) {
+						update_option( 'hookmeup_done_import', true );
+					}
 				}
 		    } else {
 		    	add_action( 'admin_notices', array( $this, 'woocommerce_not_installed_warning' ) );
@@ -121,18 +123,30 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		 * @return void
 		 */
 		private function import_options() {
+			$done_import = true;
+
 			$hooks = new HookMeUp_Hooks();
 			$hooks_list = $hooks->get_all_hooks();
 			foreach( $hooks_list as $hook) {
 				if( get_theme_mod( $hook['section'] . '_preview' ) ) {
 					update_option( 'hookmeup_' . $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
-					remove_theme_mod( $hook['section'] . '_preview' );
+					if( get_option( 'hookmeup_' . $hook['section'] . '_preview' ) ) {
+						remove_theme_mod( $hook['section'] . '_preview' );
+					} else {
+						$done_import = false;
+					}
 				}
 				if( get_theme_mod( $hook['slug'] . '_editor' ) ) {
 					update_option( 'hookmeup_' . $hook['slug'] . '_editor', get_theme_mod( $hook['slug'] . '_editor', '' ) );
-					remove_theme_mod( $hook['slug'] . '_editor' );
+					if( get_option( 'hookmeup_' . $hook['slug'] . '_editor' ) ) {
+						remove_theme_mod( $hook['slug'] . '_editor' );
+					} else {
+						$done_import = false;
+					}
 				}
 			}
+
+			return $done_import;
 		}
 
 		/**
