@@ -208,7 +208,11 @@ class HookMeUp_Customizer {
 			case 'product': 
 				$args = array('orderby' => 'rand', 'limit' => 1); 
 				$products = wc_get_products($args); 
-				echo get_permalink( $products[0]->get_id() ); 
+				if( $products[0] ) {
+					echo get_permalink( $products[0]->get_id() ); 
+				} else {
+					echo get_permalink( wc_get_page_id( 'shop' ) ); 
+				}
 				break;
 			default:
 				echo get_home_url();
