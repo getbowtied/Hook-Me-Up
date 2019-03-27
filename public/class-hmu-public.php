@@ -58,6 +58,19 @@ class HookMeUp_Public {
 	}
 
 	/**
+	 * Transforms boolean into string
+	 *
+	 * @since 1.2.2
+	 *
+	 * @return string
+	 */
+	public function hookmeup_boolean_to_string( $bool ) {
+		$bool = is_bool( $bool ) ? $bool : ( 'yes' === $bool || 1 === $bool || 'true' === $bool || '1' === $bool );
+
+		return true === $bool ? 'yes' : 'no';
+	}
+
+	/**
 	 * Generate hooks in frontend
 	 *
 	 * @since 1.0.0
@@ -73,14 +86,14 @@ class HookMeUp_Public {
 
 		    add_action( $hook['slug'], function() use ($hook) {
  
-		    	$option_section = get_option( 'hookmeup_' . $hook['section'] . '_preview', false );
+		    	$option_section = $this->hookmeup_boolean_to_string( get_option( 'hookmeup_' . $hook['section'] . '_preview', 'no' ) );
 		        $option_content = get_option( 'hookmeup_' . $hook['slug'] . '_editor', '' );
 
 		        if( isset($option_content) && !empty($option_content) ) {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . do_shortcode(__( $option_content, 'hookmeup' )) . '</div>';
 
-			    } else if( $option_section && is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
+			    } else if( $option_section == 'yes' && is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook"><p class="hook">' . $hook['slug'] . '</p></div>';
 			        

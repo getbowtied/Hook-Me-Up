@@ -119,15 +119,27 @@ class HookMeUp_Customizer {
 		$hooks  = new HookMeUp_Hooks();
 		$hook_sections = $hooks->get_hook_sections();
 
+		function hmu_bool_to_string( $bool ) {
+			$bool = is_bool( $bool ) ? $bool : ( 'yes' === $bool || 1 === $bool || 'true' === $bool || '1' === $bool );
+
+			return true === $bool ? 'yes' : 'no';
+		}
+
+		function hmu_string_to_bool( $string ) {
+			return is_bool( $string ) ? $string : ( 'yes' === $string || 1 === $string || 'true' === $string || '1' === $string );
+		}
+
 		foreach( $hook_sections as $section ) {
 			$section_hooks = $hooks->get_hooks( $section['name'] );
 
 			if( $section['preview'] ) {
 				$wp_customize->add_setting( 'hookmeup_' . $section['name'] . '_preview', array(
-					'type'		 => 'option',
-					'default'    => false,
-					'capability' => 'manage_options',
-					'transport'  => 'refresh',
+					'type'		 			=> 'option',
+					'default'    			=> 'no',
+					'sanitize_callback'    	=> 'hmu_bool_to_string',
+					'sanitize_js_callback' 	=> 'hmu_string_to_bool',
+					'capability' 			=> 'manage_options',
+					'transport'  			=> 'refresh',
 				) );
 
 				$wp_customize->add_control( new WP_Customize_Toggle_Control( $wp_customize, 'hookmeup_' . $section['name'] . '_preview', array(

@@ -129,7 +129,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			$hooks_list = $hooks->get_all_hooks();
 			foreach( $hooks_list as $hook) {
 				if( get_theme_mod( $hook['section'] . '_preview' ) ) {
-					update_option( 'hookmeup_' . $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', false ) );
+					update_option( 'hookmeup_' . $hook['section'] . '_preview', get_theme_mod( $hook['section'] . '_preview', 'no' ) );
 					if( get_option( 'hookmeup_' . $hook['section'] . '_preview' ) ) {
 						remove_theme_mod( $hook['section'] . '_preview' );
 					} else {
