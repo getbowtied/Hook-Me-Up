@@ -134,6 +134,9 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
+= 1.2.3 =
+- Retested for compatibility with Wordpress 5.2.2 and WooCommerce 3.6.4
+
 = 1.2.2 =
 - Fixed: Customizer live preview for 'Preview Available Hooks' options
 
