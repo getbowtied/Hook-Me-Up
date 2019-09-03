@@ -2,7 +2,7 @@
 
     'use strict';
 
-    $( document ).ready( function( $ ) {
+    $( function( $ ) {
 
         // Collapse all collapsible controls.
         $( '.customize-control-hmu-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );

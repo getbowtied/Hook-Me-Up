@@ -15,7 +15,7 @@ class HookMeUp_Public {
 	 * The ID of this plugin.
 	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @var string
 	 */
 	private $plugin_name;
@@ -53,7 +53,7 @@ class HookMeUp_Public {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-	
+
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/hmu-public.css', array(), $this->version, 'all' );
 	}
 
@@ -85,7 +85,7 @@ class HookMeUp_Public {
 		foreach( $hooks_list as $hook) {
 
 		    add_action( $hook['slug'], function() use ($hook) {
- 
+
 		    	$option_section = $this->hookmeup_boolean_to_string( get_option( 'hookmeup_' . $hook['section'] . '_preview', 'no' ) );
 		        $option_content = get_option( 'hookmeup_' . $hook['slug'] . '_editor', '' );
 
@@ -93,10 +93,10 @@ class HookMeUp_Public {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . do_shortcode(__( $option_content, 'hookmeup' )) . '</div>';
 
-			    } else if( $option_section == 'yes' && is_user_logged_in() && ( is_admin() || is_super_admin() ) ) {
+			    } else if( $option_section == 'yes' && is_user_logged_in() && HookMeUp_User_Roles::user_is_admin() ) {
 
 			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook"><p class="hook">' . $hook['slug'] . '</p></div>';
-			        
+
 			    }
 
 		    }, 20 );
