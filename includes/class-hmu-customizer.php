@@ -138,7 +138,6 @@ class HookMeUp_Customizer {
 					'default'    			=> 'no',
 					'sanitize_callback'    	=> 'hmu_bool_to_string',
 					'sanitize_js_callback' 	=> 'hmu_string_to_bool',
-					'capability' 			=> 'manage_options',
 					'transport'  			=> 'refresh',
 				) );
 
@@ -178,7 +177,6 @@ class HookMeUp_Customizer {
 				$wp_customize->add_setting( 'hookmeup_' . $hook['slug'] . '_editor', array(
 					'type' 		 => 'option',
 					'transport'  => 'refresh',
-					'capability' => 'manage_options',
 					'default' 	 => '',
 				) );
 
@@ -205,25 +203,25 @@ class HookMeUp_Customizer {
 	public function get_hmu_customize_section_url() {
 
 		switch( $_POST['page'] ) {
-			case 'shop': 
-				echo get_permalink( wc_get_page_id( 'shop' ) ); 
+			case 'shop':
+				echo get_permalink( wc_get_page_id( 'shop' ) );
 				break;
-			case 'cart': 
-				echo wc_get_cart_url(); 
+			case 'cart':
+				echo wc_get_cart_url();
 				break;
-			case 'checkout': 
-				echo wc_get_checkout_url(); 
+			case 'checkout':
+				echo wc_get_checkout_url();
 				break;
-			case 'account': 
-				echo get_permalink( get_option('woocommerce_myaccount_page_id') ); 
+			case 'account':
+				echo get_permalink( get_option('woocommerce_myaccount_page_id') );
 				break;
-			case 'product': 
-				$args = array('orderby' => 'rand', 'limit' => 1); 
-				$products = wc_get_products($args); 
+			case 'product':
+				$args = array('orderby' => 'rand', 'limit' => 1);
+				$products = wc_get_products($args);
 				if( $products[0] ) {
-					echo get_permalink( $products[0]->get_id() ); 
+					echo get_permalink( $products[0]->get_id() );
 				} else {
-					echo get_permalink( wc_get_page_id( 'shop' ) ); 
+					echo get_permalink( wc_get_page_id( 'shop' ) );
 				}
 				break;
 			default:

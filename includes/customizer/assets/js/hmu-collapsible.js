@@ -2,7 +2,7 @@
 
     'use strict';
 
-    $( document ).ready( function( $ ) {
+    $( function() {
 
         // Collapse all collapsible controls.
         $( '.customize-control-hmu-collapsible' ).closest( 'li[id*="_collapsible"]' ).toggleClass( 'customize-control-collapsed' );
@@ -22,7 +22,7 @@
             // Mark as enabled if editor has content
             var editor = 'hookmeup_' + $(this).find('span').attr('class') + '_editor';
             editor = editor.replace(/"/g, '');
-            if( wp.customize.control(editor).setting.get().length > 0) {
+            if( wp.customize.control(editor) && wp.customize.control(editor).setting.get().length > 0) {
                 $(this).find('div').addClass('enabled');
             } else {
                 $(this).find('div').removeClass('enabled');
@@ -33,7 +33,7 @@
         $( '.customize-control-hmu-collapsible' ).each( function() {
             var editor = 'hookmeup_' + $(this).find('span').attr('class') + '_editor';
             editor = editor.replace(/"/g, '');
-            if( wp.customize.control(editor).setting.get().length > 0) {
+            if( wp.customize.control(editor) && wp.customize.control(editor).setting.get().length > 0) {
                 $(this).find('div').addClass('enabled');
             }
         });

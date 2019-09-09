@@ -40,8 +40,8 @@ class WP_Customize_Toggle_Control extends WP_Customize_Control {
 		<label>
 			<div class="toggle-content">
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-				<label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
+				<input id="cb<?php echo $this->instance_number; ?>" type="checkbox" class="tgl" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+				<label for="cb<?php echo $this->instance_number; ?>" class="tgl-btn"></label>
 			</div>
 			<div class="toggle-description"><i><?php echo $this->description; ?></i></div>
 		</label>
