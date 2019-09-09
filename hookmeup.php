@@ -89,7 +89,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				$this->add_hooks();
 				$this->loader = new HookMeUp_Loader();
 				$this->set_locale();
-				$this->define_public_hooks();
+				$this->define_public_hooks();  
 				$this->define_customizer();
 				if( !get_option( 'hookmeup_done_import', false ) ) {
 					$done_import = $this->import_options();
@@ -117,7 +117,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		}
 
 		/**
-		 * Imports hooks stored as theme mods into the options WP table
+		 * Imports hooks stored as theme mods into the options WP table 
 		 *
 		 * @since 1.2.1
 		 * @return void
@@ -153,19 +153,16 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		 * Include required core files used in admin and on the frontend.
 		 *
 		 * @since 1.0.0
-         * @since 1.2.4 add class-hmu-roles.php to includes list
 		 *
 		 * @return void
 		 */
 		protected function includes() {
 
-            include_once( HMU_DIR . 'includes/customizer/class/class-hmu-multi-checkbox.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-editor.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-info.php' );
-
-            include_once( HMU_DIR . 'includes/class-hmu-roles.php' );
+			
 			include_once( HMU_DIR . 'includes/class-hmu-loader.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
@@ -189,16 +186,16 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-			wp_enqueue_script( 'hmu-customizer-scripts',
+			wp_enqueue_script( 'hmu-customizer-scripts', 
 				plugins_url( 'includes/customizer/assets/js/hmu-go-to-page.js', __FILE__ ),
 				array( 'jquery' ),
 				$this->get_version(),
 				true
 			);
 
-			wp_enqueue_style( 'hmu-customizer-styles',
-				plugins_url( "includes/customizer/assets/css/customizer{$suffix}.css", __FILE__ ),
-				array(),
+			wp_enqueue_style( 'hmu-customizer-styles', 
+				plugins_url( "includes/customizer/assets/css/customizer{$suffix}.css", __FILE__ ), 
+				array(), 
 				$this->get_version(),
 				false
 			);
@@ -294,3 +291,4 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 endif;
 
 $hookmeup = new HookMeUp;
+

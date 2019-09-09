@@ -50,13 +50,6 @@ class HookMeUp_Customizer {
 		    'priority'   => 10,
 		) );
 
-		// Plugin Settings
-	    $wp_customize->add_section( 'hookmeup_settings_section', array(
-	 		'title'       => esc_attr__('Settings', 'hookmeup'),
-	 		'priority'    => 9,
-	 		'panel'       => 'hookmeup_section',
-	 	) );
-
 		// Shop Archives
 	    $wp_customize->add_section( 'hookmeup_shop_section', array(
 	 		'title'       => esc_attr__('Shop Archives', 'hookmeup'),
@@ -118,54 +111,23 @@ class HookMeUp_Customizer {
 	 * Define customizer controls
 	 *
 	 * @since 1.2
-	 * @since 1.2.4 split functionality into 2 functions
 	 *
 	 * @return void
 	 */
 	public function define_hmu_controls( $wp_customize ) {
-		if( HookMeUp_User_Roles::user_is_admin() ) {
-			$this->define_settings_controls( $wp_customize );
-		}
-		
-		$this->define_sections_controls( $wp_customize );
-	}
-
-	/**
-	 * Define settings controls
-	 *
-	 * @since 1.2.4
-	 *
-	 * @return void
-	 */
-	private function define_settings_controls( $wp_customize ) {
-
-		$wp_customize->add_setting( 'hookmeup_user_roles_select', array(
-				'default'           => array('editor'),
-				'sanitize_callback' => 'HookMeUp_Customizer::hmu_sanitize_multi_checkbox'
-			)
-		);
-
-		$wp_customize->add_control( new WP_Customize_Multi_Checkbox_Control( $wp_customize, 'hookmeup_user_roles_select', array(
-					'section' => 'hookmeup_settings_section',
-					'label'   => __( 'Grant Access to User Roles', 'hookmeup' ),
-					'description' => __( 'Users having one of the selected user roles will be able to see hook previews and edit hooks.', 'hookeup' ),
-					'choices' => HookMeUp_User_Roles::get_user_roles(),
-				)
-			)
-		);
-	}
-
-	/**
-	 * Define sections controls
-	 *
-	 * @since 1.2.4
-	 *
-	 * @return void
-	 */
-	private function define_sections_controls( $wp_customize ) {
 
 		$hooks  = new HookMeUp_Hooks();
 		$hook_sections = $hooks->get_hook_sections();
+
+		function hmu_bool_to_string( $bool ) {
+			$bool = is_bool( $bool ) ? $bool : ( 'yes' === $bool || 1 === $bool || 'true' === $bool || '1' === $bool );
+
+			return true === $bool ? 'yes' : 'no';
+		}
+
+		function hmu_string_to_bool( $string ) {
+			return is_bool( $string ) ? $string : ( 'yes' === $string || 1 === $string || 'true' === $string || '1' === $string );
+		}
 
 		foreach( $hook_sections as $section ) {
 			$section_hooks = $hooks->get_hooks( $section['name'] );
@@ -174,8 +136,8 @@ class HookMeUp_Customizer {
 				$wp_customize->add_setting( 'hookmeup_' . $section['name'] . '_preview', array(
 					'type'		 			=> 'option',
 					'default'    			=> 'no',
-					'sanitize_callback'    	=> 'HookMeUp_Customizer::hmu_bool_to_string',
-					'sanitize_js_callback' 	=> 'HookMeUp_Customizer::hmu_string_to_bool',
+					'sanitize_callback'    	=> 'hmu_bool_to_string',
+					'sanitize_js_callback' 	=> 'hmu_string_to_bool',
 					'capability' 			=> 'manage_options',
 					'transport'  			=> 'refresh',
 				) );
@@ -234,71 +196,34 @@ class HookMeUp_Customizer {
 	}
 
 	/**
-	 * Sanitize function converts boolean to string
-	 *
-	 * @since 1.2.4
-	 *
-	 * @return string
-	 */
-	public static function hmu_bool_to_string( $bool ) {
-		$bool = is_bool( $bool ) ? $bool : ( 'yes' === $bool || 1 === $bool || 'true' === $bool || '1' === $bool );
-
-		return true === $bool ? 'yes' : 'no';
-	}
-
-	/**
-	 * Sanitize function converts string to boolean
-	 *
-	 * @since 1.2.4
-	 *
-	 * @return boolean
-	 */
-	public static function hmu_string_to_bool( $string ) {
-		return is_bool( $string ) ? $string : ( 'yes' === $string || 1 === $string || 'true' === $string || '1' === $string );
-	}
-
-	/**
-	 * Sanitize function for multi checkbox
-	 *
-	 * @since 1.2.4
-	 *
-	 * @return string
-	 */
-	public static function hmu_sanitize_multi_checkbox( $values ) {
-		$multi_values = !is_array( $values ) ? explode( ',', $values ) : $values;
-
-		return !empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
-	}
-
-	/**
 	 * Retrieve preview url for the current section
 	 *
 	 * @since 1.2
 	 *
 	 * @return void
 	 */
-	private function get_hmu_customize_section_url() {
+	public function get_hmu_customize_section_url() {
 
 		switch( $_POST['page'] ) {
-			case 'shop':
-				echo get_permalink( wc_get_page_id( 'shop' ) );
+			case 'shop': 
+				echo get_permalink( wc_get_page_id( 'shop' ) ); 
 				break;
-			case 'cart':
-				echo wc_get_cart_url();
+			case 'cart': 
+				echo wc_get_cart_url(); 
 				break;
-			case 'checkout':
-				echo wc_get_checkout_url();
+			case 'checkout': 
+				echo wc_get_checkout_url(); 
 				break;
-			case 'account':
-				echo get_permalink( get_option('woocommerce_myaccount_page_id') );
+			case 'account': 
+				echo get_permalink( get_option('woocommerce_myaccount_page_id') ); 
 				break;
-			case 'product':
-				$args = array('orderby' => 'rand', 'limit' => 1);
-				$products = wc_get_products($args);
+			case 'product': 
+				$args = array('orderby' => 'rand', 'limit' => 1); 
+				$products = wc_get_products($args); 
 				if( $products[0] ) {
-					echo get_permalink( $products[0]->get_id() );
+					echo get_permalink( $products[0]->get_id() ); 
 				} else {
-					echo get_permalink( wc_get_page_id( 'shop' ) );
+					echo get_permalink( wc_get_page_id( 'shop' ) ); 
 				}
 				break;
 			default:
