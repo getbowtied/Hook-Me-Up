@@ -4,7 +4,7 @@
  * Plugin Name:       		HookMeUp – Additional Content for WooCommerce
  * Plugin URI:        		https://wordpress.org/plugins/hookmeup/
  * Description:       		Helps you customize WooCommerce templates without altering the code.
- * Version:           		1.2.3
+ * Version:           		1.2.4
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com/
  * License:           		GPL-2.0+
@@ -12,9 +12,9 @@
  * Text Domain:       		hookmeup
  * Domain Path:       		/languages
  * Requires at least: 		4.9
- * Tested up to: 			5.2.2
+ * Tested up to: 			5.2.3
  * WC requires at least: 	3.3.4
- * WC tested up to: 		3.6.4
+ * WC tested up to: 		3.7.0
  *
  * @link              getbowtied.com
  * @since             1.0.0
@@ -89,7 +89,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				$this->add_hooks();
 				$this->loader = new HookMeUp_Loader();
 				$this->set_locale();
-				$this->define_public_hooks();  
+				$this->define_public_hooks();
 				$this->define_customizer();
 				if( !get_option( 'hookmeup_done_import', false ) ) {
 					$done_import = $this->import_options();
@@ -117,7 +117,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		}
 
 		/**
-		 * Imports hooks stored as theme mods into the options WP table 
+		 * Imports hooks stored as theme mods into the options WP table
 		 *
 		 * @since 1.2.1
 		 * @return void
@@ -162,7 +162,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-collapsible.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-toggle.php' );
 			include_once( HMU_DIR . 'includes/customizer/class/class-hmu-info.php' );
-			
+
 			include_once( HMU_DIR . 'includes/class-hmu-loader.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-i18n.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
@@ -186,16 +186,16 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-			wp_enqueue_script( 'hmu-customizer-scripts', 
+			wp_enqueue_script( 'hmu-customizer-scripts',
 				plugins_url( 'includes/customizer/assets/js/hmu-go-to-page.js', __FILE__ ),
 				array( 'jquery' ),
 				$this->get_version(),
 				true
 			);
 
-			wp_enqueue_style( 'hmu-customizer-styles', 
-				plugins_url( "includes/customizer/assets/css/customizer{$suffix}.css", __FILE__ ), 
-				array(), 
+			wp_enqueue_style( 'hmu-customizer-styles',
+				plugins_url( "includes/customizer/assets/css/customizer{$suffix}.css", __FILE__ ),
+				array(),
 				$this->get_version(),
 				false
 			);
@@ -291,4 +291,3 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 endif;
 
 $hookmeup = new HookMeUp;
-

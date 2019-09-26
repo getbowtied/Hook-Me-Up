@@ -2,22 +2,22 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 4.9
-Tested up to: 5.2.2
-Stable tag: 1.2.3
+Tested up to: 5.2.3
+Stable tag: 1.2.4
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 3.3.4
-WC tested up to: 3.6.4
+WC tested up to: 3.7.0
 
 HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
 == Description ==
 
-**HookMeUp** helps online store owners to customize WooCommerce templates without any coding knowledge. Insert custom content or even shortcodes in key areas of your store via **Appearance** > **Customize**. 
+**HookMeUp** helps online store owners to customize WooCommerce templates without any coding knowledge. Insert custom content or even shortcodes in key areas of your store via **Appearance** > **Customize**.
 
-The plugin was built to answer common questions such as: 
-How to add a banner above the shop page? 
+The plugin was built to answer common questions such as:
+How to add a banner above the shop page?
 
 [youtube https://www.youtube.com/watch?v=Y8_u5AuX8_g]
 
@@ -28,7 +28,7 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 - Cart
 - Cart Widget
 - Thank You Page
-- Checkout 
+- Checkout
 - Login / Register
 - My Account
 
@@ -50,7 +50,7 @@ Use the [HookMeUp GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) t
 
 = Which WooCommerce templates can I customize? =
 
-HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations. 
+HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations.
 
 **Archive Page**
 
@@ -134,6 +134,9 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
+= 1.2.4 =
+- Fixed: Customizer settings are accessible to all logged in users with capability of edit theme options
+
 = 1.2.3 =
 - Retested for compatibility with Wordpress 5.2.2 and WooCommerce 3.6.4
 
@@ -142,7 +145,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 = 1.2.1 =
 - New hooks available for My Account Dashboard and Login/Register Page
-- Fixed: Translation issues 
+- Fixed: Translation issues
 - Fixed: Store and apply hooks to the site regardless of the active theme
 
 = 1.2 =
