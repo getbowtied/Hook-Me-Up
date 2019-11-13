@@ -21,6 +21,13 @@
 
 	.customize-control-hmu-editor
 	{
+		margin-bottom: 20px !important;
+
+		&.customize-control-hidden
+		{
+			margin-bottom: 0 !important;
+		}
+
 		textarea
 		{
 			width: 100%;
@@ -90,6 +97,13 @@
 	{
 		position: relative;
 
+		margin-bottom: 20px !important;
+
+		&.customize-control-collapsed
+		{
+			margin-bottom: 0 !important;
+		}
+
 		.tooltip-wrapper
 		{
 			color: #8b8f94;
@@ -141,9 +155,9 @@
 		z-index: 9999 !important;
 	}
 
-	.mce-btn.mce-active button, 
-	.mce-btn.mce-active:hover button, 
-	.mce-btn.mce-active i, 
+	.mce-btn.mce-active button,
+	.mce-btn.mce-active:hover button,
+	.mce-btn.mce-active i,
 	.mce-btn.mce-active:hover i
 	{
     	color: #545d65;
@@ -318,12 +332,12 @@ input[type=checkbox].tgl + .tgl-btn:before
   display: none;
 }
 
-input[type=checkbox].tgl::selection, 
-input[type=checkbox].tgl:after::selection, 
-input[type=checkbox].tgl:before::selection, 
-input[type=checkbox].tgl *::selection, 
-input[type=checkbox].tgl *:after::selection, 
-input[type=checkbox].tgl *:before::selection, 
+input[type=checkbox].tgl::selection,
+input[type=checkbox].tgl:after::selection,
+input[type=checkbox].tgl:before::selection,
+input[type=checkbox].tgl *::selection,
+input[type=checkbox].tgl *:after::selection,
+input[type=checkbox].tgl *:before::selection,
 input[type=checkbox].tgl + .tgl-btn::selection
 {
   background: none;
