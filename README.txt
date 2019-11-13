@@ -134,6 +134,10 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
+= 1.2.5 =
+- WordPress 5.3 compatibility updates
+- WooCommerce 3.8.0 compatibility updates
+
 = 1.2.4 =
 - Fixed: Customizer settings are accessible to all logged in users with capability of edit theme options
 
