@@ -84,6 +84,10 @@ class HookMeUp_Public {
 
 		foreach( $hooks_list as $hook) {
 
+			if( !isset($hook['slug']) || !isset($hook['section']) || !isset($hook['priority']) ) {
+				continue;
+			}
+
 		    add_action( $hook['slug'], function() use ($hook) {
 
 		    	$option_section = $this->hookmeup_boolean_to_string( get_option( 'hookmeup_' . $hook['section'] . '_preview', 'no' ) );
@@ -99,7 +103,7 @@ class HookMeUp_Public {
 
 			    }
 
-		    }, 20 );
+		    }, $hook['priority'] );
 		}
 	}
 
