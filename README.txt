@@ -136,6 +136,11 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
+= 1.3.5 =
+- Added Before Cart Collaterals Hook `woocommerce_before_cart_collaterals`
+- Added Before Variations Form Hook `woocommerce_before_variations_form`
+- Retested for compatibility with Wordpress 5.8 and WooCommerce 5.6.0
+
 = 1.3.4 =
 - Retested for compatibility with Wordpress 5.7.2 and WooCommerce 5.4.1
 
