@@ -2,13 +2,13 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 5.0
-Tested up to: 5.7.2
-Stable tag: 1.3.4
+Tested up to: 5.8
+Stable tag: 1.3.5
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 3.3.4
-WC tested up to: 5.4.1
+WC tested up to: 5.6.0
 
 HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
@@ -67,6 +67,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 - Before Single Product `woocommerce_before_single_product`
 - Single Product Summary `woocommerce_single_product_summary`
+- Before Variations Form `woocommerce_before_variations_form`
 - Before Add To Cart Form `woocommerce_before_add_to_cart_form`
 - After Add To Cart Form `woocommerce_after_add_to_cart_form`
 - Share `woocommerce_share`
@@ -77,6 +78,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - Before Cart `woocommerce_before_cart`
 - Before Cart Table `woocommerce_before_cart_table`
 - After Cart Table `woocommerce_after_cart_table`
+- Before Cart Collaterals `woocommerce_before_cart_collaterals`
 - Before Cart Totals `woocommerce_before_cart_totals`
 - Before Shipping Calculator `woocommerce_before_shipping_calculator`
 - After Shipping Calculator `woocommerce_after_shipping_calculator`

@@ -246,6 +246,12 @@ class HookMeUp_Hooks {
 				'priority'  => 20,
 			],
 			[
+				'slug' 		=> 'woocommerce_before_cart_collaterals',
+				'label' 	=> 'Before Cart Collaterals',
+				'section' 	=> 'hookmeup_cart_section',
+				'priority'  => 20,
+			],
+			[
 				'slug' 		=> 'woocommerce_before_cart_table',
 				'label' 	=> 'Before Cart Table',
 				'section' 	=> 'hookmeup_cart_section',
@@ -550,6 +556,12 @@ class HookMeUp_Hooks {
 			[
 				'slug' 		=> 'woocommerce_single_product_summary',
 				'label' 	=> 'Single Product Summary',
+				'section' 	=> 'hookmeup_product_section',
+				'priority'  => 20,
+			],
+			[
+				'slug' 		=> 'woocommerce_before_variations_form',
+				'label' 	=> 'Before Variations Form',
 				'section' 	=> 'hookmeup_product_section',
 				'priority'  => 20,
 			],
