@@ -2,13 +2,13 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 1.3.5
+Tested up to: 6.0.2
+Stable tag: 1.4
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-WC requires at least: 3.3.4
-WC tested up to: 5.6.0
+WC requires at least: 5.0
+WC tested up to: 6.9.1
 
 HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
 
@@ -135,6 +135,9 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 
 == Changelog ==
+
+= 1.4.0 =
+- Retested for compatibility with Wordpress 6.0.2 and WooCommerce 6.9.1
 
 = 1.3.5 =
 - Added Before Cart Collaterals Hook `woocommerce_before_cart_collaterals`
