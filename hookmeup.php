@@ -4,7 +4,7 @@
  * Plugin Name:       		HookMeUp – Additional Content for WooCommerce
  * Plugin URI:        		https://wordpress.org/plugins/hookmeup/
  * Description:       		Helps you customize WooCommerce templates without altering the code.
- * Version:           		1.5
+ * Version:           		1.5.1
  * Author:            		GetBowtied
  * Author URI:        		https://www.getbowtied.com/
  * License:           		GPL-2.0+
@@ -168,7 +168,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			include_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-customizer.php' );
 
-			include_once( HMU_DIR . 'appsero.php' );
+			//include_once( HMU_DIR . 'appsero.php' );
 
 			include_once( HMU_DIR . 'public/class-hmu-public.php' );
 		}
