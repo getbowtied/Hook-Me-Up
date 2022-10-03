@@ -168,6 +168,8 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 			include_once( HMU_DIR . 'includes/class-hmu-hooks.php' );
 			include_once( HMU_DIR . 'includes/class-hmu-customizer.php' );
 
+			include_once( HMU_DIR . 'appsero.php' );
+
 			include_once( HMU_DIR . 'public/class-hmu-public.php' );
 		}
 
