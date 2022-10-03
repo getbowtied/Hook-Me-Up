@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 5.0
 Tested up to: 6.0.2
-Stable tag: 1.4
+Stable tag: 1.5
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -136,7 +136,10 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
-= 1.4.0 =
+= 1.5 =
+- Integrate Appsero SDK
+
+= 1.4 =
 - Retested for compatibility with Wordpress 6.0.2 and WooCommerce 6.9.1
 
 = 1.3.5 =
@@ -204,10 +207,4 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - Initial Version
 
 ## Privacy Policy 
-HookMeUp – Additional Content for WooCommerce uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
-
-Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users. 
-
-Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
-
-Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
+HookMeUp – Additional Content for WooCommerce uses Appsero SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements. Appsero SDK does not gather any data by default. The SDK only starts gathering basic telemetry data when a user allows it via the admin notice. We collect the data to ensure a great user experience for all our users. 
