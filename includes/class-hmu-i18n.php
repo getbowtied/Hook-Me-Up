@@ -7,7 +7,7 @@
  * @since      1.0.0
  * @package    HMU
  * @subpackage HMU/includes
- * @author     GetBowtied
+ * @author     Get Bowtied
  */
 class HookMeUp_i18n {
 

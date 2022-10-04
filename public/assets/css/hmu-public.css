@@ -1,11 +1,13 @@
-.hook
+.hookmeup-hook-preview
 {
     background: #FFFDE7;
-    border: 2px dashed #F8E71C;
+    border: 1px dashed #F8E71C;
     clear: both;
     color: #545454 !important;
     font-size: 12px !important;
+    font-style: italic;
     padding: 10px;
+    margin: 0;
     text-align: center;
     word-wrap: break-word;
 }

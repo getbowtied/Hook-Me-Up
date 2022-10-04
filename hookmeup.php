@@ -5,7 +5,7 @@
  * Plugin URI:        		https://wordpress.org/plugins/hookmeup/
  * Description:       		Helps you customize WooCommerce templates without altering the code.
  * Version:           		1.5.3
- * Author:            		GetBowtied
+ * Author:            		Get Bowtied
  * Author URI:        		https://www.getbowtied.com/
  * License:           		GPL-2.0+
  * License URI:       		http://www.gnu.org/licenses/gpl-2.0.txt

@@ -95,11 +95,11 @@ class HookMeUp_Public {
 
 		        if( isset($option_content) && !empty($option_content) ) {
 
-			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook">' . do_shortcode(__( $option_content, 'hookmeup' )) . '</div>';
+			        echo '<div id="' . $hook['slug'] . '" class="hookmeup-hook">' . do_shortcode(__( $option_content, 'hookmeup' )) . '</div>';
 
 			    } else if( $option_section == 'yes' && is_user_logged_in() && ( current_user_can( 'edit_theme_options' ) ) ) {
 
-			        echo '<div id="' . $hook['slug'] . '" class="hmu-hook"><p class="hook">' . $hook['slug'] . '</p></div>';
+			        echo '<div id="' . $hook['slug'] . '" class="hookmeup-hook"><div class="hookmeup-hook-preview">' . $hook['slug'] . '</div></div>';
 
 			    }
 

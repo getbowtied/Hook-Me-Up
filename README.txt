@@ -1,5 +1,5 @@
 === HookMeUp – Additional Content for WooCommerce ===
-Contributors: getbowtied, vanesareinerth, traians, adrianlbs
+Contributors: getbowtied
 Tags: hooks, theme, templates, woocommerce
 Requires at least: 5.0
 Tested up to: 6.0.2
