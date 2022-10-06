@@ -1,6 +1,6 @@
-=== HookMeUp – Additional Content for WooCommerce ===
+=== HookMeUp – Unlock and use strategic spots in any WooCommerce Theme ===
 Contributors: getbowtied
-Tags: hooks, theme, templates, woocommerce
+Tags: hooks, customize, theme, templates, woocommerce
 Requires at least: 5.0
 Tested up to: 6.0.2
 Stable tag: 1.5.3
@@ -10,11 +10,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 5.0
 WC tested up to: 6.9.1
 
-HookMeUp helps non-developers insert additional content in WooCommerce templates via **Appearance** > **Customize**. No coding required.
-
 == Description ==
 
-**HookMeUp** helps online store owners to customize WooCommerce templates without any coding knowledge. Insert custom content or even shortcodes in key areas of your store via **Appearance** > **Customize**.
+**HookMeUp** helps non-developers insert additional content, banners, shortcodes by exploiting key areas in **any** WooCommerce Theme, without altering the theme's code.
+
+Explore and use hidden places in pages like: Shop, Product Page, Cart, Checkout, Login, Register, My account, Thank You Page.
+
+Add banners, text, links, call to actions or anything you can think of in strategic spots on your site that you can't normally manipulate.
+
+Insert custom content via **Wordpress Dashboard** > **Appearance** > **Customize**.
+
+No coding required.
 
 The plugin was built to answer common questions such as:
 How to add a banner above the shop page?
@@ -32,7 +38,6 @@ HookMeUp will help you add additional content in the following WooCommerce templ
 - Login / Register
 - My Account
 
-
 == Installation ==
 
 The easiest way:
@@ -43,9 +48,11 @@ The easiest way:
 == Frequently Asked Questions ==
 
 = Will HookMeUp work with my theme? =
-Yes; HookMeUp should work with any WooCommerce compatible theme. Please note that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
+
+Yes! HookMeUp should work with any WooCommerce Theme. Please note that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
 
 = Where can I report bugs or contribute to the project? =
+
 Use the [HookMeUp GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
 
 = Which WooCommerce templates can I customize? =
@@ -137,7 +144,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 == Changelog ==
 
 = 1.5.3 =
-- Integrate Appsero SDK
+- Integrate SDK
 
 = 1.4 =
 - Retested for compatibility with Wordpress 6.0.2 and WooCommerce 6.9.1
@@ -207,4 +214,4 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 - Initial Version
 
 ## Privacy Policy 
-HookMeUp – Additional Content for WooCommerce uses Appsero SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements. Appsero SDK does not gather any data by default. The SDK only starts gathering basic telemetry data when a user allows it via the admin notice. We collect the data to ensure a great user experience for all our users. 
+HookMeUp uses SDK (Software Development Kit) to collect some telemetry data **upon user's confirmation**. This helps us to troubleshoot problems faster & make product improvements. The SDK **does not gather any data by default**. The SDK only starts gathering basic telemetry data **when a user allows it** via the admin notice. We collect the data to ensure a great user experience for all our users. 
