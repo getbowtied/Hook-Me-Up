@@ -143,7 +143,7 @@ HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.wooco
 
 == Changelog ==
 
-= 1.5.7 =
+= 1.5.8 =
 - Retested for compatibility with Wordpress 6.1.1 and WooCommerce 7.3
 
 = 1.5.3 =
