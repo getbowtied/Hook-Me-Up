@@ -143,6 +143,9 @@ WooCommerce HookMeUp doesn't include the full list of [WooCommerce Hooks](https:
 
 == Changelog ==
 
+= 2.2 =
+- Small maintenance updates
+
 = 2.1 =
 - Recheck Compatibility with WordPress 6.2.2
 - Recheck Compatibility with WooCommerce 7.9.0

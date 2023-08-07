@@ -12,7 +12,7 @@ class Elementor_Gbt_Third_Party_Plugin {
 	public function __construct()
 	{
 		if ( is_plugin_active( 'elementor/elementor.php' ) ) {
-			add_action( 'init', array( $this, 'remove_elementor_onboarding_redirection' ) );
+			//add_action( 'init', array( $this, 'remove_elementor_onboarding_redirection' ) );
 			add_action( 'admin_init', array( $this, 'elementor_go_pro_link' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -20,14 +20,14 @@ class Elementor_Gbt_Third_Party_Plugin {
 	}
 
 	// Disable Onboarding
-	public function remove_elementor_onboarding_redirection()
+	/*public function remove_elementor_onboarding_redirection()
 	{
 		if ( is_admin() && isset( $_GET['page'] ) && 'elementor-app' === $_GET['page'] )
 		{
 			wp_redirect( admin_url() );
 			exit;
 		}
-	}
+	}*/
 
 	// Upgrade Link
 	public function elementor_go_pro_link()
