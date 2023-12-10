@@ -4,17 +4,17 @@
  * Plugin Name:       		WooCommerce HookMeUp
  * Plugin URI:        		https://wordpress.org/plugins/hookmeup/
  * Description:       		Helps non-developers insert additional content, banners, shortcodes by exploiting key areas in any WooCommerce Theme, without altering the theme's code. Explore and use hidden places in pages like: Shop, Product Page, Cart, Checkout, Login, Register, My account, Thank You Page. Add banners, text, links, call to actions or anything you can think of in strategic spots on your site that you can't normally manipulate. No coding required.
- * Version:           		2.3
+ * Version:           		2.4
  * Author:            		Get Bowtied
  * Author URI:        		https://www.getbowtied.com/
  * License:           		GPL-2.0+
  * License URI:       		http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       		hookmeup
  * Domain Path:       		/languages
- * Requires at least: 		5.0
- * Tested up to: 			6.2.2
- * WC requires at least: 	5.0
- * WC tested up to: 		7.9
+ * Requires at least: 		6.0
+ * Tested up to: 			6.4
+ * WC requires at least: 	7.0
+ * WC tested up to: 		8.3
  *
  * @link              getbowtied.com
  * @since             1.0.0
@@ -91,6 +91,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 				$this->set_locale();
 				$this->define_public_hooks();
 				$this->define_customizer();
+				$this->HPOS_compatibility();
 				if( !get_option( 'hookmeup_done_import', false ) ) {
 					$done_import = $this->import_options();
 					if( $done_import ) {
@@ -240,6 +241,25 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		private function define_customizer() {
 
 			$plugin_customizer = new HookMeUp_Customizer();
+		}
+
+		/**
+		 * Register all of the hooks related to the customizer.
+		 *
+		 * @since 1.2
+		 *
+		 * @return void
+		 */
+		private function HPOS_compatibility() {
+
+			add_action('before_woocommerce_init', function(){
+
+			    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+
+			    }
+
+			});
 		}
 
 		/**
