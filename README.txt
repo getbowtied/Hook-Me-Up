@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: hooks, customize, theme, templates, woocommerce
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.9
+Stable tag: 2.9.1
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -144,6 +144,10 @@ WooCommerce HookMeUp doesn't include the full list of [WooCommerce Hooks](https:
 
 
 == Changelog ==
+
+= 2.9.1 =
+- Update Compatibility with WordPress 6.8.1
+- Update Compatibility with WooCommerce 9.8.5
 
 = 2.9 =
 - Update Compatibility with WooCommerce 9.7.1
