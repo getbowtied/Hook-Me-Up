@@ -270,7 +270,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		public function woocommerce_not_installed_warning() {
 		?>
 			<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-				<p><?php echo esc_html_e( 'HookMeUp is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
+				<p><?php esc_html_e( 'HookMeUp is enabled but not effective. It requires WooCommerce in order to work.', 'hookmeup' ); ?></p>
 			</div>
 		<?php
 		}
