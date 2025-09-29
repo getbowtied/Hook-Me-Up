@@ -1,20 +1,20 @@
-=== WooCommerce HookMeUp ===
+=== HookMeUp for WooCommerce ===
 Contributors: getbowtied
 Tags: hooks, customize, theme, templates, woocommerce
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.9.1
+Stable tag: 3.0
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-WC requires at least: 9.0
-WC tested up to: 9.7
+WC requires at least: 10.0
+WC tested up to: 10.2.1
 
 Additional content and Customization for WooCommerce Templates.
 
 == Description ==
 
-**WooCommerce HookMeUp** helps non-developers insert additional content, banners, shortcodes by exploiting key areas in **any** WooCommerce Theme, without altering the theme's code.
+**HookMeUp for WooCommerce** helps non-developers insert additional content, banners, shortcodes by exploiting key areas in **any** WooCommerce Theme, without altering the theme's code.
 
 Explore and use hidden places in pages like: Shop, Product Page, Cart, Checkout, Login, Register, My account, Thank You Page.
 
@@ -29,7 +29,7 @@ How to add a banner above the shop page?
 
 [youtube https://www.youtube.com/watch?v=Y8_u5AuX8_g]
 
-WooCommerce HookMeUp will help you add additional content in the following WooCommerce templates:
+HookMeUp for WooCommerce will help you add additional content in the following WooCommerce templates:
 
 - Shop & Categories (Archives)
 - Single Product
@@ -49,17 +49,17 @@ The easiest way:
 
 == Frequently Asked Questions ==
 
-= Will WooCommerce HookMeUp work with my theme? =
+= Will HookMeUp for WooCommerce work with my theme? =
 
-Yes! WooCommerce HookMeUp should work with any WooCommerce Theme. Please note that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
+Yes! HookMeUp for WooCommerce should work with any WooCommerce Theme. Please note that themes may alter the original location of various WooCommerce hooks. If you run into any theme related issues you should reach out to theme author / theme support.
 
 = Where can I report bugs or contribute to the project? =
 
-Use the [WooCommerce HookMeUp GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
+Use the [HookMeUp for WooCommerce GitHub Repository](https://github.com/getbowtied/Hook-Me-Up) to report issues or contribute to the plugin's development.
 
 = Which WooCommerce templates can I customize? =
 
-WooCommerce HookMeUp doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations.
+HookMeUp for WooCommerce doesn't include the full list of [WooCommerce Hooks](https://docs.woocommerce.com/wc-apidocs/hook-docs.html) available, but the ones that make sense for common customizations.
 
 **Archive Page**
 
@@ -144,6 +144,10 @@ WooCommerce HookMeUp doesn't include the full list of [WooCommerce Hooks](https:
 
 
 == Changelog ==
+
+= 3.0 =
+- Update Compatibility with WordPress 6.8.2
+- Update Compatibility with WooCommerce 10.2.1
 
 = 2.9.1 =
 - Update Compatibility with WordPress 6.8.1
@@ -252,4 +256,4 @@ WooCommerce HookMeUp doesn't include the full list of [WooCommerce Hooks](https:
 - Initial Version
 
 ## Privacy Policy 
-WooCommerce HookMeUp uses SDK (Software Development Kit) to collect some telemetry data **upon user's confirmation**. This helps us to troubleshoot problems faster & make product improvements. The SDK **does not gather any data by default**. The SDK only starts gathering basic telemetry data **when a user allows it** via the admin notice. We collect the data to ensure a great user experience for all our users. 
+HookMeUp for WooCommerce uses SDK (Software Development Kit) to collect some telemetry data **upon user's confirmation**. This helps us to troubleshoot problems faster & make product improvements. The SDK **does not gather any data by default**. The SDK only starts gathering basic telemetry data **when a user allows it** via the admin notice. We collect the data to ensure a great user experience for all our users. 
