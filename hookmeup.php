@@ -35,6 +35,8 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 
 if ( ! class_exists( 'HookMeUp' ) ) :
 
+	require_once HMU_DIR . 'core/theme-updater/class-gbt-extender-theme-updater.php';
+
 	/**
 	 * HookMeUp class.
 	 *
