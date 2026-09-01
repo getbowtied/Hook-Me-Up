@@ -30,6 +30,10 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 		const NOTIFICATION_AJAX_ACTION      = 'gbt_extender_dismiss_theme_update_notice';
 		const NOTIFICATION_NONCE_ACTION     = 'gbt_extender_dismiss_theme_update_notice';
 
+		/** Extender-only auto-update enable (does not use theme dashboard AJAX/JS). */
+		const AUTO_UPDATE_AJAX_ACTION  = 'gbt_extender_enable_theme_auto_updates';
+		const AUTO_UPDATE_NONCE_ACTION = 'gbt_extender_enable_theme_auto_updates';
+
 		/** @var bool */
 		private static $fallback_registered = false;
 		private static $file_config = null;
@@ -74,6 +78,7 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 				add_action( 'admin_notices', array( __CLASS__, 'render_admin_notice' ) );
 				add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_notice_assets' ) );
 				add_action( 'wp_ajax_' . self::NOTIFICATION_AJAX_ACTION, array( __CLASS__, 'ajax_dismiss_notice' ) );
+				add_action( 'wp_ajax_' . self::AUTO_UPDATE_AJAX_ACTION, array( __CLASS__, 'ajax_enable_auto_updates' ) );
 			}
 		}
 
@@ -216,6 +221,7 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 			$theme_name = $theme->exists() ? $theme->get( 'Name' ) : $slug;
 			$current    = self::get_installed_version( $slug );
 			$update_url = admin_url( 'update-core.php#update-themes-table' );
+			$auto_on    = self::is_theme_auto_update_enabled( $slug );
 			?>
 			<div
 				class="notice notice-info is-dismissible gbt-extender-theme-update-notice"
@@ -228,6 +234,23 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 						<strong><?php echo esc_html( $theme_name ); ?> <?php echo esc_html( $update['new_version'] ); ?> is available.</strong>
 						You&rsquo;re on <?php echo esc_html( $current ); ?>.
 						<a href="<?php echo esc_url( $update_url ); ?>"><strong>Update now</strong></a> &mdash; includes new features and security fixes.
+						<?php if ( ! $auto_on ) : ?>
+							<span
+								class="gbt-extender-auto-update-wrap"
+								data-enabling-text="<?php echo esc_attr__( 'Enabling auto-updates…', 'hookmeup' ); ?>"
+								data-success-text="<?php echo esc_attr__( 'Auto-updates are enabled.', 'hookmeup' ); ?>"
+							>
+								<?php
+								echo esc_html__( 'You may also', 'hookmeup' ) . ' ';
+								printf(
+									'<a href="#" class="gbt-extender-enable-auto-updates" data-theme="%1$s"><strong>%2$s</strong></a>',
+									esc_attr( $slug ),
+									esc_html__( 'enable automatic updates', 'hookmeup' )
+								);
+								echo ' ' . esc_html__( "so you won't be bothered again.", 'hookmeup' );
+								?>
+							</span>
+						<?php endif; ?>
 					</span>
 				</p>
 			</div>
@@ -272,6 +295,26 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 					'nonce'   => wp_create_nonce( self::NOTIFICATION_NONCE_ACTION ),
 				)
 			);
+
+			if ( ! self::is_theme_auto_update_enabled( $slug ) ) {
+				wp_enqueue_script(
+					'gbt-extender-theme-auto-update',
+					plugins_url( 'js/auto-update-enable.js', __FILE__ ),
+					array( 'jquery' ),
+					'1.0',
+					true
+				);
+
+				wp_localize_script(
+					'gbt-extender-theme-auto-update',
+					'gbtExtenderThemeAutoUpdate',
+					array(
+						'ajaxurl' => admin_url( 'admin-ajax.php' ),
+						'action'  => self::AUTO_UPDATE_AJAX_ACTION,
+						'nonce'   => wp_create_nonce( self::AUTO_UPDATE_NONCE_ACTION ),
+					)
+				);
+			}
 		}
 
 		public static function ajax_dismiss_notice(): void {
@@ -290,6 +333,69 @@ if ( ! class_exists( 'GBT_Extender_Theme_Updater' ) ) {
 			self::save_notice_dismissal( $message_id );
 
 			wp_send_json_success( true );
+		}
+
+		/**
+		 * Enable WP core theme auto-updates for the active supported theme.
+		 * Independent of the theme dashboard handler (different action/nonce/JS).
+		 */
+		public static function ajax_enable_auto_updates(): void {
+			check_ajax_referer( self::AUTO_UPDATE_NONCE_ACTION, 'nonce' );
+
+			if ( ! current_user_can( 'update_themes' ) ) {
+				wp_send_json_error( 'Insufficient permissions' );
+			}
+
+			if ( self::theme_has_builtin_updater() ) {
+				wp_send_json_error( 'Theme owns updates' );
+			}
+
+			$theme_slug = isset( $_POST['theme_slug'] ) ? sanitize_key( wp_unslash( $_POST['theme_slug'] ) ) : '';
+			$current    = self::theme_slug();
+
+			if ( $theme_slug === '' || $current === '' || $theme_slug !== $current ) {
+				wp_send_json_error( 'Invalid theme' );
+			}
+
+			$auto_updates = get_option( 'auto_update_themes', array() );
+
+			if ( ! is_array( $auto_updates ) ) {
+				$auto_updates = array();
+			}
+
+			if ( in_array( $theme_slug, $auto_updates, true ) ) {
+				wp_send_json_success(
+					array(
+						'message' => 'Auto-updates are already enabled.',
+					)
+				);
+			}
+
+			$auto_updates[] = $theme_slug;
+			$auto_updates   = array_values( array_unique( $auto_updates ) );
+
+			if ( ! update_option( 'auto_update_themes', $auto_updates ) ) {
+				// update_option returns false when value is unchanged; re-check.
+				if ( ! self::is_theme_auto_update_enabled( $theme_slug ) ) {
+					wp_send_json_error( 'Failed to enable auto-updates' );
+				}
+			}
+
+			wp_send_json_success(
+				array(
+					'message' => 'Auto-updates have been enabled.',
+				)
+			);
+		}
+
+		private static function is_theme_auto_update_enabled( string $slug ): bool {
+			if ( $slug === '' ) {
+				return false;
+			}
+
+			$auto_updates = get_option( 'auto_update_themes', array() );
+
+			return is_array( $auto_updates ) && in_array( $slug, $auto_updates, true );
 		}
 
 		private static function notice_message_id( array $update ): string {
