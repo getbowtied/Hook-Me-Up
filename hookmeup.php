@@ -4,7 +4,7 @@
  * Plugin Name:       		HookMeUp for WooCommerce
  * Plugin URI:        		https://wordpress.org/plugins/hookmeup/
  * Description:       		Helps non-developers insert additional content, banners, shortcodes by exploiting key areas in any WooCommerce Theme, without altering the theme's code. Explore and use hidden places in pages like: Shop, Product Page, Cart, Checkout, Login, Register, My account, Thank You Page. Add banners, text, links, call to actions or anything you can think of in strategic spots on your site that you can't normally manipulate. No coding required.
- * Version:           		4.1
+ * Version:           		4.3
  * Author:            		Get Bowtied
  * Author URI:        		https://getbowtied.com
  * License:           		GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 
 if ( ! class_exists( 'HookMeUp' ) ) :
 
-	require_once HMU_DIR . 'core/theme-updater/class-gbt-extender-theme-updater.php';
+	require_once HMU_DIR . 'core/theme-updater/loader.php';
 
 	/**
 	 * HookMeUp class.
@@ -66,7 +66,7 @@ if ( ! class_exists( 'HookMeUp' ) ) :
 		 * @since 1.0.0
 		 * @var string
 		 */
-		protected $version = '4.1';
+		protected $version = '4.3';
 
 		/**
 		 * The single instance of the class.
